@@ -1,0 +1,214 @@
+{
+  "name": "dot-skogai-marketplace",
+  "description": "dot-skogai-marketplace rework",
+  "owner": {
+    "name": "skogix",
+    "email": "emil@skogsund.se"
+  },
+  "plugins": [
+    {
+      "name": "skogai-workstation",
+      "source": {
+        "source": "git-subdir",
+        "url": "git@github.com:skogai/.dotfiles.git",
+        "path": "skogai-workstation/"
+      },
+      "strict": false
+    },
+    {
+      "name": "dot-core",
+      "version": "0.1.0",
+      "source": "./plugins/dot-core",
+      "strict": false,
+      "hooks": {
+        "SessionStart": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh"
+              }
+            ]
+          }
+        ],
+        "SessionEnd": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-end.sh"
+              }
+            ]
+          }
+        ],
+        "UserPromptSubmit": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/user-prompt-submit.sh"
+              }
+            ]
+          }
+        ],
+        "PreToolUse": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use.sh"
+              }
+            ]
+          }
+        ],
+        "PostToolUse": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use.sh"
+              }
+            ]
+          }
+        ],
+        "PreCompact": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-compact.sh"
+              }
+            ]
+          }
+        ],
+        "Stop": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/stop.sh"
+              }
+            ]
+          }
+        ],
+        "SubagentStop": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/subagent-stop.sh"
+              }
+            ]
+          }
+        ],
+        "Notification": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/notification.sh"
+              }
+            ]
+          }
+        ],
+        "PermissionRequest": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/permission-request.sh"
+              }
+            ]
+          }
+        ],
+        "PostToolUseFailure": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-tool-use-failure.sh"
+              }
+            ]
+          }
+        ],
+        "SubagentStart": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/subagent-start.sh"
+              }
+            ]
+          }
+        ],
+        "TeammateIdle": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/teammate-idle.sh"
+              }
+            ]
+          }
+        ],
+        "TaskCompleted": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/task-completed.sh"
+              }
+            ]
+          }
+        ],
+        "ConfigChange": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/config-change.sh"
+              }
+            ]
+          }
+        ],
+        "WorktreeCreate": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/worktree-create.sh"
+              }
+            ]
+          }
+        ],
+        "WorktreeRemove": [
+          {
+            "matcher": "",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/worktree-remove.sh"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

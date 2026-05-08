@@ -1,0 +1,1804 @@
+{
+  "last_built": "2026-05-08T18:08:57",
+  "total_repos": 184,
+  "total_tags": 14,
+  "repo_manifest": {
+    "Adb Ops": "c95c7be514476ac3f89ec804576b3687",
+    "Agent Junction": "87b95f1f0f1536fcaa5b3c469a068648",
+    "Agent Relay": "f4a7b8b64940d03266a1bc699c7c039d",
+    "AI Attribution": "6bbef82e178406afee12bcf2a53b975c",
+    "AI Engineering": "4a97aec03a287df238a6762101d29eba",
+    "AI Ideation Runs": "8f2918cc25804c6e995ce6c41acf9d2e",
+    "AI Memory Planning 0426": "5bd2b604d73593ac3775e9b8223d7e09",
+    "AI Model Research": "6b50e6942e70fe8703de81a581acce2d",
+    "AI Video Producer": "35ad1908e72ab0b7a6dc69f12fb4d197",
+    "AI-Human Attribution Adder": "8f05ad80a09d1b7383c07abe03a9db61",
+    "Air Quality Toolkit": "d8f31dae90df0b1915c0ca5d7ccc5648",
+    "Audio Production": "61ef0d6bb91a7860e39eb27befc6942e",
+    "Background Removal": "c767b293ede07ee91ac10d3821b4e84e",
+    "Backup Planner": "1c9006b0e1fd850dd9e81899e517b4ec",
+    "Bash Alias Manager Claude": "9a9d215b3749290493ecfba96f351b28",
+    "Batch ClaudeMD Repo Creator": "a974248df391649b1e117b00f8bb15ec",
+    "Batch Optical Archivist": "afeb5823a739c0cae1d55709cbf62a49",
+    "Browser Data Capture": "936035148df34b9bf86d4471ae2704c6",
+    "Budgeting": "854db3917cdc4d8e6df3597c57267069",
+    "Business Idea Eval": "0a02f72f9738f4e1fb4d9b14d99e5ebb",
+    "Buttondown Mgmt": "8daa989cbe344cb51805b8af1654d62e",
+    "Career": "296f12be20e9273fcc5b6aae00fe645f",
+    "Claude Agent Blueprints": "d1c6ab0f2800ca5032b77bc8c1a44d8a",
+    "Claude Agent Picker Pattern": "88d4a582d5070f29f38583c8d3049bf5",
+    "Claude Agent Workspace Generator": "bfded2cc8e7035cbce825b50018547a3",
+    "Claude App Optimiser": "09fdaf8f22750a2d70fb3d5a75d67b8a",
+    "Claude Calls The Shots": "077a3c0613ccb3c48dafb48e03bc4c8f",
+    "Claude Change My View": "e2b79054f555dd1023e8fe3e01a2feed",
+    "Claude Code Bash Aliases": "1dabf0e688ed0db02373cf99a9c60b6c",
+    "Claude Code Bugs And FRs": "0930b95c0ddcaa4a279a8cc3900057a0",
+    "Claude Code Context Feature Requests": "bfb6c13284944ef4efee0baee03d0258",
+    "Claude Code Context Toolkit": "52cf6930bbe362f54456eb5a6f05dcb8",
+    "Claude Code Feedback": "1e0c88659a1079177b4e1fb2f45c266f",
+    "Claude Code Linux Desktop Slash Commands": "dbfeddb7884766aad36362af4b6fc159",
+    "Claude Code Linux Notes": "98901ca44e9ebc38cce6d7c82ca95704",
+    "Claude Code Marketplace Hub": "ef34aaebc87057b1b846a27844e67fd7",
+    "Claude Code MCP Command Generator": "60faa959e66387bd382286e45c3b6947",
+    "Claude Code MCP List": "18d965dee759bbf6291f50ba22e4394b",
+    "Claude Code Plugin (Meta)": "e3bc3234fb7d94e1d2af6bcd3a5ffe25",
+    "Claude Code Plugins Marketplace": "70b350107ae3cd0249c33a884464dbd5",
+    "Claude Code Repo Managers ClaudeMD": "0d47d045e855556549fd199e5b72d874",
+    "Claude Data Analyst": "3eaa3e1db44329ccf16366a890afdb5b",
+    "Claude Data Wrangler": "66e06cbce7ec77c25b8bf5fb457d3167",
+    "Claude Deep Research Model (Notes / Documentation)": "8e6a0ab9b0d0c5750ecd8c1d6887f950",
+    "Claude Development Agents": "f7f5170352c2eec194123baebdf3f6b1",
+    "Claude Document Nudge": "69aeec94fdacdfc663d76f002dd8eb88",
+    "Claude Dolphin & Konsole Actions": "78b6cd03450c8d7a4a900604a7e72c23",
+    "Claude Dork": "380a39971879476d3d0a54f24e8cd8e7",
+    "Claude File Organiser Super Slash": "1110bd0ba5244e67f77219e65a151904",
+    "Claude Hopper": "2e61247125dd850f0698c6c2aa3889ea",
+    "Claude Interview": "0b32ba8460d92a1a1642168794ea5dca",
+    "Claude Is Awesome": "2febfba68f9cc1d906348bbbb5a05038",
+    "Claude Local AI Agent Research": "f96ea533d925426878268dcf38a7daa3",
+    "Claude MD Chunk": "80dae7842fb2c5edd87e053bd64487c6",
+    "Claude MD Tester": "067abfd83b23d2e177f9b0ab67106961",
+    "Claude Model Identifier": "5dabb5b3e17b0108b56051bb46540bb2",
+    "Claude Pa": "6ddab16cc7414afe7cb0f38b360415d7",
+    "Claude Pipewire Skills": "edaad65981add45a02213fc8fc162383",
+    "Claude Rescue": "4bf6f386d877e067c2d9173e0a8161d0",
+    "Claude Rudder": "1922d1a39179c2cad6a0ba64da63b943",
+    "Claude Slash Commands": "822ec178067e2ac281a818a5a90eeaad",
+    "Claude Sub-Agent Network": "5e8ffe8f1801b6b4aa49708337f60df4",
+    "Claude System Recovery Mode": "ee1907e4b6669db54790d9f300b6ba1c",
+    "Claude Task Manager": "075c9d31a678e5fb80d55d68609e6437",
+    "Claude Transcription": "3bc2f348d1cb1a7a1f350b3be2db1c25",
+    "Claude User Manual": "2f0d7982247d80c0050de1725882771c",
+    "Claude User Memory": "fa248cac065d501f7e97b29b10db0bd6",
+    "Claude Vault": "f6753b5071358c661e9f768232d1c76e",
+    "Claude Website Update Sender": "30e61d9fe6f0397ca2ce76d87e36cd49",
+    "Claude Workspace Setup Helper": "a1c446f0cc8e223b864495495d58334e",
+    "Content Writing": "74b3e9097cb5fdfdd353e7135bd65941",
+    "CONTEXT.md": "a48e10721673f69ab160751fed98bab8",
+    "Cool Claude Code Stuff": "7915a8fd19ce0d6205f94480454f49c0",
+    "Copyq Scripting": "1b01a6b99355e7331f07f721e87c2a10",
+    "Daniel Rosehill": "b2c8dc02b9c63d37f8b47d27af9604f6",
+    "Data Annotation": "381ede45bc2988c1db65ea24f53878ca",
+    "Data Visualisation And Publishing": "f185cc1cd632a97ef48ff2ae153e28dc",
+    "Debugging": "2a78dabd282c539d54e6db7bae0c09fa",
+    "Decision Evaluation Framework": "a396de22d680ff1f411ee8492503eddd",
+    "Declaude": "68e919a658268fb8f697b22f6bb6674d",
+    "Declutter Genie": "9abca1132e0bd778a0f5c7a5ceb67606",
+    "Desktop Manager": "686debc4f8fd9929626cbe4c1f37800e",
+    "Dev Debugger": "c0d112eda962f335103eaa6366ed9d8e",
+    "Dev Tools": "abba34fb80f508adf77d4bf19313f97b",
+    "Digital Evidence": "4747a8d9a0d7fc6f19b1b7dabcfdf63e",
+    "Digital Printing": "e8e7a47ceefb3d245871b26d300d91b0",
+    "Document To Markdown": "bf9676967af5920c67d0ab2ab66640ad",
+    "Donetick": "489793991e15b2af8d8182c2a1b5a62e",
+    "Easy Effects Manager": "a4b2895d4d54ff324e12bf4aeeeaaacb",
+    "Favorite Plugins Installers": "37d8b975768462a89afc0f122599194e",
+    "Filesystem Organiser": "9192e49a94a67d4ba7bdd01545196ee5",
+    "Geopol Sim": "be3020d9b6e8c5e825921dc99bfc02c6",
+    "Get Toony": "8b092d550b3461934ca3bf8e65b31cb7",
+    "Gimp": "7e2f71fc58de6454ff24357c4f693a0b",
+    "Gist Writer": "c5a9248917a7cc4d3faf869ad5249e45",
+    "Github Explorer": "7edfa24c3b2997f61de84d9918fa7350",
+    "Gpg Ops": "6de7fedde850480ce5555fc272982baa",
+    "Greeninvoice Ops": "f75a2b8217a942fc5cae0d7d8e4655df",
+    "Hardware Id Annotation": "9a7fea455678d47632e1ce0da185919f",
+    "Hardware Spec Assembly": "18dcb164d10467ee10139e2801725772",
+    "Home Assistant Mgmt": "f8ee6524b54566e5acd3689cac2ac44e",
+    "How-To-MCP": "0e323fadd093c2c22890f0755ba5e940",
+    "HP5200 Printer": "d16a37a732a25ed0b25fa39392bdd81c",
+    "Html Email Designer": "9c9e325e6c8812d1f386f5567b1eecea",
+    "Ideation Planning": "12267dc9647147d560874310685e4fc7",
+    "Image Annotation": "3cffe8b6d124f021793182227e3c4bee",
+    "Image Production": "a64dce4352401bfaa7e48f2ec162d839",
+    "Israel Agent Skills": "678177e1d9512067cb9b8d8440084814",
+    "Israel Shopping": "c619bba474c5bac4b21b3d9f989eb624",
+    "Jewish Texts Reference": "c53d6665df8a0392ec521a629181d70f",
+    "Jewish Utilities": "53f19b1e9e2791bc8bf1f74426609573",
+    "Kde Plasma": "26e1381701d7284bf4bd447131c8345c",
+    "Kde Plasmoid Dev": "f316cc1cc090569b703288db842c5cbc",
+    "Keyboard Scanner": "6930b0c4f0e5c7cdafda34ef4115a97d",
+    "Knowledge Documentation": "9dca85e52523f43143ec3e52ded9a316",
+    "Legal Investigative": "e5be69a49023391a8319b0f84b8cb748",
+    "License Populator": "fcf20414f2c6e6a22d4f0ca60aa0915b",
+    "Linux Av Manager": "f1b250ea246ad24cff397c37198e2c12",
+    "Linux Debugging": "4fb0a55a8a2cbc1cc0300a5be21c6bdf",
+    "Linux Desktop ClaudeMD Seeder": "f90b40fc4bd9dfb665f617b494a15803",
+    "Linux Packaging": "ea9accbdf13006fdaf709f798695b584",
+    "Linux System Optimisation": "753434f9e8d8c961837da1edea87f9e8",
+    "Llm Council Creator": "69cc4600a9c204a7395f90f6c82669dd",
+    "Local Claude Plugin Install Research": "672978f07c4270129e57844a7c6b4bba",
+    "Local Web Capture": "68da29fc30f649701f450c89f9344962",
+    "Loose Tasks": "a5d3f1f6d47787d9fb53dd86dcd529f5",
+    "MCPM Claude Code Docs": "6b3dee7a696d45b9aacc447cd84f1d11",
+    "Media Assistant Ops": "d5b2fec395b6b0f47a889b4d9bea8700",
+    "Media Library": "a10bd7edf91e0d15c03bcfe252a3915a",
+    "Nano Tech Diagrams": "871043c43dd20d766119f7c13be34ef5",
+    "Network Cups": "db99001e9330e0478bef1f76a0545e98",
+    "New Turn Claude Hook": "4a447b01033b1ef6e5a451075a5a86bf",
+    "Nfc Ops": "5544aa35d39ac7d727060b9f01fb74e5",
+    "No Wheel Inventions": "64bc6a99c0ba435173b1b4c1bfbd7d4e",
+    "Non-Code Claude Code": "b414212ec3fa1d2f929f01bb71425eaf",
+    "Novelty Text Editor": "3fb14bc82bd53d49087d05849e53d5fa",
+    "Obs Mgmt": "291a8e8da5ff6a10742e760d9b317134",
+    "Opnsense Mgmt": "489d4250acecf15c33a7f01671f1a040",
+    "Os Sync Agent": "f7a275ef525ad89bd6e4cf4f19d565c1",
+    "Personal Planning": "23e8a2416661d3201e9fc2ec277e0016",
+    "Pii Scanner": "8cd31a8e65881c74bca4a8a8923d0e14",
+    "PR & Media Work": "e96b0ed0f6404d08a8736bdf1e3636dd",
+    "Private And Public Claude MD": "109c5d99f24b3b6f8a1e3fd8d4421bef",
+    "Programmatic Doc Generation": "56469bc01bda68af16d4561d643b9610",
+    "Proxmox Mgmt": "b75d61cca6c64285a008f5ee1eb7c5ca",
+    "Purchasing": "9f5690f03675083ba665cb3000165e7c",
+    "Repo Mgmt": "77115144456272bc80b513a4b18c5c64",
+    "Repo To Content": "3e5f05e58523d486d86a4f4cf371ad2a",
+    "Report Analyst": "9a8dcbe58d47d4d6c27e2b1b1c97ec2a",
+    "Research Space": "29066358cf247c1d526feb93c92c8779",
+    "Resource List Builder": "514b9e3af303d39caa61595584d641ed",
+    "Resume Typesetter": "a75c5210e59415a96351a7704072bb32",
+    "Schedule Manager": "eabb519fe0b37717dbb1475e6f754fe2",
+    "Security Auditor": "1e8b4bdfd483686ea69f10cc913670d5",
+    "Security Checkup": "3b03fe9c18835ddb6d28da3ad6d02582",
+    "Shopping": "016b6551f8e5fbeb9053731c828ea8a7",
+    "Skill Creation Research": "bc6c5935218143f8eebbfa3d4c910a83",
+    "Smart Home": "bfbdcea439c2c4001c635934588575c8",
+    "Smithery Claude Code MCP Jumpstarter": "278cc1b7429295976d72bf43f43e3bf9",
+    "Snap It": "1c614d28978413e7daad5312b1fd8fec",
+    "Social Feedback": "9958a949d1d70e61c43bceb9ca6daa29",
+    "Sop Writer": "5e51471ac1c5f43bb6c36883fad54e1c",
+    "Spamhole": "64be6c1d1059e52b2aa5bd0623e57bb2",
+    "Spec Starter": "51e8c47b97026bf16aa9c730fdcdd088",
+    "Style Switcher": "3fa763b932fda3e0cd27efb4a013169b",
+    "Synology Mgmt": "c6388e0ae8f2a2d1a53667e19ed7d1c5",
+    "Synthetic Data": "a57ca3d0bc23e7ff50bcc81745752b3b",
+    "Sysadmin Homelab": "69223e52242e89e6079e65a0c768eefd",
+    "System Recovery Mode": "777a4f08f1ee1b861e642fbd50c471c4",
+    "Task Queuer": "01852cd584192744c55d03eb043ef03f",
+    "Taxonomy Creation": "e057e1a0d53bc9ee8ecb3404080856ea",
+    "Teach This Repo": "e32adbb36f7164367b1ec662a6545314",
+    "Technical Docs": "8395c966bebfb27815f763c4c61aa15e",
+    "Test Project Ideator": "92f5e5e0e3dbba9ce4763e03ce76b235",
+    "Text Corpus Analysis": "a2c12909d68d362241cb8226d13fdf0c",
+    "Text To Speech Toolkit": "6b61fd420e803d9f0b782af5d12a29a5",
+    "The User Voice Types": "f86a3c106714c5697b3f33e36900f96b",
+    "Therapy Tracking": "61c8815eb1bc85baab5a5a2e56159f95",
+    "User Claude MD": "0dbf3a8d2318eafe2d4ec65a748dbf75",
+    "Userscript Development": "73c1a32f92b4a3416d9896de76076d16",
+    "Video Editing": "b4c3be341f06a05008ee83cfc0c544e5",
+    "Visual Communications": "5e8bf2a90646fd82a56a006a1c098eee",
+    "Workspace Foundational": "a27030d3a906902a02d039c3f5907e78",
+    "Zigbee Home Maintenance": "ba03f10b0b08bea540fa518f15073dc5"
+  },
+  "history": [
+    {
+      "date": "2026-04-28T23:10:13",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Loose Tasks",
+            "Therapy Tracking"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Personal Planning"
+          ]
+        }
+      ],
+      "total_repos": 135
+    },
+    {
+      "date": "2026-04-29T12:33:13",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Claude Hopper",
+            "Claude Vault"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI-Human Attribution Adder",
+            "Agent Junction",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "CONTEXT.md",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Bug Catcher",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Rudder",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Cool Claude Code Stuff",
+            "Declaude",
+            "How-To-MCP",
+            "Linux Desktop ClaudeMD Seeder",
+            "MCPM Claude Code Docs",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Private And Public Claude MD",
+            "Smithery Claude Code MCP Jumpstarter",
+            "The User Voice Types"
+          ]
+        }
+      ],
+      "total_repos": 137
+    },
+    {
+      "date": "2026-04-29T12:36:24",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Claude Hopper"
+          ]
+        }
+      ],
+      "total_repos": 137
+    },
+    {
+      "date": "2026-04-29T12:44:51",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "Claude Calls The Shots",
+            "Claude Code Bugs And FRs",
+            "Claude User Memory",
+            "Local Claude Plugin Install Research",
+            "Open Router Model Research",
+            "Skill Creation Research"
+          ]
+        }
+      ],
+      "total_repos": 137
+    },
+    {
+      "date": "2026-04-29T14:07:29",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Buttondown Mgmt"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "Security Checkup"
+          ]
+        }
+      ],
+      "total_repos": 138
+    },
+    {
+      "date": "2026-04-29T14:12:52",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Buttondown Mgmt",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude User Manual"
+          ]
+        }
+      ],
+      "total_repos": 138
+    },
+    {
+      "date": "2026-04-29T16:08:44",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Gist Writer"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Claude Code Feedback"
+          ]
+        }
+      ],
+      "total_repos": 139
+    },
+    {
+      "date": "2026-04-29T16:30:06",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Claude Pipewire Skills"
+          ]
+        }
+      ],
+      "total_repos": 140
+    },
+    {
+      "date": "2026-04-29T16:36:26",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Gist Writer"
+          ]
+        }
+      ],
+      "total_repos": 140
+    },
+    {
+      "date": "2026-04-30T11:59:43",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Claude MD Tester",
+            "Hardware Spec Assembly",
+            "Style Switcher"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "AI-Human Attribution Adder",
+            "Agent Junction",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "CONTEXT.md",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Bug Catcher",
+            "Claude Calls The Shots",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Bugs And FRs",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude User Manual",
+            "Claude User Memory",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Cool Claude Code Stuff",
+            "Declaude",
+            "How-To-MCP",
+            "Linux Desktop ClaudeMD Seeder",
+            "Local Claude Plugin Install Research",
+            "MCPM Claude Code Docs",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Private And Public Claude MD",
+            "Security Checkup",
+            "Skill Creation Research",
+            "Smithery Claude Code MCP Jumpstarter",
+            "The User Voice Types"
+          ]
+        }
+      ],
+      "total_repos": 143
+    },
+    {
+      "date": "2026-04-30T16:35:23",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Obs Mgmt"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Desktop Manager",
+            "Dev Tools"
+          ]
+        }
+      ],
+      "total_repos": 144
+    },
+    {
+      "date": "2026-04-30T18:33:25",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Get Toony",
+            "Video Editing"
+          ]
+        },
+        {
+          "type": "removed",
+          "repos": [
+            "Video Production"
+          ]
+        }
+      ],
+      "total_repos": 145
+    },
+    {
+      "date": "2026-04-30T18:39:20",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Copyq Scripting"
+          ]
+        }
+      ],
+      "total_repos": 146
+    },
+    {
+      "date": "2026-04-30T18:40:18",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Favorite Plugins Installers",
+            "Kde Plasma"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Engineering",
+            "Audio Production",
+            "Budgeting",
+            "Career",
+            "Claude Transcription",
+            "Content Writing",
+            "Debugging",
+            "Desktop Manager",
+            "Dev Tools",
+            "Filesystem Organiser",
+            "HP5200 Printer",
+            "Ideation Planning",
+            "Knowledge Documentation",
+            "Legal Investigative",
+            "Media Library",
+            "PR & Media Work",
+            "Personal Planning",
+            "Purchasing",
+            "Research Space",
+            "Shopping",
+            "Smart Home",
+            "Sysadmin Homelab",
+            "Technical Docs",
+            "Workspace Foundational"
+          ]
+        }
+      ],
+      "total_repos": 148
+    },
+    {
+      "date": "2026-04-30T18:40:33",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Teach This Repo",
+            "Test Project Ideator"
+          ]
+        }
+      ],
+      "total_repos": 148
+    },
+    {
+      "date": "2026-04-30T18:45:44",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Gimp"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Task Queuer"
+          ]
+        }
+      ],
+      "total_repos": 149
+    },
+    {
+      "date": "2026-04-30T19:00:19",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Sop Writer"
+          ]
+        }
+      ],
+      "total_repos": 150
+    },
+    {
+      "date": "2026-04-30T20:13:33",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Batch Optical Archivist"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Github Explorer"
+          ]
+        }
+      ],
+      "total_repos": 151
+    },
+    {
+      "date": "2026-04-30T21:28:09",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Backup Planner",
+            "Debugging"
+          ]
+        }
+      ],
+      "total_repos": 151
+    },
+    {
+      "date": "2026-04-30T21:28:47",
+      "changes": [
+        {
+          "type": "removed",
+          "repos": [
+            "Claude Bug Catcher"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Greeninvoice Ops"
+          ]
+        }
+      ],
+      "total_repos": 150
+    },
+    {
+      "date": "2026-04-30T21:52:06",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Filesystem Organiser"
+          ]
+        }
+      ],
+      "total_repos": 150
+    },
+    {
+      "date": "2026-04-30T21:56:10",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Security Auditor"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Adb Ops",
+            "Israel Shopping",
+            "Repo Mgmt"
+          ]
+        }
+      ],
+      "total_repos": 151
+    },
+    {
+      "date": "2026-04-30T21:56:50",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Keyboard Scanner",
+            "Os Sync Agent"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Html Email Designer"
+          ]
+        }
+      ],
+      "total_repos": 153
+    },
+    {
+      "date": "2026-04-30T22:01:33",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Spec Starter",
+            "System Recovery Mode"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Research Space",
+            "Resume Typesetter"
+          ]
+        }
+      ],
+      "total_repos": 155
+    },
+    {
+      "date": "2026-04-30T22:09:29",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Dev Debugger",
+            "Visual Communications"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "User Claude MD"
+          ]
+        }
+      ],
+      "total_repos": 157
+    },
+    {
+      "date": "2026-04-30T22:23:11",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Claude Pa",
+            "Digital Evidence"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Claude Data Wrangler",
+            "Image Production",
+            "Israel Agent Skills",
+            "Llm Council Creator",
+            "Local Web Capture",
+            "Media Assistant Ops"
+          ]
+        }
+      ],
+      "total_repos": 159
+    },
+    {
+      "date": "2026-04-30T22:26:43",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Donetick"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Repo Mgmt"
+          ]
+        }
+      ],
+      "total_repos": 160
+    },
+    {
+      "date": "2026-04-30T22:37:01",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "AI Model Research",
+            "Network Cups"
+          ]
+        },
+        {
+          "type": "removed",
+          "repos": [
+            "Open Router Model Research"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Data Visualisation And Publishing"
+          ]
+        }
+      ],
+      "total_repos": 161
+    },
+    {
+      "date": "2026-04-30T22:38:33",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Nano Tech Diagrams"
+          ]
+        }
+      ],
+      "total_repos": 162
+    },
+    {
+      "date": "2026-04-30T22:43:09",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Nfc Ops"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Claude Data Analyst"
+          ]
+        }
+      ],
+      "total_repos": 163
+    },
+    {
+      "date": "2026-04-30T22:47:21",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Background Removal"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Daniel Rosehill",
+            "Resource List Builder",
+            "Text Corpus Analysis"
+          ]
+        }
+      ],
+      "total_repos": 164
+    },
+    {
+      "date": "2026-04-30T22:50:57",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Synthetic Data"
+          ]
+        }
+      ],
+      "total_repos": 165
+    },
+    {
+      "date": "2026-04-30T22:51:10",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "AI Video Producer"
+          ]
+        }
+      ],
+      "total_repos": 165
+    },
+    {
+      "date": "2026-04-30T22:54:54",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Novelty Text Editor"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Kde Plasmoid Dev"
+          ]
+        }
+      ],
+      "total_repos": 166
+    },
+    {
+      "date": "2026-04-30T22:58:21",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Gpg Ops",
+            "Report Analyst",
+            "Taxonomy Creation"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Digital Printing"
+          ]
+        }
+      ],
+      "total_repos": 169
+    },
+    {
+      "date": "2026-04-30T22:58:35",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Programmatic Doc Generation"
+          ]
+        }
+      ],
+      "total_repos": 169
+    },
+    {
+      "date": "2026-04-30T22:58:52",
+      "changes": [
+        {
+          "type": "modified",
+          "repos": [
+            "Claude Rudder",
+            "Data Annotation",
+            "Repo To Content"
+          ]
+        }
+      ],
+      "total_repos": 169
+    },
+    {
+      "date": "2026-04-30T23:00:26",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Document To Markdown"
+          ]
+        }
+      ],
+      "total_repos": 170
+    },
+    {
+      "date": "2026-04-30T23:02:03",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Snap It"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Social Feedback"
+          ]
+        }
+      ],
+      "total_repos": 171
+    },
+    {
+      "date": "2026-04-30T23:04:17",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "License Populator"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Linux Packaging"
+          ]
+        }
+      ],
+      "total_repos": 172
+    },
+    {
+      "date": "2026-04-30T23:11:35",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Air Quality Toolkit"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Claude Code Feedback",
+            "Geopol Sim",
+            "Home Assistant Mgmt",
+            "Opnsense Mgmt",
+            "Proxmox Mgmt",
+            "Synology Mgmt"
+          ]
+        }
+      ],
+      "total_repos": 173
+    },
+    {
+      "date": "2026-04-30T23:31:18",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Spamhole"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Jewish Texts Reference"
+          ]
+        }
+      ],
+      "total_repos": 174
+    },
+    {
+      "date": "2026-05-01T00:46:46",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Pii Scanner"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "AI Engineering",
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "AI Video Producer",
+            "AI-Human Attribution Adder",
+            "Adb Ops",
+            "Agent Junction",
+            "Audio Production",
+            "Backup Planner",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "Budgeting",
+            "CONTEXT.md",
+            "Career",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Calls The Shots",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Bugs And FRs",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Feedback",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Data Analyst",
+            "Claude Data Wrangler",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Rudder",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude Transcription",
+            "Claude User Manual",
+            "Claude User Memory",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Content Writing",
+            "Cool Claude Code Stuff",
+            "Daniel Rosehill",
+            "Data Annotation",
+            "Data Visualisation And Publishing",
+            "Debugging",
+            "Declaude",
+            "Desktop Manager",
+            "Dev Tools",
+            "Digital Printing",
+            "Filesystem Organiser",
+            "Geopol Sim",
+            "Github Explorer",
+            "Greeninvoice Ops",
+            "HP5200 Printer",
+            "Home Assistant Mgmt",
+            "How-To-MCP",
+            "Html Email Designer",
+            "Ideation Planning",
+            "Image Production",
+            "Israel Agent Skills",
+            "Israel Shopping",
+            "Jewish Texts Reference",
+            "Kde Plasmoid Dev",
+            "Knowledge Documentation",
+            "Legal Investigative",
+            "Linux Desktop ClaudeMD Seeder",
+            "Linux Packaging",
+            "Llm Council Creator",
+            "Local Claude Plugin Install Research",
+            "Local Web Capture",
+            "MCPM Claude Code Docs",
+            "Media Assistant Ops",
+            "Media Library",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Opnsense Mgmt",
+            "PR & Media Work",
+            "Personal Planning",
+            "Private And Public Claude MD",
+            "Programmatic Doc Generation",
+            "Proxmox Mgmt",
+            "Purchasing",
+            "Repo Mgmt",
+            "Repo To Content",
+            "Research Space",
+            "Resource List Builder",
+            "Resume Typesetter",
+            "Security Checkup",
+            "Shopping",
+            "Skill Creation Research",
+            "Smart Home",
+            "Smithery Claude Code MCP Jumpstarter",
+            "Social Feedback",
+            "Synology Mgmt",
+            "Sysadmin Homelab",
+            "Task Queuer",
+            "Teach This Repo",
+            "Technical Docs",
+            "Test Project Ideator",
+            "Text Corpus Analysis",
+            "The User Voice Types",
+            "User Claude MD",
+            "Workspace Foundational"
+          ]
+        }
+      ],
+      "total_repos": 175
+    },
+    {
+      "date": "2026-05-02T22:57:14",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Userscript Development"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "AI Engineering",
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "AI Video Producer",
+            "AI-Human Attribution Adder",
+            "Adb Ops",
+            "Agent Junction",
+            "Audio Production",
+            "Backup Planner",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "Budgeting",
+            "CONTEXT.md",
+            "Career",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Calls The Shots",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Bugs And FRs",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Feedback",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Data Analyst",
+            "Claude Data Wrangler",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Rudder",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude Transcription",
+            "Claude User Manual",
+            "Claude User Memory",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Content Writing",
+            "Cool Claude Code Stuff",
+            "Daniel Rosehill",
+            "Data Annotation",
+            "Data Visualisation And Publishing",
+            "Debugging",
+            "Declaude",
+            "Desktop Manager",
+            "Dev Tools",
+            "Digital Printing",
+            "Filesystem Organiser",
+            "Geopol Sim",
+            "Github Explorer",
+            "Greeninvoice Ops",
+            "HP5200 Printer",
+            "Home Assistant Mgmt",
+            "How-To-MCP",
+            "Html Email Designer",
+            "Ideation Planning",
+            "Image Production",
+            "Israel Agent Skills",
+            "Israel Shopping",
+            "Jewish Texts Reference",
+            "Jewish Utilities",
+            "Kde Plasmoid Dev",
+            "Knowledge Documentation",
+            "Legal Investigative",
+            "Linux Desktop ClaudeMD Seeder",
+            "Linux Packaging",
+            "Llm Council Creator",
+            "Local Claude Plugin Install Research",
+            "Local Web Capture",
+            "MCPM Claude Code Docs",
+            "Media Assistant Ops",
+            "Media Library",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Opnsense Mgmt",
+            "PR & Media Work",
+            "Personal Planning",
+            "Private And Public Claude MD",
+            "Programmatic Doc Generation",
+            "Proxmox Mgmt",
+            "Purchasing",
+            "Repo Mgmt",
+            "Repo To Content",
+            "Research Space",
+            "Resource List Builder",
+            "Resume Typesetter",
+            "Schedule Manager",
+            "Security Checkup",
+            "Shopping",
+            "Skill Creation Research",
+            "Smart Home",
+            "Smithery Claude Code MCP Jumpstarter",
+            "Social Feedback",
+            "Synology Mgmt",
+            "Sysadmin Homelab",
+            "Task Queuer",
+            "Teach This Repo",
+            "Technical Docs",
+            "Test Project Ideator",
+            "Text Corpus Analysis",
+            "The User Voice Types",
+            "User Claude MD",
+            "Workspace Foundational"
+          ]
+        }
+      ],
+      "total_repos": 176
+    },
+    {
+      "date": "2026-05-03T14:08:13",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Linux Av Manager",
+            "Linux System Optimisation"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "AI Engineering",
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "AI Video Producer",
+            "AI-Human Attribution Adder",
+            "Adb Ops",
+            "Agent Junction",
+            "Audio Production",
+            "Backup Planner",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "Browser Data Capture",
+            "Budgeting",
+            "CONTEXT.md",
+            "Career",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Calls The Shots",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Bugs And FRs",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Feedback",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Data Analyst",
+            "Claude Data Wrangler",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Rudder",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude Transcription",
+            "Claude User Manual",
+            "Claude User Memory",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Content Writing",
+            "Cool Claude Code Stuff",
+            "Daniel Rosehill",
+            "Data Annotation",
+            "Data Visualisation And Publishing",
+            "Debugging",
+            "Declaude",
+            "Desktop Manager",
+            "Dev Tools",
+            "Digital Printing",
+            "Filesystem Organiser",
+            "Geopol Sim",
+            "Github Explorer",
+            "Greeninvoice Ops",
+            "HP5200 Printer",
+            "Home Assistant Mgmt",
+            "How-To-MCP",
+            "Html Email Designer",
+            "Ideation Planning",
+            "Image Production",
+            "Israel Agent Skills",
+            "Israel Shopping",
+            "Jewish Texts Reference",
+            "Jewish Utilities",
+            "Kde Plasmoid Dev",
+            "Knowledge Documentation",
+            "Legal Investigative",
+            "Linux Desktop ClaudeMD Seeder",
+            "Linux Packaging",
+            "Llm Council Creator",
+            "Local Claude Plugin Install Research",
+            "Local Web Capture",
+            "MCPM Claude Code Docs",
+            "Media Assistant Ops",
+            "Media Library",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Opnsense Mgmt",
+            "PR & Media Work",
+            "Personal Planning",
+            "Private And Public Claude MD",
+            "Programmatic Doc Generation",
+            "Proxmox Mgmt",
+            "Purchasing",
+            "Repo Mgmt",
+            "Repo To Content",
+            "Research Space",
+            "Resource List Builder",
+            "Resume Typesetter",
+            "Schedule Manager",
+            "Security Checkup",
+            "Shopping",
+            "Skill Creation Research",
+            "Smart Home",
+            "Smithery Claude Code MCP Jumpstarter",
+            "Social Feedback",
+            "Synology Mgmt",
+            "Sysadmin Homelab",
+            "Task Queuer",
+            "Teach This Repo",
+            "Technical Docs",
+            "Test Project Ideator",
+            "Text Corpus Analysis",
+            "The User Voice Types",
+            "User Claude MD",
+            "Workspace Foundational"
+          ]
+        }
+      ],
+      "total_repos": 178
+    },
+    {
+      "date": "2026-05-03T17:00:24",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Text To Speech Toolkit"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Decision Evaluation Framework"
+          ]
+        }
+      ],
+      "total_repos": 179
+    },
+    {
+      "date": "2026-05-03T19:16:51",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Zigbee Home Maintenance"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Image Annotation"
+          ]
+        }
+      ],
+      "total_repos": 180
+    },
+    {
+      "date": "2026-05-03T21:31:41",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Agent Relay"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "Linux Debugging"
+          ]
+        }
+      ],
+      "total_repos": 181
+    },
+    {
+      "date": "2026-05-04T11:07:23",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Hardware Id Annotation"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "AI Engineering",
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "AI Video Producer",
+            "AI-Human Attribution Adder",
+            "Adb Ops",
+            "Agent Junction",
+            "Audio Production",
+            "Backup Planner",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "Browser Data Capture",
+            "Budgeting",
+            "CONTEXT.md",
+            "Career",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Calls The Shots",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Bugs And FRs",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Feedback",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Data Analyst",
+            "Claude Data Wrangler",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Rudder",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude Transcription",
+            "Claude User Manual",
+            "Claude User Memory",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Content Writing",
+            "Cool Claude Code Stuff",
+            "Daniel Rosehill",
+            "Data Annotation",
+            "Data Visualisation And Publishing",
+            "Debugging",
+            "Decision Evaluation Framework",
+            "Declaude",
+            "Declutter Genie",
+            "Desktop Manager",
+            "Dev Tools",
+            "Digital Printing",
+            "Filesystem Organiser",
+            "Geopol Sim",
+            "Github Explorer",
+            "Greeninvoice Ops",
+            "HP5200 Printer",
+            "Home Assistant Mgmt",
+            "How-To-MCP",
+            "Html Email Designer",
+            "Ideation Planning",
+            "Image Annotation",
+            "Image Production",
+            "Israel Agent Skills",
+            "Israel Shopping",
+            "Jewish Texts Reference",
+            "Jewish Utilities",
+            "Kde Plasmoid Dev",
+            "Knowledge Documentation",
+            "Legal Investigative",
+            "Linux Debugging",
+            "Linux Desktop ClaudeMD Seeder",
+            "Linux Packaging",
+            "Llm Council Creator",
+            "Local Claude Plugin Install Research",
+            "Local Web Capture",
+            "MCPM Claude Code Docs",
+            "Media Assistant Ops",
+            "Media Library",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Opnsense Mgmt",
+            "PR & Media Work",
+            "Personal Planning",
+            "Private And Public Claude MD",
+            "Programmatic Doc Generation",
+            "Proxmox Mgmt",
+            "Purchasing",
+            "Repo Mgmt",
+            "Repo To Content",
+            "Research Space",
+            "Resource List Builder",
+            "Resume Typesetter",
+            "Schedule Manager",
+            "Security Checkup",
+            "Shopping",
+            "Skill Creation Research",
+            "Smart Home",
+            "Smithery Claude Code MCP Jumpstarter",
+            "Social Feedback",
+            "Synology Mgmt",
+            "Sysadmin Homelab",
+            "Task Queuer",
+            "Teach This Repo",
+            "Technical Docs",
+            "Test Project Ideator",
+            "Text Corpus Analysis",
+            "The User Voice Types",
+            "User Claude MD",
+            "Workspace Foundational"
+          ]
+        }
+      ],
+      "total_repos": 182
+    },
+    {
+      "date": "2026-05-08T18:08:57",
+      "changes": [
+        {
+          "type": "added",
+          "repos": [
+            "Claude Document Nudge",
+            "Easy Effects Manager"
+          ]
+        },
+        {
+          "type": "modified",
+          "repos": [
+            "AI Attribution",
+            "AI Engineering",
+            "AI Ideation Runs",
+            "AI Memory Planning 0426",
+            "AI Video Producer",
+            "AI-Human Attribution Adder",
+            "Adb Ops",
+            "Agent Junction",
+            "Audio Production",
+            "Backup Planner",
+            "Bash Alias Manager Claude",
+            "Batch ClaudeMD Repo Creator",
+            "Browser Data Capture",
+            "Budgeting",
+            "Business Idea Eval",
+            "CONTEXT.md",
+            "Career",
+            "Claude Agent Blueprints",
+            "Claude Agent Picker Pattern",
+            "Claude Agent Workspace Generator",
+            "Claude App Optimiser",
+            "Claude Calls The Shots",
+            "Claude Change My View",
+            "Claude Code Bash Aliases",
+            "Claude Code Bugs And FRs",
+            "Claude Code Context Feature Requests",
+            "Claude Code Context Toolkit",
+            "Claude Code Feedback",
+            "Claude Code Linux Desktop Slash Commands",
+            "Claude Code Linux Notes",
+            "Claude Code MCP Command Generator",
+            "Claude Code MCP List",
+            "Claude Code Marketplace Hub",
+            "Claude Code Plugin (Meta)",
+            "Claude Code Plugins Marketplace",
+            "Claude Code Repo Managers ClaudeMD",
+            "Claude Data Analyst",
+            "Claude Data Wrangler",
+            "Claude Deep Research Model (Notes / Documentation)",
+            "Claude Development Agents",
+            "Claude Dolphin & Konsole Actions",
+            "Claude Dork",
+            "Claude File Organiser Super Slash",
+            "Claude Interview",
+            "Claude Is Awesome",
+            "Claude Local AI Agent Research",
+            "Claude MD Chunk",
+            "Claude Model Identifier",
+            "Claude Rescue",
+            "Claude Rudder",
+            "Claude Slash Commands",
+            "Claude Sub-Agent Network",
+            "Claude System Recovery Mode",
+            "Claude Task Manager",
+            "Claude Transcription",
+            "Claude User Manual",
+            "Claude User Memory",
+            "Claude Website Update Sender",
+            "Claude Workspace Setup Helper",
+            "Content Writing",
+            "Cool Claude Code Stuff",
+            "Daniel Rosehill",
+            "Data Annotation",
+            "Data Visualisation And Publishing",
+            "Debugging",
+            "Decision Evaluation Framework",
+            "Declaude",
+            "Declutter Genie",
+            "Desktop Manager",
+            "Dev Tools",
+            "Digital Printing",
+            "Filesystem Organiser",
+            "Geopol Sim",
+            "Github Explorer",
+            "Greeninvoice Ops",
+            "HP5200 Printer",
+            "Home Assistant Mgmt",
+            "How-To-MCP",
+            "Html Email Designer",
+            "Ideation Planning",
+            "Image Annotation",
+            "Image Production",
+            "Israel Agent Skills",
+            "Israel Shopping",
+            "Jewish Texts Reference",
+            "Jewish Utilities",
+            "Kde Plasmoid Dev",
+            "Knowledge Documentation",
+            "Legal Investigative",
+            "Linux Debugging",
+            "Linux Desktop ClaudeMD Seeder",
+            "Linux Packaging",
+            "Llm Council Creator",
+            "Local Claude Plugin Install Research",
+            "Local Web Capture",
+            "MCPM Claude Code Docs",
+            "Media Assistant Ops",
+            "Media Library",
+            "New Turn Claude Hook",
+            "No Wheel Inventions",
+            "Non-Code Claude Code",
+            "Opnsense Mgmt",
+            "PR & Media Work",
+            "Personal Planning",
+            "Private And Public Claude MD",
+            "Programmatic Doc Generation",
+            "Proxmox Mgmt",
+            "Purchasing",
+            "Repo Mgmt",
+            "Repo To Content",
+            "Research Space",
+            "Resource List Builder",
+            "Resume Typesetter",
+            "Schedule Manager",
+            "Security Checkup",
+            "Shopping",
+            "Skill Creation Research",
+            "Smart Home",
+            "Smithery Claude Code MCP Jumpstarter",
+            "Social Feedback",
+            "Synology Mgmt",
+            "Sysadmin Homelab",
+            "Task Queuer",
+            "Teach This Repo",
+            "Technical Docs",
+            "Test Project Ideator",
+            "Text Corpus Analysis",
+            "The User Voice Types",
+            "User Claude MD",
+            "Workspace Foundational"
+          ]
+        }
+      ],
+      "total_repos": 184
+    }
+  ]
+}

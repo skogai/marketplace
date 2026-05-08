@@ -1,0 +1,82 @@
+{
+  "tracking_started": "2025-11-07",
+  "description": "Historical tracking of repository count in Claude Code Repos Index",
+  "data_points": [
+    {
+      "date": "2025-11-07",
+      "count": 42
+    },
+    {
+      "date": "2025-11-09",
+      "count": 45
+    },
+    {
+      "date": "2025-11-10",
+      "count": 46
+    },
+    {
+      "date": "2025-11-13",
+      "count": 50
+    },
+    {
+      "date": "2025-11-16",
+      "count": 51
+    },
+    {
+      "date": "2025-11-17",
+      "count": 52
+    },
+    {
+      "date": "2025-11-18",
+      "count": 53
+    },
+    {
+      "date": "2025-11-25",
+      "count": 56
+    },
+    {
+      "date": "2025-11-26",
+      "count": 57
+    },
+    {
+      "date": "2025-12-03",
+      "count": 58
+    },
+    {
+      "date": "2025-12-07",
+      "count": 60
+    },
+    {
+      "date": "2025-12-14",
+      "count": 61
+    },
+    {
+      "date": "2025-12-25",
+      "count": 61
+    },
+    {
+      "date": "2025-12-31",
+      "count": 86
+    },
+    {
+      "date": "2026-01-20",
+      "count": 117
+    },
+    {
+      "date": "2026-02-20",
+      "count": 111
+    },
+    {
+      "date": "2026-03-05",
+      "count": 111
+    },
+    {
+      "date": "2026-03-10",
+      "count": 122
+    },
+    {
+      "date": "2026-04-30",
+      "count": 151
+    }
+  ]
+}

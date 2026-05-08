@@ -1,0 +1,89 @@
+{
+  "_comment": "Rules for auto-tagging repos when generating tagged_repos.json from repos.json",
+
+  "category_tags": {
+    "Systems Administration": ["Sysadmin"],
+    "Productivity & Planning": ["Productivity"],
+    "Legal": ["Legal"],
+    "Health & Wellbeing": ["Health"],
+    "Communications & Writing": ["Communications"],
+    "Financial Planning": ["Financial", "Planning"],
+    "Career": ["Planning"],
+    "Business": ["Business"],
+    "Privacy & Anonymity": ["Privacy"],
+    "Technology & Hardware": ["Hardware"],
+    "Marketing": ["Marketing", "SEO"],
+    "Research": ["Research"],
+    "Argument and Perspective Exploration": ["Research", "Analysis"],
+    "Argument & Perspective Analysis": ["Research", "Analysis"],
+    "Context and Personalization": ["Configuration"],
+    "Context & Personalization": ["Configuration"],
+    "Multi-Agent Tooling": ["Multi-Agent"],
+    "Multi-Agent & Tooling": ["Multi-Agent"],
+    "MCP": ["MCP"],
+    "MCP (Model Context Protocol)": ["MCP"],
+    "Plugins": ["Plugin"],
+    "Slash Commands": ["Slash Commands"],
+    "Miscellaneous": ["Documentation"],
+    "Miscellaneous & Meta": ["Documentation"]
+  },
+
+  "keyword_tags": {
+    "Template": {
+      "name_patterns": ["template", "Template"],
+      "desc_patterns": ["template for", "forkable"]
+    },
+    "Agent Workspace": {
+      "name_patterns": ["Space", "Workspace", "Manager"],
+      "desc_patterns": ["workspace", "agent workspace", "claude space", "Claude Code workspace"]
+    },
+    "Slash Commands": {
+      "name_patterns": ["Slash"],
+      "desc_patterns": ["slash command"]
+    },
+    "Multi-Agent": {
+      "name_patterns": [],
+      "desc_patterns": ["subagent", "multi-agent", "specialized agent", "agents for"]
+    },
+    "Automation": {
+      "name_patterns": [],
+      "desc_patterns": ["automat", "automated", "scheduling", "pipeline", "workflow"]
+    },
+    "Tool": {
+      "name_patterns": [],
+      "desc_patterns": ["tool for", "utility", "CLI", "command-line", "GUI", "interface for"]
+    },
+    "Configuration": {
+      "name_patterns": ["Config", "Setup"],
+      "desc_patterns": ["configuration", "settings", "pre-configured"]
+    },
+    "Documentation": {
+      "name_patterns": [],
+      "desc_patterns": ["documentation", "guide", "tutorial", "reference", "transcript", "showcase"]
+    },
+    "Research": {
+      "name_patterns": ["Research"],
+      "desc_patterns": ["research", "exploration", "concept", "planning-stage"]
+    },
+    "MCP": {
+      "name_patterns": ["MCP"],
+      "desc_patterns": ["model context protocol", "MCP server", "MCP config"]
+    },
+    "Plugin": {
+      "name_patterns": ["Plugin"],
+      "desc_patterns": ["plugin", "extension"]
+    }
+  },
+
+  "tag_overrides": {
+    "_comment": "Manual overrides: repo name -> exact tag list. Takes precedence over auto-tagging.",
+    "Claude AI Conference": ["Research", "Documentation"],
+    "Claude Code Context Feature Requests": ["Configuration", "Documentation"],
+    "Claude Repo Retrofitter": ["Automation", "Multi-Agent", "Tool"],
+    "Claude Spec Starter": ["Configuration", "Template"],
+    "Cool Claude Code Stuff": ["Documentation", "Multi-Agent"],
+    "Ecosystem Mapper": ["Multi-Agent", "Tool"],
+    "New Turn Claude Hook": ["Automation", "Tool"],
+    "Non-Code Claude Code": ["Documentation", "Agent Workspace"]
+  }
+}
