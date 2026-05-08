@@ -1,9 +1,12 @@
 {
-  "name": "skogai-marketplace",
-  "description": "skogai-marketplace rework",
+  "name": "skogai",
+  "description": "Personal Claude Code plugin collection — git tools, workflow automation, and dev utilities",
   "owner": {
     "name": "skogix",
     "email": "emil@skogsund.se"
+  },
+  "metadata": {
+    "pluginRoot": "./plugins"
   },
   "plugins": [
     {

@@ -1,0 +1,22 @@
+name: Validate Marketplace
+
+on:
+  push:
+    paths:
+      - '.claude-plugin/marketplace.json'
+      - 'plugins/**'
+      - 'scripts/validate.sh'
+  pull_request:
+    paths:
+      - '.claude-plugin/marketplace.json'
+      - 'plugins/**'
+      - 'scripts/validate.sh'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate marketplace
+        run: bash scripts/validate.sh
