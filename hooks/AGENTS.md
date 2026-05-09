@@ -1,9 +1,11 @@
 # AGENTS.md - dot-core hooks
 
 ## OVERVIEW
+
 Event-driven shell routers for context injection, guardrails, permission logging, tool logging, and stop-time checks. Shared Python matcher handles lesson selection.
 
 ## STRUCTURE (KEY FILES)
+
 ```
 hooks/
 ├── session-start.sh       # Session context and lesson injection
@@ -17,17 +19,19 @@ hooks/
 ```
 
 ## WHERE TO LOOK
-| Task | Location | Notes |
-|------|----------|-------|
-| Event wiring | `../hooks.json` | Current source of mapped events |
-| JSON helpers | `../scripts/skogai-jq.sh` | Field/log/context output helpers |
-| Session context | `session-start.sh` | Loads session context and lessons |
-| Prompt context | `user-prompt-submit.sh` | Loads prompt-scoped lessons |
-| Guardrails | `pre-tool-use.sh` | Blocks dangerous commands |
-| Stop checks | `stop.sh` | Fans out to stop sub-hooks |
-| Lesson matching | `lesson_matcher.py` | YAML frontmatter search |
+
+| Task            | Location                  | Notes                             |
+| --------------- | ------------------------- | --------------------------------- |
+| Event wiring    | `../hooks.json`           | Current source of mapped events   |
+| JSON helpers    | `../scripts/skogai-jq.sh` | Field/log/context output helpers  |
+| Session context | `session-start.sh`        | Loads session context and lessons |
+| Prompt context  | `user-prompt-submit.sh`   | Loads prompt-scoped lessons       |
+| Guardrails      | `pre-tool-use.sh`         | Blocks dangerous commands         |
+| Stop checks     | `stop.sh`                 | Fans out to stop sub-hooks        |
+| Lesson matching | `lesson_matcher.py`       | YAML frontmatter search           |
 
 ## CONVENTIONS
+
 - Hook scripts receive JSON on stdin and should emit valid hook JSON when responding.
 - Source `../scripts/skogai-jq.sh` for repeated field extraction, logging, and response helpers.
 - Context injection is fail-open; optional lesson/context failures must not block the user turn.
@@ -36,12 +40,14 @@ hooks/
 - Tests use pytest for `lesson_matcher.py` and Bats under `../tests/` for shell hook behavior.
 
 ## ANTI-PATTERNS
+
 - Do not add non-schema event names to `hooks.json`; Codex currently exposes `SessionStart`, `UserPromptSubmit`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, and `Stop`.
 - Do not add empty catch blocks or silent failure paths that hide broken mandatory behavior.
 - Do not parse hook JSON ad hoc when `skogai-jq.sh` already provides the helper.
 - Do not make optional context lookup fail closed.
 
 ## COMMANDS
+
 ```bash
 # From plugins/dot-core
 
