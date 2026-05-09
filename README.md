@@ -14,23 +14,11 @@ Or via HTTPS:
 claude plugin marketplace add https://github.com/skogai/marketplace.git
 ```
 
-## Browse and install plugins
-
-```bash
-/plugin list @skogai
-```
-
-Install a specific plugin:
-
-```bash
-claude plugin install skogai-worktrunk@skogai
-```
-
 ## Plugins
 
-| Plugin | Description |
-|--------|-------------|
-| [skogai-worktrunk](https://github.com/skogai/worktrunk) | Worktrunk (`wt`) CLI guidance — git worktree management, hooks, and config |
+| Plugin                               | Description |
+| ------------------------------------ | ----------- |
+| [...](https://github.com/skogai/...) | (`...`) CLI |
 
 ## Development
 

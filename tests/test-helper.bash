@@ -4,8 +4,10 @@
 # source this in your test files: load ../testing-framework/test-helper
 
 # get the project root directory
-export PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PROJECT_ROOT="$(./scripts/find-agent-root.sh)"
 export SCRIPTS_DIR="${SCRIPTS_DIR:-$PROJECT_ROOT/scripts}"
+echo $PROJECT_ROOT
+echo $SCRIPTS_DIR
 
 # create a temporary directory for test files
 setup_test_dir() {
@@ -35,7 +37,7 @@ setup_git_repo() {
     # Disable commit signing for throwaway test repos so tests pass in
     # environments that enforce signed commits (e.g. CI with custom gpg programs).
     git config commit.gpgsign false
-    echo "test" > test.txt
+    echo "test" >test.txt
     git add test.txt
     git commit -m "Initial commit" --quiet
 }
@@ -112,7 +114,7 @@ assert_dir_exists() {
 # skip test if command not available
 skip_if_missing() {
     local cmd="$1"
-    if ! command -v "$cmd" &> /dev/null; then
+    if ! command -v "$cmd" &>/dev/null; then
         skip "$cmd is not installed"
     fi
 }

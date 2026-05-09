@@ -1,0 +1,3 @@
+[submodule "core"]
+	path = .skogai
+	url = git@github.com:skogai/core.git
