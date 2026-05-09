@@ -14,6 +14,15 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 
 `agents`, `bin`, `commands`, `skills`, `.claude` → `.skogai/` (skogai/core). Edit in core, not here.
 
+## Testing workflow
+
+- **Tests first.** Write tests before implementing. Tests are the spec — implementation must satisfy them.
+- **Tests catch Claude, not bash.** The unreliable variable is the AI making edits, not the language. Test things Claude could accidentally break.
+- **No conditional assertions.** `if [[ -n "$output" ]]; then assert...` lets output disappear silently. If a hook should produce output, assert it unconditionally.
+- **Don't test constants.** Testing that the hook echoes back its own input field is not a test.
+- **What to test:** exit codes, file system side effects, output content that could be accidentally removed, both allow and block paths.
+- **Pattern:** define expected behavior → write failing test → implement → tests pass → future edits can't silently regress.
+
 ## Key conventions
 
 - `CLAUDE.md` → `AGENTS.md` (same file, symlinked so both agents and Claude Code pick it up)
