@@ -1,0 +1,10 @@
+- [ ] re-introduce skogai-hook-debugger to claude
+- [x] skogai_jq_bool interface mismatch: takes actual value but transforms expect --arg field "fieldname" — fixed in scripts/skogai-jq.sh with regression tests
+- [x] skogai-jq.sh uses relative path ./skogai-jq/ for transforms — fixed with script-relative transform path
+- [ ] should skogai-jq.sh be renamed to claude-hook-helper.sh or similar to make the intent clearer at a glance?
+- [ ] user-prompt-submit.sh and session-start.sh don't source skogai-jq.sh yet — they use raw jq inline everywhere
+- [ ] lessons: discuss the system in depth (next topic)
+- [ ] [high/codex-hooks] build Claude vs Codex hook compatibility matrix :: start from .planning/codex-hooks-issues.md
+- [ ] [high/codex-hooks] add Codex hook fixtures from generated schemas :: cover SessionStart/UserPromptSubmit/PreToolUse/PermissionRequest/PostToolUse/Stop/PreCompact/PostCompact
+- [ ] [high/codex-hooks] decide shared vs platform-specific skogai-jq output helpers :: preserve shared transform layer, split incompatible output shapes
+- [ ] [medium/codex-hooks] implement or retire missing pre-compact/post-compact hook tests :: full Bats suite currently expects hooks/pre-compact.sh

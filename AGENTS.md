@@ -23,6 +23,12 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 - **What to test:** exit codes, file system side effects, output content that could be accidentally removed, both allow and block paths.
 - **Pattern:** define expected behavior → write failing test → implement → tests pass → future edits can't silently regress.
 
+## Hook pattern
+
+All hooks source `scripts/skogai-jq.sh`, which reads stdin and exposes `$HOOK_INPUT`, `$HOOK_SESSION_ID`, `$HOOK_EVENT`, `$HOOK_LOG`. Each hook declares its own schema — typed env vars with sentinels for missing values. That declaration is both documentation and the implementation contract. See `hooks/CLAUDE.md`.
+
+Tests validate content regressions using the same skogai-jq transforms. See `tests/CLAUDE.md`.
+
 ## Key conventions
 
 - `CLAUDE.md` → `AGENTS.md` (same file, symlinked so both agents and Claude Code pick it up)
