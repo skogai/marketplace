@@ -17,6 +17,7 @@
 #   skogai_jq_log "summary"             — append structured JSONL debug entry
 #   skogai_jq_context "event" "text"    — output hookSpecificOutput JSON
 #   skogai_jq_decision "decision" "reason" — output decision JSON
+#   skogai_jq_codex_*                   — Codex-specific hook output helpers
 
 set -euo pipefail
 
@@ -77,6 +78,85 @@ skogai_jq_decision() {
         --arg d "$decision" \
         --arg r "$reason" \
         '{decision: $d, reason: $r}'
+}
+
+# --- Codex outputs ---
+# Codex and Claude share several event names, but not every output field has
+# the same behavior. Keep Codex helpers explicit so hook scripts show intent.
+
+# Usage: skogai_jq_codex_context "SessionStart|UserPromptSubmit|PostToolUse" "context text"
+skogai_jq_codex_context() {
+    local event_name="$1"
+    local context="$2"
+    skogai_jq_context "$event_name" "$context"
+}
+
+# Usage: skogai_jq_codex_pre_tool_deny "blocking reason"
+skogai_jq_codex_pre_tool_deny() {
+    local reason="$1"
+    jq -n \
+        --arg reason "$reason" \
+        '{
+            hookSpecificOutput: {
+                hookEventName: "PreToolUse",
+                permissionDecision: "deny",
+                permissionDecisionReason: $reason
+            }
+        }'
+}
+
+# Usage: skogai_jq_codex_permission_request "allow|deny" ["message"]
+skogai_jq_codex_permission_request() {
+    local behavior="$1"
+    local message="${2:-}"
+
+    case "$behavior" in
+        allow|deny) ;;
+        *)
+            echo "unsupported Codex PermissionRequest behavior: $behavior" >&2
+            return 64
+            ;;
+    esac
+
+    jq -n \
+        --arg behavior "$behavior" \
+        --arg message "$message" \
+        '{
+            hookSpecificOutput: {
+                hookEventName: "PermissionRequest",
+                decision: ({behavior: $behavior} + (if $message == "" then {} else {message: $message} end))
+            }
+        }'
+}
+
+# Usage: skogai_jq_codex_block "UserPromptSubmit|PostToolUse|PreToolUse" "reason"
+skogai_jq_codex_block() {
+    local event_name="$1"
+    local reason="$2"
+
+    case "$event_name" in
+        PreToolUse|PostToolUse|UserPromptSubmit|Stop) ;;
+        *)
+            echo "unsupported Codex block event: $event_name" >&2
+            return 64
+            ;;
+    esac
+
+    skogai_jq_decision "block" "$reason"
+}
+
+# Usage: skogai_jq_codex_continue_turn "next prompt text"
+skogai_jq_codex_continue_turn() {
+    local reason="$1"
+    skogai_jq_codex_block "Stop" "$reason"
+}
+
+# Usage: skogai_jq_codex_stop "stop reason"
+skogai_jq_codex_stop() {
+    local reason="$1"
+    jq -n \
+        --arg reason "$reason" \
+        '{continue: false, stopReason: $reason}'
 }
 
 # --- Output: bool ---
