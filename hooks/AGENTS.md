@@ -34,6 +34,7 @@ hooks/
 
 - Hook scripts receive JSON on stdin and should emit valid hook JSON when responding.
 - Source `../scripts/skogai-jq.sh` for repeated field extraction, logging, and response helpers.
+- Use `skogai_jq_codex_*` helpers when wiring Codex hooks; see `../docs/hook-compatibility.md` before reusing Claude-shaped decisions.
 - Context injection is fail-open; optional lesson/context failures must not block the user turn.
 - `lesson_matcher.py` skips `README.md`, `TEMPLATE.md`, root `YYYY-MM-DD-*.md` notes, and `status: deprecated` or `status: archived` lessons.
 - Matcher result caps are intentional: session 3, prompt 3, tool 2.

@@ -4,15 +4,19 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 
 ## What this repo is
 
-- `.claude-plugin/marketplace.json` — catalog (source of truth); `metadata.pluginRoot = "./plugins"`
-- `plugins/` — local plugin home (currently empty; plugins are added here or as external sources)
+- `.claude-plugin/marketplace.json` — Claude Code catalog (source of truth); `metadata.pluginRoot = "./plugins"`
+- `.agents/plugins/marketplace.json` — Codex marketplace catalog
+- `.codex/config.toml` — repo-local Codex baseline config
+- `plugins/codex-hooks/` — repo-local Codex smoke-test plugin
 - `hooks/` — Claude Code hooks that run during development in this repo
 - `tests/` — bats test suites for the hooks; run with `bats tests/**/*.bats`
-- [Claude Code Documentation](./docs/claude-code/) — gitignored; refresh with `scripts/fetch-claude-code-docs.sh`
+- `docs/claude-code/` and `docs/codex/` — gitignored docs snapshots; refresh both with `scripts/fetch-hook-docs.sh`
 
 ## Symlinks (from `.skogai/` submodule)
 
 `agents`, `bin`, `commands`, `skills`, `.claude` → `.skogai/` (skogai/core). Edit in core, not here.
+
+`.agents/` and `.codex/` are repo-local Codex directories, not symlinks.
 
 ## Testing workflow
 
@@ -28,6 +32,10 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 All hooks source `scripts/skogai-jq.sh`, which reads stdin and exposes `$HOOK_INPUT`, `$HOOK_SESSION_ID`, `$HOOK_EVENT`, `$HOOK_LOG`. Each hook declares its own schema — typed env vars with sentinels for missing values. That declaration is both documentation and the implementation contract. See `hooks/CLAUDE.md`.
 
 Tests validate content regressions using the same skogai-jq transforms. See `tests/CLAUDE.md`.
+
+Codex-specific hook output helpers use the `skogai_jq_codex_*` prefix. See `docs/hook-compatibility.md` before reusing Claude-shaped hook decisions for Codex.
+
+The Codex marketplace smoke test uses `plugins/codex-hooks` and asserts that Codex can expose its `codex-hooks-smoke` skill once the plugin is present in the Codex plugin cache.
 
 ## Key conventions
 

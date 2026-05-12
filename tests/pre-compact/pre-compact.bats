@@ -68,25 +68,20 @@ teardown() {
 }
 
 # ============================================================
-# Output format (optional context injection)
+# Output format
 # ============================================================
 
-@test "when output is produced it is valid JSON" {
+@test "hook produces no stdout for observational PreCompact logging" {
     write_pre_compact_input "manual"
-    output=$(bash -c "cat '$TEST_DIR/input.json' | '$HOOKS_DIR/pre-compact.sh'" 2>/dev/null || true)
-    if [[ -n "$output" ]]; then
-        run bash -c "echo '$output' | jq . > /dev/null"
-        assert_success
-    fi
+    run bash -c "cat '$TEST_DIR/input.json' | '$HOOKS_DIR/pre-compact.sh'"
+    assert_success
+    assert_output_equals ""
 }
 
-@test "when output is produced hookEventName is PreCompact" {
+@test "session log records PreCompact event name" {
     write_pre_compact_input "manual"
-    output=$(bash -c "cat '$TEST_DIR/input.json' | '$HOOKS_DIR/pre-compact.sh'" 2>/dev/null || true)
-    if [[ -n "$output" ]]; then
-        event=$(echo "$output" | jq -r '.hookSpecificOutput.hookEventName // empty')
-        if [[ -n "$event" ]]; then
-            [[ "$event" == "PreCompact" ]]
-        fi
-    fi
+    bash -c "cat '$TEST_DIR/input.json' | '$HOOKS_DIR/pre-compact.sh'" || true
+    run bash -c "jq -r '.event' /tmp/test-precomp-session.jsonl | tail -1"
+    assert_success
+    assert_output_equals "PreCompact"
 }

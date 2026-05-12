@@ -1,0 +1,10 @@
+{
+  "session_id": "codex-session",
+  "cwd": "/repo",
+  "hook_event_name": "Stop",
+  "model": "gpt-5.4",
+  "permission_mode": "workspace-write",
+  "stop_hook_active": false,
+  "last_assistant_message": "Implemented the requested change.",
+  "transcript_path": "/tmp/codex-session.jsonl"
+}

@@ -7,9 +7,23 @@ marketplace/
 ├── README.md                   ← human-facing intro
 │
 ├── .claude-plugin/
-│   └── marketplace.json        ← catalog (name, owner, plugins list)
+│   └── marketplace.json        ← Claude Code catalog
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json    ← Codex marketplace catalog
+├── .codex/
+│   └── config.toml             ← repo-local Codex baseline config
+├── docs/
+│   ├── hook-compatibility.md   ← Claude vs Codex hook behavior matrix
+│   └── codex-marketplace.md    ← Codex marketplace/config notes
 │
 ├── plugins/                    ← local plugin home (pluginRoot in manifest)
+│   └── codex-hooks/            ← Codex marketplace smoke-test plugin
+│       ├── .codex-plugin/
+│       │   └── plugin.json
+│       └── skills/
+│           └── codex-hooks-smoke/
+│               └── SKILL.md
 │
 ├── hooks/                      ← Claude Code hooks (run in this repo)
 │   ├── pre-tool-use.sh         ← allow/block tool calls
@@ -25,6 +39,8 @@ marketplace/
 │   ├── test-helper.bash        ← shared assertions and helpers
 │   ├── pre-tool-use/
 │   │   └── pre-tool-use.bats   ← allow/block rule coverage (43 tests)
+│   ├── codex-plugin/
+│   │   └── codex-plugin.bats   ← Codex marketplace/plugin smoke tests
 │   └── stop/
 │       ├── router.bats
 │       ├── git-dirty.bats
@@ -32,10 +48,12 @@ marketplace/
 │
 ├── scripts/
 │   ├── fetch-claude-code-docs.sh   ← refresh docs/claude-code/
+│   ├── fetch-codex-hook-docs.sh    ← refresh docs/codex/
+│   ├── fetch-hook-docs.sh          ← refresh both ignored docs snapshots
 │   └── find-agent-root.sh
 │
-├── docs/
-│   └── claude-code/            ← gitignored; official Claude Code docs
+├── docs/claude-code/           ← gitignored; official Claude Code docs
+├── docs/codex/                 ← gitignored; official Codex hook docs and schemas
 │
 ├── .skogai/                    ← skogai/core submodule (do not edit here)
 │
@@ -45,4 +63,6 @@ marketplace/
 ├── commands → .skogai/commands
 ├── skills   → .skogai/skills
 └── .claude  → .skogai/.claude
+
+Codex-specific `.agents/` and `.codex/` directories are real repo-local directories, not `.skogai/` symlinks.
 ```

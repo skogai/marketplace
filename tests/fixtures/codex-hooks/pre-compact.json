@@ -1,0 +1,10 @@
+{
+  "session_id": "codex-session",
+  "cwd": "/repo",
+  "hook_event_name": "PreCompact",
+  "model": "gpt-5.4",
+  "permission_mode": "workspace-write",
+  "trigger": "manual",
+  "custom_instructions": "",
+  "transcript_path": "/tmp/codex-session.jsonl"
+}
