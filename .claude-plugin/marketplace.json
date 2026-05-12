@@ -17,6 +17,13 @@
       "strict": false
     },
     {
+      "name": "skogai-core",
+      "version": "0.0.1",
+      "description": "the absolute core/basics",
+      "source": "./plugins/skogai-core",
+      "strict": false
+    },
+    {
       "name": "skogai-plugin",
       "version": "0.0.1",
       "description": "skogai-plugin",
