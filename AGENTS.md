@@ -8,7 +8,7 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 - `plugins/` — local plugin home (currently empty; plugins are added here or as external sources)
 - `hooks/` — Claude Code hooks that run during development in this repo
 - `tests/` — bats test suites for the hooks; run with `bats tests/**/*.bats`
-- `docs/claude-code/` — gitignored; refresh with `scripts/fetch-claude-code-docs.sh`
+- [Claude Code Documentation](./docs/claude-code/) — gitignored; refresh with `scripts/fetch-claude-code-docs.sh`
 
 ## Symlinks (from `.skogai/` submodule)
 
