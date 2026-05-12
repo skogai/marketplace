@@ -17,10 +17,10 @@
       "strict": false
     },
     {
-      "name": "skogai-hooks",
+      "name": "skogai-plugin",
       "version": "0.0.1",
-      "description": "skogai-hooks-plugin",
-      "source": "./plugins/skogai-hooks",
+      "description": "skogai-plugin",
+      "source": "./plugins/skogai-plugin",
       "strict": false
     },
     {
