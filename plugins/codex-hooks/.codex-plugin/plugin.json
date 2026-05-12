@@ -1,0 +1,34 @@
+{
+  "name": "codex-hooks",
+  "version": "0.1.0",
+  "description": "Codex plugin smoke test for hook and marketplace compatibility work.",
+  "author": {
+    "name": "skogai",
+    "email": "emil@skogsund.se",
+    "url": "https://github.com/skogai"
+  },
+  "homepage": "https://github.com/skogai/marketplace",
+  "repository": "https://github.com/skogai/marketplace",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "hooks",
+    "marketplace"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Hooks",
+    "shortDescription": "Smoke-test plugin for Codex hook marketplace support.",
+    "longDescription": "Provides a small Codex-loadable plugin payload used to verify that this marketplace can expose a real local plugin.",
+    "developerName": "skogai",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "websiteURL": "https://github.com/skogai/marketplace",
+    "defaultPrompt": [
+      "Run the Codex hooks plugin smoke test."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

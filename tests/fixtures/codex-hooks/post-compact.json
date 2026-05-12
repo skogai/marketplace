@@ -1,0 +1,10 @@
+{
+  "session_id": "codex-session",
+  "cwd": "/repo",
+  "hook_event_name": "PostCompact",
+  "model": "gpt-5.4",
+  "permission_mode": "workspace-write",
+  "trigger": "manual",
+  "compact_summary": "Previous context was compacted.",
+  "transcript_path": "/tmp/codex-session.jsonl"
+}

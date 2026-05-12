@@ -301,6 +301,81 @@ run_with_input() {
 }
 
 # ============================================================
+# Codex-specific output helpers
+# ============================================================
+
+@test "skogai_jq_codex_context emits additionalContext under hookSpecificOutput" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_context 'UserPromptSubmit' 'extra instructions' | jq -r '.hookSpecificOutput.additionalContext'
+    " <<< '{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
+    assert_success
+    assert_output_equals "extra instructions"
+}
+
+@test "skogai_jq_codex_pre_tool_deny emits Codex permission denial shape" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_pre_tool_deny 'Destructive command blocked.' | jq -r '.hookSpecificOutput.permissionDecision, .hookSpecificOutput.permissionDecisionReason'
+    " <<< '{"session_id":"s1","hook_event_name":"PreToolUse"}'
+    assert_success
+    assert_output_equals $'deny\nDestructive command blocked.'
+}
+
+@test "skogai_jq_codex_permission_request emits allow behavior" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_permission_request 'allow' | jq -r '.hookSpecificOutput.hookEventName, .hookSpecificOutput.decision.behavior'
+    " <<< '{"session_id":"s1","hook_event_name":"PermissionRequest"}'
+    assert_success
+    assert_output_equals $'PermissionRequest\nallow'
+}
+
+@test "skogai_jq_codex_permission_request includes deny message when provided" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_permission_request 'deny' 'Blocked by policy.' | jq -r '.hookSpecificOutput.decision.behavior, .hookSpecificOutput.decision.message'
+    " <<< '{"session_id":"s1","hook_event_name":"PermissionRequest"}'
+    assert_success
+    assert_output_equals $'deny\nBlocked by policy.'
+}
+
+@test "skogai_jq_codex_permission_request rejects unsupported behavior" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_permission_request 'ask'
+    " <<< '{"session_id":"s1","hook_event_name":"PermissionRequest"}'
+    assert_failure
+}
+
+@test "skogai_jq_codex_block emits legacy block shape for blocking events" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_block 'UserPromptSubmit' 'Need confirmation.' | jq -r '.decision, .reason'
+    " <<< '{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
+    assert_success
+    assert_output_equals $'block\nNeed confirmation.'
+}
+
+@test "skogai_jq_codex_continue_turn makes Stop continue with reason as prompt" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_continue_turn 'Run tests before stopping.' | jq -r '.decision, .reason'
+    " <<< '{"session_id":"s1","hook_event_name":"Stop"}'
+    assert_success
+    assert_output_equals $'block\nRun tests before stopping.'
+}
+
+@test "skogai_jq_codex_stop emits continue false with stopReason" {
+    run bash -c "
+        source '$SCRIPTS_DIR/skogai-jq.sh'
+        skogai_jq_codex_stop 'Stop normal tool processing.' | jq -r '.continue, .stopReason'
+    " <<< '{"session_id":"s1","hook_event_name":"PostToolUse"}'
+    assert_success
+    assert_output_equals $'false\nStop normal tool processing.'
+}
+
+# ============================================================
 # skogai_jq_bool
 # ============================================================
 
