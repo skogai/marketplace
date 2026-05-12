@@ -1,0 +1,46 @@
+{
+  "name": "format-timestamp",
+  "description": "Format a Unix timestamp or current time into a human-readable string using strftime",
+  "version": "1.0.0",
+  "input": {
+    "type": ["object", "number", "null"],
+    "description": "Object with Unix timestamp at path, raw Unix timestamp number, or null for current time"
+  },
+  "args": {
+    "format": {
+      "type": "string",
+      "required": false,
+      "description": "strftime format string (default: '%H:%M:%S'). Common: '%Y-%m-%d', '%H:%M:%S', '%Y-%m-%dT%H:%M:%SZ'"
+    },
+    "path": {
+      "type": "string",
+      "required": false,
+      "description": "Dot-separated path to Unix timestamp field. If omitted, formats current time or raw number input."
+    }
+  },
+  "output": {
+    "type": ["object", "string"],
+    "description": "Formatted time string, or modified object with formatted string at path"
+  },
+  "examples": [
+    {
+      "description": "Format current time as HH:MM:SS",
+      "input": null,
+      "args": {"format": "%H:%M:%S"},
+      "output": "14:30:00"
+    },
+    {
+      "description": "Format timestamp field in object",
+      "input": {"event": {"created_at": 1700000000}},
+      "args": {"path": "event.created_at", "format": "%Y-%m-%d"},
+      "output": {"event": {"created_at": "2023-11-14"}}
+    },
+    {
+      "description": "Format raw Unix timestamp",
+      "input": 1700000000,
+      "args": {"format": "%Y-%m-%dT%H:%M:%SZ"},
+      "output": "2023-11-14T22:13:20Z"
+    }
+  ],
+  "tags": ["time", "timestamp", "format", "strftime", "date"]
+}

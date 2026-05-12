@@ -24,6 +24,13 @@
       "description": "Bats testing skill and framework for shell script test-driven development",
       "source": "./plugins/skogai-tests",
       "strict": false
+    },
+    {
+      "name": "skogai-jq",
+      "version": "0.0.1",
+      "description": "jq",
+      "source": "./plugins/skogai-jq",
+      "strict": false
     }
   ]
 }

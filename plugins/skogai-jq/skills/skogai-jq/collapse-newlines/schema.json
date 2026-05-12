@@ -1,0 +1,41 @@
+{
+  "name": "collapse-newlines",
+  "description": "Replace all newline characters in a string with single spaces",
+  "version": "1.0.0",
+  "input": {
+    "type": ["object", "string"],
+    "description": "JSON object containing a string at the specified path, or a raw string (with path=\"\")"
+  },
+  "args": {
+    "path": {
+      "type": "string",
+      "required": true,
+      "description": "Dot-separated path to the string field. Use empty string for raw string input."
+    }
+  },
+  "output": {
+    "type": ["object", "string"],
+    "description": "Same structure as input with newlines replaced by spaces in the target string"
+  },
+  "examples": [
+    {
+      "description": "Collapse newlines in a field",
+      "input": {"text": "line one\nline two\nline three"},
+      "args": {"path": "text"},
+      "output": {"text": "line one line two line three"}
+    },
+    {
+      "description": "Nested path",
+      "input": {"message": {"body": "hello\nworld"}},
+      "args": {"path": "message.body"},
+      "output": {"message": {"body": "hello world"}}
+    },
+    {
+      "description": "Raw string input",
+      "input": "multi\nline\ntext",
+      "args": {"path": ""},
+      "output": "multi line text"
+    }
+  ],
+  "tags": ["string", "newline", "collapse", "whitespace", "one-line"]
+}

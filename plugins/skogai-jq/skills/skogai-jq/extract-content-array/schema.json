@@ -1,0 +1,52 @@
+{
+  "name": "extract-content-array",
+  "description": "Extract text from content arrays like [{type:'text', text:'...'}] used in Claude/OpenAI message formats",
+  "version": "1.0.0",
+  "input": {
+    "type": "object",
+    "description": "Object containing a content array at the specified path"
+  },
+  "args": {
+    "path": {
+      "type": "string",
+      "required": true,
+      "description": "Dot-separated path to the content array (e.g., 'message.content')"
+    },
+    "separator": {
+      "type": "string",
+      "required": false,
+      "description": "String to join multiple text items (default: newline)"
+    }
+  },
+  "output": {
+    "type": ["string", "null"],
+    "description": "Extracted text string joined by separator, or null if path doesn't exist or isn't a valid content array"
+  },
+  "examples": [
+    {
+      "description": "Extract text from simple content array",
+      "input": {"message": {"content": [{"type": "text", "text": "Hello world"}]}},
+      "args": {"path": "message.content"},
+      "output": "Hello world"
+    },
+    {
+      "description": "Extract and join multiple text items",
+      "input": {"content": [{"type": "text", "text": "First"}, {"type": "text", "text": "Second"}]},
+      "args": {"path": "content", "separator": " "},
+      "output": "First Second"
+    },
+    {
+      "description": "Handle tool_use blocks",
+      "input": {"content": [{"type": "text", "text": "Using tool"}, {"type": "tool_use", "name": "Read"}]},
+      "args": {"path": "content"},
+      "output": "Using tool\n[tool_use: Read]"
+    },
+    {
+      "description": "Return null for missing path",
+      "input": {"other": "data"},
+      "args": {"path": "message.content"},
+      "output": null
+    }
+  ],
+  "tags": ["extract", "content", "array", "claude", "chat", "message"]
+}
