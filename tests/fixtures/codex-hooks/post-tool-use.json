@@ -1,0 +1,18 @@
+{
+  "session_id": "codex-session",
+  "cwd": "/repo",
+  "hook_event_name": "PostToolUse",
+  "model": "gpt-5.4",
+  "permission_mode": "workspace-write",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git status --short"
+  },
+  "tool_response": {
+    "exit_code": 0,
+    "stdout": " M README.md\n",
+    "stderr": ""
+  },
+  "tool_use_id": "toolu_codex_post_1",
+  "transcript_path": "/tmp/codex-session.jsonl"
+}

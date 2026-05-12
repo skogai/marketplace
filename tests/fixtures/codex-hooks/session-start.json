@@ -1,0 +1,9 @@
+{
+  "session_id": "codex-session",
+  "cwd": "/repo",
+  "hook_event_name": "SessionStart",
+  "model": "gpt-5.4",
+  "permission_mode": "workspace-write",
+  "source": "startup",
+  "transcript_path": "/tmp/codex-session.jsonl"
+}
