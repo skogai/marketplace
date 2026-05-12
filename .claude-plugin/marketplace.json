@@ -10,15 +10,6 @@
   },
   "plugins": [
     {
-      "name": "skogai-worktrunk",
-      "version": "0.1.0",
-      "source": {
-        "source": "url",
-        "url": "git@github.com:skogai/worktrunk.git"
-      },
-      "strict": false
-    },
-    {
       "name": "skogai-tests",
       "version": "0.0.1",
       "description": "Bats testing skill and framework for shell script test-driven development",
