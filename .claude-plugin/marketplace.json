@@ -1,5 +1,5 @@
 {
-  "name": "skogai",
+  "name": "skogai-marketplace",
   "description": "Personal Claude Code plugin collection — git tools, workflow automation, and dev utilities",
   "owner": {
     "name": "skogix",
@@ -15,6 +15,12 @@
         "source": "url",
         "url": "git@github.com:skogai/worktrunk.git"
       },
+      "strict": false
+    },
+    {
+      "name": "skogai-tests",
+      "description": "Bats testing skill and framework for shell script test-driven development",
+      "source": "./plugins/skogai-tests",
       "strict": false
     }
   ]
