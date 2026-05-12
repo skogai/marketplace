@@ -1,0 +1,4 @@
+interface:
+  display_name: "SkogAI Hook Debugging"
+  short_description: "Helpers when debugging Claude Code hooks."
+  default_prompt: "Use $skogai-hook-debugging to help with Claude Code hook-debugging."

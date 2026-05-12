@@ -26,6 +26,13 @@
       "strict": false
     },
     {
+      "name": "skogai-hooks",
+      "version": "0.0.1",
+      "description": "skogai-hooks-plugin",
+      "source": "./plugins/skogai-hooks",
+      "strict": false
+    },
+    {
       "name": "skogai-jq",
       "version": "0.0.1",
       "description": "jq",
