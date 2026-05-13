@@ -10,30 +10,17 @@ A workflow for planning and shipping features in skogai projects. Follow the pha
 
 ---
 
-## Phase 1: Discovery
+## Discovery
 
 **Goal**: Understand the intent of the change — what we currently have and what is needed.
 
-1. Read `CLAUDE.md` and `PLAN.md` (if present) to orient yourself in the project.
-2. Explore the codebase to find existing code relevant to the requested change.
-3. Identify what already exists that can be reused or extended.
+- `CLAUDE.md`, `PLAN.md` and similar files (caps rule, if in caps they are supposed to be included as a routing document) are assumed to be included
 
-### Clarifying Questions
-
-**Do not skip this step.** The user holds information that is not in the code.
-
-After exploring, surface all ambiguities in a single organized list:
-
-- What problem does this change solve?
-- What should it do that it doesn't do today?
-- Any constraints, requirements, or things it must not break?
-- Edge cases or error conditions to handle?
-
-Wait for answers before proceeding.
+**TODO:** What commands, tools and information is needed in this step?
 
 ---
 
-## Phase 2: Create Work-Order
+## Create Work-Order
 
 **Goal**: Produce a self-contained description of the change — enough for an agent in a fresh worktree to implement it without needing to ask questions.
 
@@ -46,3 +33,9 @@ A good work-order includes:
 - **Context**: relevant file paths, function names, patterns, and codebase snippets the implementor will need
 - **Constraints**: conventions to follow, things not to change, edge cases to handle
 - **Acceptance criteria**: how to know the implementation is correct
+
+**TODO:** What commands, tools and information is needed in this step?
+
+## Review
+
+**Goal**: When a change is implemented the "meta-projects" documentation should also be updated.
