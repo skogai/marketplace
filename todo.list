@@ -11,3 +11,4 @@
 - [x] [medium/codex-marketplace] make .agents/plugins/marketplace.json real :: tracked in repo
 - [x] [medium/codex-config] make .codex/config.toml real :: tracked in repo
 - [x] [high/codex-marketplace] add plugins/codex-hooks with .codex-plugin/plugin.json :: marketplace root has a real local plugin payload
+- [ ] remove the agents and commands in skogai-tests which is also present inside skogai-core
