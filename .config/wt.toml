@@ -3,6 +3,10 @@ direnv = "direnv allow"
 
 [[pre-start]]
 submodules = "git submodule update --init"
+
+[[pre-start]]
+direnv = "./scripts/fetch-claude-code-docs.sh"
+
 #
 # ## Dev server URL
 #
