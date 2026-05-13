@@ -13,7 +13,7 @@ This repo is the plugin catalog and development workspace for the skogai persona
 
 | Plugin          | Always loaded | Purpose                                                                                                                                                                                    |
 | --------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `skogai-core`   | yes           | The trusted baseline — always present. Core code agents (`code-explorer`, `code-architect`, `code-reviewer`, `code-simplifier`) and workflow commands (`feature-dev`, `revise-claude-md`). |
+| `skogai-core`   | yes           | The trusted baseline — always present. Core code agents (`code-explorer`, `code-architect`, `code-reviewer`, `code-simplifier`) and workflow commands (`feature-dev`, `revise-docs`). |
 | `skogai-plugin` | no            | Load when developing plugins. Skills, agents, and commands for building Claude Code plugins.                                                                                               |
 | `skogai-tests`  | no            | Load when working with tests. Currently focused on bats for shell script TDD.                                                                                                              |
 | `skogai-jq`     | no            | JSON transform and hook I/O framework. More than a skill — a tooling layer. Distribution model TBD.                                                                                        |

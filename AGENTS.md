@@ -18,7 +18,7 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 
 | Plugin | Always loaded | Purpose |
 |---|---|---|
-| `skogai-core` | yes | Trusted baseline — always present. Code agents (`code-explorer`, `code-architect`, `code-reviewer`, `code-simplifier`) and workflow commands (`feature-dev`, `revise-claude-md`). Will house the first real hook implementations. |
+| `skogai-core` | yes | Trusted baseline — always present. Code agents (`code-explorer`, `code-architect`, `code-reviewer`, `code-simplifier`) and workflow commands (`feature-dev`, `revise-docs`). Will house the first real hook implementations. |
 | `skogai-plugin` | no | Load when developing plugins. Skills, agents, and commands for building Claude Code plugins. |
 | `skogai-tests` | no | Load when working with tests. Currently focused on bats for shell script TDD. |
 | `skogai-jq` | no | JSON transform and hook I/O framework — a tooling layer, not just a skill. Distribution model TBD. |
