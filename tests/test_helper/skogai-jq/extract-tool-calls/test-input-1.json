@@ -1,0 +1,1 @@
+{"message": {"content": [{"type": "tool_use", "name": "Read", "id": "123", "input": {"path": "/file.txt"}}]}}

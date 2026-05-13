@@ -1,0 +1,41 @@
+{
+  "name": "summarize-tool-call",
+  "description": "Summarize a Claude tool_use block into a human-readable one-liner with smart field extraction per tool type",
+  "version": "1.0.0",
+  "input": {
+    "type": "object",
+    "description": "A tool_use object from Claude's content array with name and input fields"
+  },
+  "args": {
+    "max_length": {
+      "type": "number",
+      "required": false,
+      "description": "Maximum length of the detail string before truncation (default: 280)"
+    }
+  },
+  "output": {
+    "type": "object",
+    "description": "Object with name (string), detail (string), and summary (string: 'name: detail')"
+  },
+  "examples": [
+    {
+      "description": "Read tool shows file path",
+      "input": {"name": "Read", "input": {"file_path": "/home/user/src/main.py"}},
+      "args": {},
+      "output": {"name": "Read", "detail": "/home/user/src/main.py", "summary": "Read: /home/user/src/main.py"}
+    },
+    {
+      "description": "Bash tool shows command",
+      "input": {"name": "Bash", "input": {"command": "npm test"}},
+      "args": {},
+      "output": {"name": "Bash", "detail": "npm test", "summary": "Bash: npm test"}
+    },
+    {
+      "description": "WebFetch tool shows URL",
+      "input": {"name": "WebFetch", "input": {"url": "https://example.com"}},
+      "args": {},
+      "output": {"name": "WebFetch", "detail": "https://example.com", "summary": "WebFetch: https://example.com"}
+    }
+  ],
+  "tags": ["tool", "summary", "claude", "stream", "format"]
+}

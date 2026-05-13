@@ -1,0 +1,1 @@
+{"deep": {"nested": {"content": [{"type": "tool_use", "name": "Test", "id": "deep", "input": {"a": 1}}]}}}

@@ -1,0 +1,52 @@
+{
+  "name": "filter-by-type",
+  "description": "Filter object by top-level type field, returns object if matches or null if not",
+  "version": "1.0.0",
+  "input": {
+    "type": "object",
+    "description": "Object with a 'type' field to check"
+  },
+  "args": {
+    "type": {
+      "type": "string",
+      "required": true,
+      "description": "The type value to match"
+    },
+    "invert": {
+      "type": "string",
+      "required": false,
+      "description": "If 'true', return objects that do NOT match the type"
+    }
+  },
+  "output": {
+    "type": ["object", "null"],
+    "description": "The input object if type matches, or null if it doesn't"
+  },
+  "examples": [
+    {
+      "description": "Match user type",
+      "input": {"type": "user", "message": "hello"},
+      "args": {"type": "user"},
+      "output": {"type": "user", "message": "hello"}
+    },
+    {
+      "description": "No match returns null",
+      "input": {"type": "assistant", "message": "hi"},
+      "args": {"type": "user"},
+      "output": null
+    },
+    {
+      "description": "Inverted match",
+      "input": {"type": "system", "data": "test"},
+      "args": {"type": "user", "invert": "true"},
+      "output": {"type": "system", "data": "test"}
+    },
+    {
+      "description": "Missing type field returns null",
+      "input": {"message": "no type"},
+      "args": {"type": "user"},
+      "output": null
+    }
+  ],
+  "tags": ["filter", "type", "jsonl", "stream", "claude", "chat"]
+}
