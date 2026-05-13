@@ -1,6 +1,0 @@
-{
-  "session_id": "test-setup-session",
-  "hook_event_name": "Setup",
-  "cwd": "/tmp/test-project",
-  "trigger": "init"
-}
