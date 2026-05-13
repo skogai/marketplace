@@ -7,10 +7,26 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 - `.claude-plugin/marketplace.json` — Claude Code catalog (source of truth); `metadata.pluginRoot = "./plugins"`
 - `.agents/plugins/marketplace.json` — Codex marketplace catalog
 - `.codex/config.toml` — repo-local Codex baseline config
-- `plugins/codex-hooks/` — repo-local Codex smoke-test plugin
-- `hooks/` — Claude Code hooks that run during development in this repo
+- `plugins/` — all installable plugins (see below)
+- `hooks/` — reference hook implementations showing the pattern; not wired up. `skogai-core` will be the first plugin to implement real hooks.
 - `tests/` — bats test suites for the hooks; run with `bats tests/**/*.bats`
 - `docs/claude-code/` and `docs/codex/` — gitignored docs snapshots; refresh both with `scripts/fetch-hook-docs.sh`
+- `PLAN.md` — current direction and near-term tasks; read this before starting work
+- `.plans/` — per-task implementation specs linked from `PLAN.md`
+
+## Plugins
+
+| Plugin | Always loaded | Purpose |
+|---|---|---|
+| `skogai-core` | yes | Trusted baseline — always present. Code agents (`code-explorer`, `code-architect`, `code-reviewer`, `code-simplifier`) and workflow commands (`feature-dev`, `revise-claude-md`). Will house the first real hook implementations. |
+| `skogai-plugin` | no | Load when developing plugins. Skills, agents, and commands for building Claude Code plugins. |
+| `skogai-tests` | no | Load when working with tests. Currently focused on bats for shell script TDD. |
+| `skogai-jq` | no | JSON transform and hook I/O framework — a tooling layer, not just a skill. Distribution model TBD. |
+| `skogai-lessons` | no | _(planned)_ Contextual lesson injection via session hooks. `hooks/lesson_matcher.py` and `concepts/` are the prototype. |
+
+## Plugin management
+
+- `argc marketplace update` — pull the latest catalog from remote; run after pushing catalog changes
 
 ## Symlinks (from `.skogai/` submodule)
 
@@ -29,7 +45,7 @@ Claude Code plugin marketplace — catalog and hooks for skogai personal plugins
 
 ## Hook pattern
 
-All hooks source `scripts/skogai-jq.sh`, which reads stdin and exposes `$HOOK_INPUT`, `$HOOK_SESSION_ID`, `$HOOK_EVENT`, `$HOOK_LOG`. Each hook declares its own schema — typed env vars with sentinels for missing values. That declaration is both documentation and the implementation contract. See `hooks/CLAUDE.md`.
+All hooks source a plugin-local `scripts/skogai-jq.sh`. Each plugin vendors its own copy — do not reference the repo-root `scripts/skogai-jq.sh` from inside a plugin. Sourcing it reads stdin and exposes `$HOOK_INPUT`, `$HOOK_SESSION_ID`, `$HOOK_EVENT`, `$HOOK_LOG`. Each hook then declares its own schema — typed env vars with sentinels for missing values. That declaration is both documentation and the implementation contract. See `hooks/CLAUDE.md` for the reference pattern.
 
 Tests validate content regressions using the same skogai-jq transforms. See `tests/CLAUDE.md`.
 
