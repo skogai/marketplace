@@ -34,6 +34,7 @@ exit 0
 ```
 
 After sourcing `skogai-jq.sh`:
+
 - `$HOOK_INPUT` — raw stdin JSON
 - `$HOOK_SESSION_ID`, `$HOOK_EVENT`, `$HOOK_PROMPT`, `$HOOK_LOG`
 - `skogai_jq_field ".path" "SENTINEL"` — extract field with typed sentinel
@@ -42,13 +43,14 @@ After sourcing `skogai-jq.sh`:
 - `skogai_jq_decision "block" "reason"` — output decision JSON
 
 Test a hook:
+
 ```bash
 cat hooks/example-inputs/session-start.json | bash plugins/skogai-core/hooks/session-start.sh
 ```
 
 ## skogai-jq skill
 
-`skills/skogai-jq/` symlinks to the full transform library (60+ transforms). Use it for any JSON work inside hooks instead of writing raw jq.
+@skills/skogai-jq/ symlinks to the full transform library (60+ transforms). Use it for any JSON work inside hooks instead of writing raw jq.
 
 ```bash
 # From inside a hook script:
@@ -56,7 +58,7 @@ JQ_DIR="$SCRIPT_DIR/../skills/skogai-jq"
 result=$(echo "$HOOK_INPUT" | jq -f "$JQ_DIR/crud-get/transform.jq" --arg path "tool_input.command")
 ```
 
-Read `skills/skogai-jq/SKILL.md` to discover which transform to use. Reference `skills/skogai-jq/references/CHEAT_SHEET.md` for the full index.
+Read @skills/skogai-jq/SKILL.md to discover which transform to use. Always keep @skills/skogai-jq/CHEAT_SHEET.md for in context when working with json-transformavtion because almost always should a skogai-jq-transformation be used.
 
 ## Adding a hook
 
