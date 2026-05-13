@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-AGENT_DIR="$(./find-agent-root.sh)"
+AGENT_DIR="$(./scripts/find-agent-root.sh)"
 DIR="$AGENT_DIR/docs/claude-code"
 mkdir -p "$DIR"
 BASE="https://code.claude.com/docs/en"

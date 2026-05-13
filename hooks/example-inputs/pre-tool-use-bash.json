@@ -1,0 +1,14 @@
+{
+  "session_id": "abc123",
+  "transcript_path": "/tmp/abc123.jsonl",
+  "cwd": "/mnt/sda1/src/marketplace",
+  "permission_mode": "default",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "ls -la",
+    "description": "List files",
+    "timeout": 30000
+  },
+  "tool_use_id": "toolu_01ABC123"
+}
