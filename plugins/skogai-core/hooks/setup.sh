@@ -24,9 +24,6 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/../scripts/skogai-jq.sh"
 
-# --- skogai-jq transform dir (for direct jq -f usage) ---
-JQ_DIR="$SCRIPT_DIR/../skills/skogai-jq"
-
 # --- Schema ---
 HOOK_TRIGGER=$(skogai_jq_field ".trigger" "UNKNOWN_TRIGGER")
 HOOK_CWD=$(skogai_jq_field ".cwd" "UNKNOWN_CWD")
