@@ -1,0 +1,4 @@
+interface:
+  display_name: "SkogAI Git"
+  short_description: "Git workflows, commits, PRs, and branch management"
+  default_prompt: "Use $skogai-git to guide the git workflow for this repository."
