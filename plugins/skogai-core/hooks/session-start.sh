@@ -37,3 +37,5 @@ PATH includes ${bin_dir}"
 submodule: ${bootstrap_output}"
 
 skogai_jq_context "SessionStart" "$context"
+
+exit 0
