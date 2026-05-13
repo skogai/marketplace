@@ -22,12 +22,18 @@
       "description": "the absolute core/basics",
       "source": "./plugins/skogai-core",
       "strict": false,
-      "hooks": [
-        {
-          "event": "SessionStart",
-          "script": "./plugins/skogai-core/hooks/session-start.sh"
-        }
-      ]
+      "hooks": {
+        "SessionStart": [
+          {
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "skogai-plugin",
