@@ -17,7 +17,7 @@ teardown() {
 run_with_input() {
     local input="$1"
     local cmd="$2"
-    bash -c "source '$SCRIPTS_DIR/skogai-jq.sh' && $cmd" <<< "$input"
+    bash -c "source '$SCRIPTS_DIR/skogai-jq.sh' && $cmd" <<<"$input"
 }
 
 # ============================================================
@@ -28,7 +28,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         echo \"\$HOOK_INPUT\"
-    " <<< '{"session_id":"s1","hook_event_name":"Test","extra":"data"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test","extra":"data"}'
     assert_success
     assert_output_contains '"session_id"'
     assert_output_contains '"extra"'
@@ -38,7 +38,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         echo \"\$HOOK_SESSION_ID\"
-    " <<< '{"session_id":"my-session-xyz","hook_event_name":"Test"}'
+    " <<<'{"session_id":"my-session-xyz","hook_event_name":"Test"}'
     assert_success
     assert_output_equals "my-session-xyz"
 }
@@ -47,7 +47,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         echo \"\$HOOK_EVENT\"
-    " <<< '{"session_id":"s1","hook_event_name":"PreToolUse"}'
+    " <<<'{"session_id":"s1","hook_event_name":"PreToolUse"}'
     assert_success
     assert_output_equals "PreToolUse"
 }
@@ -56,7 +56,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         echo \"\$HOOK_SESSION_ID\"
-    " <<< '{}'
+    " <<<'{}'
     assert_success
     assert_output_equals "unknown"
 }
@@ -65,7 +65,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         echo \"\$HOOK_EVENT\"
-    " <<< '{}'
+    " <<<'{}'
     assert_success
     assert_output_equals "Unknown"
 }
@@ -74,7 +74,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         echo \"\$HOOK_LOG\"
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test"}'
     assert_success
     assert_output_equals "/tmp/test-jq-session.jsonl"
 }
@@ -87,7 +87,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_field '.tool_name'
-    " <<< '{"session_id":"s1","hook_event_name":"Test","tool_name":"Bash"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test","tool_name":"Bash"}'
     assert_success
     assert_output_equals "Bash"
 }
@@ -96,7 +96,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_field '.tool_input.command'
-    " <<< '{"session_id":"s1","hook_event_name":"Test","tool_input":{"command":"echo hello"}}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test","tool_input":{"command":"echo hello"}}'
     assert_success
     assert_output_equals "echo hello"
 }
@@ -105,7 +105,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_field '.nonexistent'
-    " <<< '{"session_id":"s1","hook_event_name":"Test"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test"}'
     assert_success
     assert_output_equals ""
 }
@@ -114,7 +114,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_field '.nonexistent' 'my-default'
-    " <<< '{"session_id":"s1","hook_event_name":"Test"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test"}'
     assert_success
     assert_output_equals "my-default"
 }
@@ -123,7 +123,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_field '.name' 'fallback'
-    " <<< '{"session_id":"s1","hook_event_name":"Test","name":"real_value"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test","name":"real_value"}'
     assert_success
     assert_output_equals "real_value"
 }
@@ -132,7 +132,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_field '.nullfield' 'default-for-null'
-    " <<< '{"session_id":"s1","hook_event_name":"Test","nullfield":null}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test","nullfield":null}'
     assert_success
     assert_output_equals "default-for-null"
 }
@@ -145,7 +145,7 @@ run_with_input() {
     bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'test entry'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test"}'
     assert_file_exists "/tmp/test-jq-session.jsonl"
 }
 
@@ -153,7 +153,7 @@ run_with_input() {
     bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'checking json'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test"}'
     # jq can parse multiple concatenated pretty-printed objects from the same file
     run bash -c "jq '.' /tmp/test-jq-session.jsonl > /dev/null"
     assert_success
@@ -164,7 +164,7 @@ run_with_input() {
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'first jsonl entry'
         skogai_jq_log 'second jsonl entry'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test","tool_name":"Read"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test","tool_name":"Read"}'
 
     run bash -c "wc -l < /tmp/test-jq-session.jsonl"
     assert_success
@@ -178,7 +178,7 @@ run_with_input() {
     bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'my-unique-summary'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test"}'
     run bash -c "grep -c 'my-unique-summary' /tmp/test-jq-session.jsonl"
     assert_success
 }
@@ -187,7 +187,7 @@ run_with_input() {
     bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'event check'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"PreToolUse"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"PreToolUse"}'
     run bash -c "jq -r '.event' /tmp/test-jq-session.jsonl | tail -1"
     assert_success
     assert_output_equals "PreToolUse"
@@ -197,7 +197,7 @@ run_with_input() {
     bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'sid check'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test"}'
     run bash -c "jq -r '.session_id' /tmp/test-jq-session.jsonl | tail -1"
     assert_success
     assert_output_equals "test-jq-session"
@@ -207,7 +207,7 @@ run_with_input() {
     bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_log 'input embed'
-    " <<< '{"session_id":"test-jq-session","hook_event_name":"Test","tool_name":"Read"}'
+    " <<<'{"session_id":"test-jq-session","hook_event_name":"Test","tool_name":"Read"}'
     run bash -c "jq -r '.input.tool_name' /tmp/test-jq-session.jsonl | tail -1"
     assert_success
     assert_output_equals "Read"
@@ -221,7 +221,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_context 'SessionStart' 'hello' | jq . > /dev/null
-    " <<< '{"session_id":"s1","hook_event_name":"SessionStart"}'
+    " <<<'{"session_id":"s1","hook_event_name":"SessionStart"}'
     assert_success
 }
 
@@ -229,7 +229,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_context 'SessionStart' 'hello'
-    " <<< '{"session_id":"s1","hook_event_name":"SessionStart"}'
+    " <<<'{"session_id":"s1","hook_event_name":"SessionStart"}'
     assert_success
     assert_output_contains "hookSpecificOutput"
 }
@@ -238,7 +238,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_context 'UserPromptSubmit' 'ctx' | jq -r '.hookSpecificOutput.hookEventName'
-    " <<< '{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
+    " <<<'{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
     assert_success
     assert_output_equals "UserPromptSubmit"
 }
@@ -247,7 +247,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_context 'SessionStart' 'injected context text' | jq -r '.hookSpecificOutput.additionalContext'
-    " <<< '{"session_id":"s1","hook_event_name":"SessionStart"}'
+    " <<<'{"session_id":"s1","hook_event_name":"SessionStart"}'
     assert_success
     assert_output_equals "injected context text"
 }
@@ -256,7 +256,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_context 'SessionStart' 'line1\nline2' | jq -r '.hookSpecificOutput.additionalContext'
-    " <<< '{"session_id":"s1","hook_event_name":"SessionStart"}'
+    " <<<'{"session_id":"s1","hook_event_name":"SessionStart"}'
     assert_success
     assert_output_contains "line1"
 }
@@ -269,7 +269,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_decision 'block' 'reason' | jq . > /dev/null
-    " <<< '{"session_id":"s1","hook_event_name":"Stop"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Stop"}'
     assert_success
 }
 
@@ -277,7 +277,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_decision 'block' 'some reason' | jq -r '.decision'
-    " <<< '{"session_id":"s1","hook_event_name":"Stop"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Stop"}'
     assert_success
     assert_output_equals "block"
 }
@@ -286,7 +286,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_decision 'allow' 'all good here' | jq -r '.reason'
-    " <<< '{"session_id":"s1","hook_event_name":"Stop"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Stop"}'
     assert_success
     assert_output_equals "all good here"
 }
@@ -295,7 +295,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_decision 'continue' 'proceeding' | jq -r '.decision'
-    " <<< '{"session_id":"s1","hook_event_name":"Stop"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Stop"}'
     assert_success
     assert_output_equals "continue"
 }
@@ -308,7 +308,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_context 'UserPromptSubmit' 'extra instructions' | jq -r '.hookSpecificOutput.additionalContext'
-    " <<< '{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
+    " <<<'{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
     assert_success
     assert_output_equals "extra instructions"
 }
@@ -317,7 +317,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_pre_tool_deny 'Destructive command blocked.' | jq -r '.hookSpecificOutput.permissionDecision, .hookSpecificOutput.permissionDecisionReason'
-    " <<< '{"session_id":"s1","hook_event_name":"PreToolUse"}'
+    " <<<'{"session_id":"s1","hook_event_name":"PreToolUse"}'
     assert_success
     assert_output_equals $'deny\nDestructive command blocked.'
 }
@@ -326,7 +326,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_permission_request 'allow' | jq -r '.hookSpecificOutput.hookEventName, .hookSpecificOutput.decision.behavior'
-    " <<< '{"session_id":"s1","hook_event_name":"PermissionRequest"}'
+    " <<<'{"session_id":"s1","hook_event_name":"PermissionRequest"}'
     assert_success
     assert_output_equals $'PermissionRequest\nallow'
 }
@@ -335,7 +335,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_permission_request 'deny' 'Blocked by policy.' | jq -r '.hookSpecificOutput.decision.behavior, .hookSpecificOutput.decision.message'
-    " <<< '{"session_id":"s1","hook_event_name":"PermissionRequest"}'
+    " <<<'{"session_id":"s1","hook_event_name":"PermissionRequest"}'
     assert_success
     assert_output_equals $'deny\nBlocked by policy.'
 }
@@ -344,7 +344,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_permission_request 'ask'
-    " <<< '{"session_id":"s1","hook_event_name":"PermissionRequest"}'
+    " <<<'{"session_id":"s1","hook_event_name":"PermissionRequest"}'
     assert_failure
 }
 
@@ -352,7 +352,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_block 'UserPromptSubmit' 'Need confirmation.' | jq -r '.decision, .reason'
-    " <<< '{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
+    " <<<'{"session_id":"s1","hook_event_name":"UserPromptSubmit"}'
     assert_success
     assert_output_equals $'block\nNeed confirmation.'
 }
@@ -361,7 +361,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_continue_turn 'Run tests before stopping.' | jq -r '.decision, .reason'
-    " <<< '{"session_id":"s1","hook_event_name":"Stop"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Stop"}'
     assert_success
     assert_output_equals $'block\nRun tests before stopping.'
 }
@@ -370,7 +370,7 @@ run_with_input() {
     run bash -c "
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_codex_stop 'Stop normal tool processing.' | jq -r '.continue, .stopReason'
-    " <<< '{"session_id":"s1","hook_event_name":"PostToolUse"}'
+    " <<<'{"session_id":"s1","hook_event_name":"PostToolUse"}'
     assert_success
     assert_output_equals $'false\nStop normal tool processing.'
 }
@@ -381,30 +381,27 @@ run_with_input() {
 
 @test "skogai_jq_bool validates a literal timestamp value" {
     run bash -c "
-        cd '$PROJECT_ROOT'
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_bool 'is-timestamp' '2025-01-01'
-    " <<< '{"session_id":"s1","hook_event_name":"Test"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test"}'
     assert_success
     assert_output_equals "true"
 }
 
 @test "skogai_jq_bool validates a literal empty string value" {
     run bash -c "
-        cd '$PROJECT_ROOT'
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_bool 'is-empty-string' ''
-    " <<< '{"session_id":"s1","hook_event_name":"Test"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test"}'
     assert_success
     assert_output_equals "true"
 }
 
 @test "skogai_jq_bool returns only the predicate boolean" {
     run bash -c "
-        cd '$PROJECT_ROOT'
         source '$SCRIPTS_DIR/skogai-jq.sh'
         skogai_jq_bool 'is-timestamp' 'imorgon'
-    " <<< '{"session_id":"s1","hook_event_name":"Test"}'
+    " <<<'{"session_id":"s1","hook_event_name":"Test"}'
     assert_success
     assert_output_equals "false"
 }

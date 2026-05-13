@@ -9,20 +9,24 @@
 #   $HOOK_INPUT       — raw JSON from stdin
 #   $HOOK_SESSION_ID  — extracted session_id
 #   $HOOK_EVENT       — extracted hook_event_name
-#   $HOOK_PROMPT      — extracted hook_prompt
+#   $HOOK_PROMPT      — extracted prompt (EMPTY_PROMPT if absent)
 #   $HOOK_LOG         — log file path (/tmp/${session_id}.jsonl)
+#   $JQ_DIR           — path to skogai-jq transform library
+#                       use: jq -f "$JQ_DIR/<transform>/transform.jq" --arg key val
 #
 # Functions:
-#   skogai_jq_field ".path" ["default"]  — extract field from input
-#   skogai_jq_log "summary"             — append structured JSONL debug entry
-#   skogai_jq_context "event" "text"    — output hookSpecificOutput JSON
+#   skogai_jq_field ".path" ["default"]     — extract field from input
+#   skogai_jq_log "summary"                — append structured JSONL debug entry
+#   skogai_jq_context "event" "text"       — output hookSpecificOutput JSON
 #   skogai_jq_decision "decision" "reason" — output decision JSON
-#   skogai_jq_codex_*                   — Codex-specific hook output helpers
+#   skogai_jq_bool "predicate" "value"     — run a transform predicate, returns true/false
+#   skogai_jq_codex_*                      — Codex-specific hook output helpers
 
 set -euo pipefail
 
 SKOGAI_JQ_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKOGAI_JQ_TRANSFORM_DIR="${SKOGAI_JQ_SCRIPT_DIR}/../skogai-jq"
+JQ_DIR="${SKOGAI_JQ_TRANSFORM_DIR}"
 
 # --- Init: read stdin, extract common fields ---
 HOOK_INPUT=$(cat)
@@ -30,6 +34,12 @@ HOOK_SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id // "unknown"')
 HOOK_PROMPT=$(echo "$HOOK_INPUT" | jq -r '.prompt // "EMPTY_PROMPT"')
 HOOK_EVENT=$(echo "$HOOK_INPUT" | jq -r '.hook_event_name // "Unknown"')
 HOOK_LOG="/tmp/${HOOK_SESSION_ID}.jsonl"
+
+# --- Claude env vars (set by Claude Code when running inside a plugin) ---
+CLAUDE_PROJECT_DIR="${CLAUDE_PROJECT_DIR:-}"
+CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-}"
+CLAUDE_PLUGIN_DATA="${CLAUDE_PLUGIN_DATA:-}"
+CLAUDE_ENV_FILE="${CLAUDE_ENV_FILE:-}"
 
 # --- Field extraction ---
 # Usage: val=$(skogai_jq_field ".tool_name" "default_value")
@@ -44,8 +54,9 @@ skogai_jq_field() {
 }
 
 # --- Structured debug logging ---
-# Appends a JSONL entry: {ts, event, session_id, summary, input}
-# Usage: skogai_jq_log "Logged session end, reason: exit"
+# Appends a JSONL entry: {ts, event, session_id, summary, env, input}
+# env includes available Claude env vars (empty string if not set by Claude Code)
+# Usage: skogai_jq_log "summary text"
 skogai_jq_log() {
     local summary="${1:-}"
     jq -c -n \
@@ -53,8 +64,15 @@ skogai_jq_log() {
         --arg event "$HOOK_EVENT" \
         --arg sid "$HOOK_SESSION_ID" \
         --arg summary "$summary" \
+        --arg plugin_root "$CLAUDE_PLUGIN_ROOT" \
+        --arg plugin_data "$CLAUDE_PLUGIN_DATA" \
+        --arg project_dir "$CLAUDE_PROJECT_DIR" \
+        --arg env_file "$CLAUDE_ENV_FILE" \
         --argjson input "$HOOK_INPUT" \
-        '{ts: $ts, event: $event, session_id: $sid, summary: $summary, input: $input}' \
+        '{ts: $ts, event: $event, session_id: $sid, summary: $summary,
+          env: {plugin_root: $plugin_root, plugin_data: $plugin_data,
+                project_dir: $project_dir, env_file: $env_file},
+          input: $input}' \
         >>"$HOOK_LOG"
 }
 

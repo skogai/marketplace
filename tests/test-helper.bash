@@ -4,10 +4,11 @@
 # source this in your test files: load ../testing-framework/test-helper
 
 # get the project root directory
-export PROJECT_ROOT="$(./scripts/find-agent-root.sh)"
+# export PROJECT_ROOT="$(./scripts/find-agent-root.sh)"
+export PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
 export SCRIPTS_DIR="${SCRIPTS_DIR:-$PROJECT_ROOT/scripts}"
-echo $PROJECT_ROOT
-echo $SCRIPTS_DIR
+# echo $PROJECT_ROOT
+# echo $SCRIPTS_DIR
 
 # create a temporary directory for test files
 setup_test_dir() {

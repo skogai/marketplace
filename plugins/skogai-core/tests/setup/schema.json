@@ -1,0 +1,36 @@
+{
+  "name": "setup",
+  "description": "Setup hook — runs on --init-only or --init/--maintenance with -p",
+  "examples": [
+    {
+      "description": "trigger init outputs additionalContext containing initialised",
+      "input": {"session_id":"test-setup-session","hook_event_name":"Setup","cwd":"/tmp/test-project","trigger":"init"},
+      "output": {"hookSpecificOutput":{"hookEventName":"Setup","additionalContext":"skogai-core initialised."}}
+    },
+    {
+      "description": "trigger maintenance outputs additionalContext containing maintenance",
+      "input": {"session_id":"test-setup-session","hook_event_name":"Setup","cwd":"/tmp/test-project","trigger":"maintenance"},
+      "output": {"hookSpecificOutput":{"hookEventName":"Setup","additionalContext":"skogai-core maintenance run."}}
+    },
+    {
+      "description": "unknown trigger produces no output",
+      "input": {"session_id":"test-setup-session","hook_event_name":"Setup","cwd":"/tmp/test-project","trigger":"unknown"},
+      "output": ""
+    },
+    {
+      "description": "trigger init writes log entry",
+      "input": {"session_id":"test-setup-session","hook_event_name":"Setup","cwd":"/tmp/test-project","trigger":"init"},
+      "output": {"log_exists": true}
+    },
+    {
+      "description": "trigger init log summary contains trigger value",
+      "input": {"session_id":"test-setup-session","hook_event_name":"Setup","cwd":"/tmp/test-project","trigger":"init"},
+      "output": {"log_summary_contains": "trigger=init"}
+    },
+    {
+      "description": "trigger init log entry contains env block",
+      "input": {"session_id":"test-setup-session","hook_event_name":"Setup","cwd":"/tmp/test-project","trigger":"init"},
+      "output": {"log_env_not_null": true}
+    }
+  ]
+}

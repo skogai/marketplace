@@ -1,0 +1,6 @@
+{
+  "session_id": "test-ss-session",
+  "hook_event_name": "SessionStart",
+  "permission_mode": "default",
+  "source": "startup"
+}

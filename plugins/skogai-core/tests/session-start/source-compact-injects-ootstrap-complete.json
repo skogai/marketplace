@@ -1,0 +1,7 @@
+{
+  "session_id": "test-ss-session",
+  "hook_event_name": "SessionStart",
+  "cwd": "/tmp/test-project",
+  "permission_mode": "default",
+  "source": "compact"
+}

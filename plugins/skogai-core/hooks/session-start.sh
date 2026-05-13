@@ -15,6 +15,9 @@ source "$SCRIPT_DIR/../scripts/skogai-jq.sh"
 
 # --- Schema ---
 HOOK_CWD=$(skogai_jq_field ".cwd" "UNKNOWN_CWD")
+HOOK_SOURCE=$(skogai_jq_field ".source" "unknown")
+
+skogai_jq_log "SessionStart: source=$HOOK_SOURCE cwd=$HOOK_CWD"
 
 # Bootstrap: initialise submodules (idempotent, safe to re-run)
 bootstrap_output=""
