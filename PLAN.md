@@ -26,8 +26,8 @@ This repo is the plugin catalog and development workspace for the skogai persona
 
 ## Near-Term Tasks
 
+- [`.plans/skogai-lessons.md`](.plans/skogai-lessons.md) — Create `skogai-lessons` plugin: move `concepts/` and lesson hooks into the plugin, register in catalog, interview user about future direction.
+- [`.plans/skogai-core-hook.md`](.plans/skogai-core-hook.md) — Add first hook to `skogai-core` (`hooks/setup.sh`): vendor `skogai-jq.sh`, log raw hook input to `/tmp/<session-id>.jsonl`, prove the pattern works end-to-end.
 - Validate `skogai-core` agents and commands in real sessions — recently added, need field testing.
-- Decide distribution model for `skogai-jq`: stays as a plugin, becomes a library, or gets embedded in scripts.
-- Wire `hooks/` behavior into `skogai-core` as the first real plugin hook implementation.
-- Design and scaffold `skogai-lessons` plugin with `lesson_matcher.py` and `concepts/` as its foundation.
+- Decide distribution model for `skogai-jq`: stays as a plugin, becomes a library, or gets embedded per-plugin.
 - Update `FILESTRUCTURE.md` and `CLAUDE.md` to reflect the current plugin inventory accurately.
