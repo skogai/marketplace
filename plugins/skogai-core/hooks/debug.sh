@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Example hook
+# Debug hook
 
 set -euo pipefail
 
