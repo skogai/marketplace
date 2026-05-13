@@ -13,3 +13,4 @@
 - [x] [high/codex-marketplace] add plugins/codex-hooks with .codex-plugin/plugin.json :: marketplace root has a real local plugin payload
 - [ ] remove the agents and commands in skogai-tests which is also present inside skogai-core
 - [ ] rename "argc dev" to "argc repos" to better show the subcommand handles skogai repositories overall
+- [ ] update "argc dev workon" functionality to also expect a @.plans/*.md file explaining what needs to be done. can be added that "cat <file> > ./tmp/WORKON" as a command could be ran in the new worktree and included with the first/starting message
