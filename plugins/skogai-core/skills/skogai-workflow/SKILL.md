@@ -1,6 +1,6 @@
 ---
 name: skogai-workflow
-description: This skill should always be loaded when working from skogai/marketplace or skogai/core
+description: This skill should always be loaded when planning any skogai project
 version: 0.0.1
 ---
 
@@ -20,4 +20,5 @@ description
 
 ## Additional Resources
 
-- **`references/agent-prompts.md`** — ready-to-use prompt templates for each agent type
+- **`references/agents`** — old agents used in feature-dev
+- **`references/commands`** — old commands used in feature-dev
