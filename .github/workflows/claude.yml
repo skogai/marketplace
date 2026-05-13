@@ -1,6 +1,12 @@
 name: Claude Code
 
 on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Prompt for Claude'
+        required: true
+        type: string
   issue_comment:
     types: [created]
   pull_request_review_comment:
@@ -36,4 +42,5 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: ${{ inputs.prompt }}
 
