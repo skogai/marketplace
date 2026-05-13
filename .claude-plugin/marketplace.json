@@ -21,19 +21,7 @@
       "version": "0.0.1",
       "description": "the absolute core/basics",
       "source": "./plugins/skogai-core",
-      "strict": false,
-      "hooks": {
-        "SessionStart": [
-          {
-            "hooks": [
-              {
-                "type": "command",
-                "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh"
-              }
-            ]
-          }
-        ]
-      }
+      "strict": false
     },
     {
       "name": "skogai-plugin",
