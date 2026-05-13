@@ -1,0 +1,8 @@
+{
+  "flags": [
+    { "active": true },
+    { "active": false },
+    { "active": true },
+    { "active": false }
+  ]
+}

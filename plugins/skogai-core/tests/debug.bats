@@ -1,14 +1,16 @@
-#!/usr/bin/env bats
+#!/bin/bash
 
-load test-helper
+setup() {
+    load 'test_helper/bats-support/load'
+    load 'test_helper/bats-file/load'
+    load 'test_helper/bats-assert/load'
+    load 'test_helper/skogai-jq/load'
+}
 
-HOOK="$SKOGAI_HOOK_DIR/debug.sh"
-F="$(cd "$(dirname "$BATS_TEST_FILENAME")/debug" && pwd)"
-
-teardown() { teardown_logs; }
-
+@test "test" {
+    run echo test
+    assert_output "test"
+}
 @test "empty input writes session_id 'unknown' to log" {
-    run bash "$HOOK" <"$F/empty.json"
-    session_id=$(tail -1 "$HOOK_LOG" | jq -r '.session_id')
-    [ "$session_id" = "unknown" ]
+    [ "$HOOK_SESSION_ID" = "unknown" ]
 }

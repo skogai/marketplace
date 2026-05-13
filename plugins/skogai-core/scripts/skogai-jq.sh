@@ -129,11 +129,11 @@ skogai_jq_codex_permission_request() {
     local message="${2:-}"
 
     case "$behavior" in
-        allow|deny) ;;
-        *)
-            echo "unsupported Codex PermissionRequest behavior: $behavior" >&2
-            return 64
-            ;;
+    allow | deny) ;;
+    *)
+        echo "unsupported Codex PermissionRequest behavior: $behavior" >&2
+        return 64
+        ;;
     esac
 
     jq -n \
@@ -153,11 +153,11 @@ skogai_jq_codex_block() {
     local reason="$2"
 
     case "$event_name" in
-        PreToolUse|PostToolUse|UserPromptSubmit|Stop) ;;
-        *)
-            echo "unsupported Codex block event: $event_name" >&2
-            return 64
-            ;;
+    PreToolUse | PostToolUse | UserPromptSubmit | Stop) ;;
+    *)
+        echo "unsupported Codex block event: $event_name" >&2
+        return 64
+        ;;
     esac
 
     skogai_jq_decision "block" "$reason"
@@ -187,3 +187,5 @@ skogai_jq_bool() {
     jq -n --arg value "$value" '{value: $value}' |
         jq --arg path "value" -f "$transform_file"
 }
+
+echo "$HOOK_INPUT"
