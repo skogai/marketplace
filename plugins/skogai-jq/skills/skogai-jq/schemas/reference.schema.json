@@ -1,0 +1,23 @@
+{
+  "$id": "https://skog.ai/schemas/reference.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    { "$ref": "document.schema.json" },
+    {
+      "properties": {
+        "type": { "const": "reference" },
+        "sections": {
+          "type": "array",
+          "contains": {
+            "type": "object",
+            "properties": {
+              "name": { "const": "overview" }
+            },
+            "required": ["name"]
+          }
+        }
+      },
+      "required": ["type", "sections"]
+    }
+  ]
+}

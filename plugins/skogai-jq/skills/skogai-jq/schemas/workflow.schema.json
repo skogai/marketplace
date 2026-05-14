@@ -1,0 +1,45 @@
+{
+  "$id": "https://skog.ai/schemas/workflow.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    { "$ref": "document.schema.json" },
+    {
+      "properties": {
+        "type": { "const": "workflow" },
+        "sections": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "name": { "const": "objective" }
+                },
+                "required": ["name"]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "name": { "const": "steps" }
+                },
+                "required": ["name"]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "name": { "const": "validation" }
+                },
+                "required": ["name"]
+              }
+            }
+          ]
+        }
+      },
+      "required": ["type", "sections"]
+    }
+  ]
+}

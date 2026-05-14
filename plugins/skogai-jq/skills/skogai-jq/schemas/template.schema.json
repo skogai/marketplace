@@ -1,0 +1,23 @@
+{
+  "$id": "https://skog.ai/schemas/template.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    { "$ref": "document.schema.json" },
+    {
+      "properties": {
+        "type": { "const": "template" },
+        "sections": {
+          "type": "array",
+          "contains": {
+            "type": "object",
+            "properties": {
+              "name": { "const": "template" }
+            },
+            "required": ["name"]
+          }
+        }
+      },
+      "required": ["type", "sections"]
+    }
+  ]
+}

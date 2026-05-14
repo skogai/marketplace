@@ -1,0 +1,57 @@
+{
+  "$id": "https://skog.ai/schemas/document.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalized Skogai document",
+  "type": "object",
+  "required": ["path", "type", "sections"],
+  "properties": {
+    "path": {
+      "$ref": "defs.schema.json#/$defs/path"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["markdown", "norg", "mixed"]
+    },
+    "type": {
+      "$ref": "defs.schema.json#/$defs/type"
+    },
+    "variant": {
+      "$ref": "defs.schema.json#/$defs/variant"
+    },
+    "status": {
+      "$ref": "defs.schema.json#/$defs/status"
+    },
+    "version": {
+      "type": ["integer", "string"]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "defs.schema.json#/$defs/tag"
+      },
+      "uniqueItems": true
+    },
+    "frontmatter": {
+      "$ref": "frontmatter.schema.json"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "defs.schema.json#/$defs/xmlSection"
+      }
+    },
+    "headings": {
+      "type": "array",
+      "items": {
+        "$ref": "defs.schema.json#/$defs/heading"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "$ref": "defs.schema.json#/$defs/link"
+      }
+    }
+  },
+  "additionalProperties": false
+}
