@@ -5,7 +5,7 @@ These lifecycle hook definitions document ECC's memory persistence contract for 
 The executable implementations live in `scripts/hooks/`:
 
 - `session-start.js` loads bounded prior context, detects project state, and prepares session metadata.
-- `pre-compact.js` captures state before context compaction.
+- `pre-compact.js` captures state before context compction.
 - `session-end.js` persists session-end summaries when transcript metadata is available.
 - `observe-runner.js` records tool-use observations for continuous learning.
 - `session-activity-tracker.js` records tool usage and file activity for ECC2 status and observability.
@@ -14,15 +14,15 @@ The installed hook graph is still `hooks/hooks.json`. This directory is the stab
 
 ## Lifecycle Contract
 
-| Event | Hook | Purpose | Blocking |
-|---|---|---|---|
-| `SessionStart` | `session:start` | Load bounded prior context and project metadata | no |
-| `PreCompact` | `pre:compact` | Save state before compaction | no |
-| `PreToolUse` | `pre:observe:continuous-learning` | Capture tool intent for learning signals | no |
-| `PostToolUse` | `post:observe:continuous-learning` | Capture tool result for learning signals | no |
-| `PostToolUse` | `post:session-activity-tracker` | Record tool and file activity for ECC2 metrics | no |
-| `Stop` | `stop:format-typecheck` | Batch quality gate after edits | yes on hook failure |
-| `Stop` | `stop:check-console-log` | Audit modified files for debug logging | warn/error by hook output |
+| Event          | Hook                               | Purpose                                         | Blocking                  |
+| -------------- | ---------------------------------- | ----------------------------------------------- | ------------------------- |
+| `SessionStart` | `session:start`                    | Load bounded prior context and project metadata | no                        |
+| `PreCompact`   | `pre:compact`                      | Save state before compaction                    | no                        |
+| `PreToolUse`   | `pre:observe:continuous-learning`  | Capture tool intent for learning signals        | no                        |
+| `PostToolUse`  | `post:observe:continuous-learning` | Capture tool result for learning signals        | no                        |
+| `PostToolUse`  | `post:session-activity-tracker`    | Record tool and file activity for ECC2 metrics  | no                        |
+| `Stop`         | `stop:format-typecheck`            | Batch quality gate after edits                  | yes on hook failure       |
+| `Stop`         | `stop:check-console-log`           | Audit modified files for debug logging          | warn/error by hook output |
 
 ## Operator Expectations
 
