@@ -1,0 +1,889 @@
+@document.meta
+title: plugin-planning
+description: broad overview over skogai-plugins
+authors: skogix
+categories: plugin skogai skogix ai
+created: 2026-05-03T13:05:42+0100
+updated: 2026-05-03T13:06:27+0100
+version: 1.1.1
+@end
+
+# plugin overview
+
+skogai-marketplace
+  indexes plugins
+  describes capabilities
+  maps compatibility
+  exposes install/discovery metadata
+  does not own plugin internals
+
+skogai-core
+  loads enabled plugins
+  resolves routing/context
+  builds prompt/context bundles
+  dispatches actions
+  observes triggers
+  applies hooks
+  records events/diffs
+
+skogai-plugin-*
+  owns one capability domain
+  provides files/prompts/contracts/actions/hooks
+
+# plugin shape
+  identity
+  description
+  capabilities
+  provided context
+  provided actions
+  provided triggers
+  provided hooks
+  routing hints
+  expected inputs
+  expected outputs
+  compatibility
+  safety constraints
+  lifecycle notes
+
+# plugins answer
+  what are you?
+  what do you provide?
+  when should you be loaded?
+  who should read you?
+  what actions do you expose?
+  what events do you listen to?
+  what hooks do you participate in?
+  what input do you expect?
+  what output do you produce?
+  what should never happen silently?
+
+# plugins roadmap
+skogai
+  core host
+  project runtime
+  context builder
+  plugin loader
+  agent/session glue
+
+skogai-marketplace
+  plugin registry
+  discovery metadata
+  categories/tags
+  compatibility matrix
+  install mapping
+  deprecation notices
+
+skogai-plugin-files
+  file interaction skill
+  file-context routing
+  read/write/patch/move/delete conceptual contracts
+  file safety rules
+
+skogai-plugin-git
+  diff/status/commit/branch/PR concepts
+  git event hooks
+  commit policy/context
+
+skogai-plugin-agents
+  agent persona/context routing
+  role definitions
+  delegation maps
+
+skogai-plugin-docs
+  README/CLAUDE/AGENT/SKOGAI context conventions
+  documentation lifecycle
+  doc freshness/routing rules
+
+skogai-plugin-projects
+  todo/project/task planning
+  project state maps
+  issue-like lifecycle
+
+skogai-plugin-shell
+  shell command intent
+  command safety
+  terminal/session routing
+
+# plugin routers
+README.md
+  human-facing entrypoint
+  what this repo is
+  how to navigate it
+  not agent-specific
+
+SKOGAI.md
+  SkogAI-facing entrypoint
+  project identity
+  plugin/core rules
+  routing map
+  context loading strategy
+
+AGENT.md
+  generic agent instructions
+  role expectations
+  safe defaults
+  what agents may/may not do
+
+CLAUDE.md
+  Claude-specific operational guidance
+  only for Claude quirks/preferences
+  should defer to SKOGAI.md for canonical project rules
+
+CONTEXT.md
+  map of context files
+  what to read for what task
+  freshness rules
+
+ACTIONS.md
+  available action concepts
+  expected input/output types
+  safety levels
+
+TRIGGERS.md
+  observable event types
+  what they mean
+  which plugin owns them
+
+HOOKS.md
+  lifecycle hook map
+  ordering expectations
+  allowed side effects
+
+ROUTES.md
+  task/category → context/action/plugin routing
+
+MARKETPLACE.md
+  marketplace-specific plugin index expectations
+  plugin metadata standards
+  compatibility/deprecation rules
+
+# plugins internal routing
+README.md
+  human overview
+
+SKOGAI.md
+  plugin identity and routing root
+
+AGENT.md
+  generic agent behavior inside this plugin
+
+PLUGIN.md
+  what this plugin provides
+
+ACTIONS.md
+  action contracts
+
+TRIGGERS.md
+  trigger contracts
+
+HOOKS.md
+  hook contracts
+
+CONTEXT.md
+  what context fragments exist and when to load them
+
+SAFETY.md
+  forbidden/sensitive behavior
+
+CHANGELOG.md
+  human-readable evolution
+
+# Router File Responsibilities
+README.md
+
+Human first. It should answer:
+
+What is this?
+Why does it exist?
+Where do I start?
+What is stable?
+What is experimental?
+
+Expected input:
+
+human reader
+repo browser
+new contributor
+
+Expected output:
+
+orientation
+links to deeper files
+no operational authority unless explicitly stated
+SKOGAI.md
+
+Canonical AI-facing root. This should be the “read me first” file for SkogAI-aware agents.
+
+It should answer:
+
+What kind of repo is this?
+What owns what?
+Which files are authoritative?
+Which plugin/context/action maps exist?
+How should context be built?
+What should be ignored unless requested?
+
+Expected input:
+
+agent/session startup
+context builder
+task router
+plugin loader
+
+Expected output:
+
+routing decisions
+context inclusion hints
+authority hierarchy
+plugin identity
+
+Authority level: high.
+
+AGENT.md
+
+Generic agent behavior. This should not be specific to Claude, Goose, Dot, or any one model.
+
+It should answer:
+
+How should an agent behave in this repo?
+What should it avoid?
+What counts as a safe default?
+What must be surfaced as uncertainty?
+What is the preferred output shape?
+
+Expected input:
+
+any agent entering the repo
+task execution context
+review/planning context
+
+Expected output:
+
+behavior constraints
+task etiquette
+safe operation defaults
+
+Authority level: medium-high.
+
+CLAUDE.md
+
+Model/client-specific. This should be allowed to contain quirks, but not project law.
+
+It should answer:
+
+What does Claude need to know specifically?
+What local habits or tool quirks apply?
+What should Claude defer to?
+
+Expected input:
+
+Claude Code
+Claude-like agent runner
+
+Expected output:
+
+Claude-specific guidance
+references to SKOGAI.md / AGENT.md
+
+Authority level: client-specific, below SKOGAI.md.
+
+CONTEXT.md
+
+Context index. This is the map room.
+
+It should answer:
+
+What context fragments exist?
+When should each be loaded?
+What is expensive?
+What is stale?
+What is task-specific?
+What should never be loaded by default?
+
+Expected input:
+
+task description
+repo state
+agent role
+plugin metadata
+
+Expected output:
+
+context bundle plan
+included files
+excluded files
+reason for inclusion/exclusion
+ROUTES.md
+
+Task router. This is where intent becomes navigation.
+
+It should map:
+
+task type → context files
+task type → plugin
+task type → actions
+task type → hooks
+task type → expected output
+
+Example concepts, not implementation:
+
+"modify file"
+  plugin: files
+  context: file skill, safety, patch contract
+  action class: file mutation
+  output: diff summary
+
+"review repo"
+  plugin: docs / git / files
+  context: README, SKOGAI, recent diffs
+  action class: inspect only
+  output: findings
+
+"create plugin"
+  plugin: marketplace / docs
+  context: plugin manifest expectations
+  action class: scaffold / document
+  output: plugin map
+ACTIONS.md
+
+Action catalog. It should describe what actions exist without binding them to a shell script, Python module, API, MCP tool, or cursed duct-tape daemon.
+
+Each action should define:
+
+action id
+purpose
+owner plugin
+safety level
+expected input type
+expected output type
+side-effect class
+requires confirmation?
+records diff/event?
+
+Action side-effect classes:
+
+inspect
+  reads state only
+
+propose
+  produces a plan/diff but changes nothing
+
+mutate
+  changes files/state
+
+external
+  talks to external services
+
+dangerous
+  deletes, overwrites, publishes, grants access, spends money, leaks secrets, etc.
+TRIGGERS.md
+
+Triggers are observed events.
+
+They should not describe what to do in detail. They describe what happened.
+
+Trigger examples:
+
+file.changed
+file.created
+file.deleted
+git.diff.changed
+git.commit.created
+plugin.enabled
+plugin.disabled
+context.requested
+agent.session.started
+agent.session.ended
+task.created
+task.completed
+tool.failed
+safety.warning
+
+Each trigger should define:
+
+trigger id
+source
+payload type
+frequency expectation
+owned by plugin/core
+may invoke hooks?
+default severity
+HOOKS.md
+
+Hooks are lifecycle attachment points.
+
+They answer:
+
+When may plugins participate?
+In what order?
+What can they read?
+What can they change?
+What must they return?
+
+Core hook categories:
+
+before_context_build
+after_context_build
+before_action
+after_action
+before_file_mutation
+after_file_mutation
+before_commit
+after_commit
+on_plugin_load
+on_plugin_enable
+on_plugin_disable
+on_error
+on_task_start
+on_task_end
+
+Hook output should usually be one of:
+
+allow
+deny
+modify_context
+add_warning
+request_confirmation
+emit_event
+suggest_action
+Actions, Triggers, Hooks: Clean Difference
+
+This distinction should stay sacred:
+
+Action
+  An intentional operation.
+
+Trigger
+  An observed event.
+
+Hook
+  A place where behavior can attach to lifecycle.
+
+Example:
+
+User asks to edit a file.
+  action: file.patch
+
+File changes.
+  trigger: file.changed
+
+Before patch is applied.
+  hook: before_file_mutation
+
+After patch is applied.
+  hook: after_file_mutation
+
+That triangle keeps the system from turning into soup with a YAML hat.
+
+Core Action Map
+
+Generic action families:
+
+context actions
+  build context
+  inspect context
+  explain routing
+  summarize available context
+
+plugin actions
+  list plugins
+  inspect plugin
+  enable plugin
+  disable plugin
+  validate plugin
+  resolve plugin capability
+
+file actions
+  inspect file
+  inspect tree
+  read file
+  propose file change
+  apply file change
+  move file
+  delete file
+
+git actions
+  inspect status
+  inspect diff
+  create commit
+  inspect history
+  propose branch/PR notes
+
+agent actions
+  assign task
+  route task
+  request review
+  compare agent outputs
+  record agent decision
+
+marketplace actions
+  search plugins
+  inspect plugin metadata
+  check compatibility
+  install plugin
+  mark deprecated
+
+No implementation needs to exist yet. This is ontology first, machinery later.
+
+Generic File Plugin Map
+
+For skogai-plugin-files, the conceptual shape:
+
+skogai-plugin-files
+  provides:
+    skill: working with files
+    action contracts:
+      file.inspect
+      file.read
+      file.propose_change
+      file.apply_change
+      file.move
+      file.delete
+    triggers:
+      file.created
+      file.changed
+      file.deleted
+      file.moved
+    hooks:
+      before_file_mutation
+      after_file_mutation
+      before_context_build
+      after_context_build
+    context:
+      file safety rules
+      patch preference
+      path explicitness
+      diff-first behavior
+
+Expected action input/output types:
+
+file.inspect
+  input:
+    path or path set
+    inspection depth
+    purpose
+  output:
+    file metadata
+    relevant excerpts
+    uncertainty notes
+
+file.read
+  input:
+    path
+    reason for reading
+  output:
+    content or selected ranges
+    encoding/status notes
+
+file.propose_change
+  input:
+    target path
+    requested change
+    relevant context
+  output:
+    proposed diff
+    explanation of intent
+    risk notes
+
+file.apply_change
+  input:
+    target path
+    approved/proposed change
+    mutation mode
+  output:
+    changed files
+    diff summary
+    validation notes
+
+file.move
+  input:
+    source path
+    destination path
+    reason
+  output:
+    old path
+    new path
+    affected references if known
+
+file.delete
+  input:
+    path
+    reason
+    safety context
+  output:
+    deleted path
+    risk notes
+    recovery hint if available
+Marketplace Map
+
+The marketplace should be mostly metadata.
+
+Conceptually:
+
+skogai-marketplace
+  README.md
+  SKOGAI.md
+  MARKETPLACE.md
+  CONTEXT.md
+  ROUTES.md
+  categories/
+  plugins/
+  compatibility/
+  deprecated/
+
+Plugin records should contain:
+
+plugin id
+name
+summary
+repository
+owner
+status
+version
+category
+capabilities
+dependencies
+compatibility
+safety level
+install target
+context files provided
+actions provided
+triggers provided
+hooks provided
+
+Plugin status values:
+
+experimental
+active
+stable
+deprecated
+archived
+broken
+unknown
+
+Plugin categories:
+
+core
+files
+git
+docs
+agents
+context
+memory
+rag
+shell
+project
+marketplace
+security
+deployment
+ui
+
+Marketplace should not decide how a plugin works. It should decide:
+
+Can this be found?
+Can this be installed?
+Is this compatible?
+Is this deprecated?
+What does it claim to provide?
+Where is the source of truth?
+Authority Hierarchy
+
+When context files disagree, use this order:
+
+user request
+explicit task instructions
+repo-local SKOGAI.md
+repo-local AGENT.md
+plugin-local SKOGAI.md / PLUGIN.md
+plugin-local ACTIONS.md / HOOKS.md / TRIGGERS.md
+README.md
+general docs
+old summaries
+guesses
+
+Claude-specific or client-specific files should never override canonical project files unless the issue is client behavior.
+
+SKOGAI.md > AGENT.md > CLAUDE.md
+Routing Overview
+
+Task comes in:
+
+input task
+  identify task type
+  identify repo type
+  read root router file
+  resolve relevant plugins
+  resolve context files
+  resolve allowed actions
+  check hooks
+  produce plan/output
+  optionally perform action
+  emit event/diff summary
+
+Conceptual route classes:
+
+read-only route
+  inspect, summarize, explain
+
+proposal route
+  inspect, propose diff/change, no mutation
+
+mutation route
+  inspect, apply approved/intended change, report diff
+
+maintenance route
+  refactor, move, split, deprecate, archive
+
+marketplace route
+  index, categorize, validate plugin metadata
+
+agent route
+  delegate, compare, review, vote
+Context Loading Strategy
+
+Default context should be minimal:
+
+always:
+  README.md
+  SKOGAI.md if present
+
+when agent behavior matters:
+  AGENT.md
+
+when Claude/client behavior matters:
+  CLAUDE.md
+
+when plugin work:
+  PLUGIN.md
+  ACTIONS.md
+  HOOKS.md
+  TRIGGERS.md
+  CONTEXT.md
+
+when file mutation:
+  file plugin skill
+  safety rules
+  target files
+  recent diff
+
+when marketplace work:
+  MARKETPLACE.md
+  plugin records
+  compatibility notes
+
+Avoid loading:
+
+all plugin docs
+all historical notes
+all examples
+all generated files
+old context snapshots
+large logs
+irrelevant agent personas
+Event / Diff Philosophy
+
+Every meaningful operation should be narratable as:
+
+event in
+decision made
+diff or no-diff out
+
+If there is no diff, output should still explain the no-diff result:
+
+no change because already satisfied
+no change because unsafe
+no change because missing context
+no change because task was inspect-only
+
+This maps well to your existing “diff as official language” model without forcing every thought into git.
+
+Suggested First Stable Documents
+
+For skogai-marketplace:
+
+README.md
+SKOGAI.md
+MARKETPLACE.md
+PLUGIN-RECORD.md
+ROUTES.md
+CONTEXT.md
+ACTIONS.md
+TRIGGERS.md
+HOOKS.md
+
+For skogai-plugin-files:
+
+README.md
+SKOGAI.md
+PLUGIN.md
+SKILL.md
+ACTIONS.md
+TRIGGERS.md
+HOOKS.md
+SAFETY.md
+CONTEXT.md
+
+For root skogai:
+
+README.md
+SKOGAI.md
+AGENT.md
+CONTEXT.md
+ROUTES.md
+PLUGINS.md
+ACTIONS.md
+TRIGGERS.md
+HOOKS.md
+Clean Initial Scope
+
+I would avoid building “the system” at first. Define only the maps.
+
+First pass:
+
+1. Root context file conventions
+2. Plugin identity model
+3. Marketplace plugin record model
+4. Action/trigger/hook vocabulary
+5. File plugin as first example plugin
+
+Second pass:
+
+1. Add compatibility/deprecation model
+2. Add plugin categories
+3. Add context routing rules
+4. Add safety levels
+5. Add agent/client-specific router files
+
+Third pass:
+
+1. Loader implementation
+2. Validation
+3. CLI commands
+4. Marketplace indexing
+5. Plugin install/update flow
+
+Current best target shape:
+
+skogai
+  owns runtime and routing
+
+skogai-marketplace
+  owns discovery and metadata
+
+skogai-plugin-files
+  owns the first extracted skill/capability
+
+every repo
+  owns a SKOGAI.md router file
+
+every plugin
+  owns PLUGIN.md, ACTIONS.md, TRIGGERS.md, HOOKS.md, CONTEXT.md
+
+every action
+  has typed input/output expectations
+
+every trigger
+  describes an observed event
+
+every hook
+  describes a lifecycle attachment point
