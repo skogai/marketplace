@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/usr/bin/env bash
 # skogai-jq.sh — Shared hook library for JSON I/O, debug logging, and output helpers.
 #
 # Usage: source this at the top of any hook script:
@@ -24,9 +24,16 @@ set -euo pipefail
 SKOGAI_JQ_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKOGAI_JQ_TRANSFORM_DIR="${SKOGAI_JQ_SCRIPT_DIR}/../skogai-jq"
 
+# INPUT=$1
+# if jq -e '.' "$INPUT"; then
+#     HOOK_INPUT=$(cat)
+# else
+#     HOOK_INPUT=$(cat $INPUT)
+# fi
+
 # --- Init: read stdin, extract common fields ---
-HOOK_INPUT_FILE="$1"
-HOOK_INPUT=$(cat "$HOOK_INPUT_FILE")
+HOOK_INPUT=$(cat)
+HOOK_INPUT="${HOOK_INPUT:-{}}"
 HOOK_SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id // "unknown"')
 HOOK_PROMPT=$(echo "$HOOK_INPUT" | jq -r '.prompt // "EMPTY_PROMPT"')
 HOOK_EVENT=$(echo "$HOOK_INPUT" | jq -r '.hook_event_name // "Unknown"')

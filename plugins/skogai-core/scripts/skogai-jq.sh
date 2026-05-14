@@ -187,5 +187,3 @@ skogai_jq_bool() {
     jq -n --arg value "$value" '{value: $value}' |
         jq --arg path "value" -f "$transform_file"
 }
-
-echo "$HOOK_INPUT"
