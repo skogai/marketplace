@@ -1,0 +1,41 @@
+{
+  "$id": "https://skog.ai/schemas/skogchat-message.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skogchat unified message schema",
+  "type": ["object", "null"],
+  "description": "Unified message object returned by transforms like to-skogchat. Null is allowed for skipped non-message events.",
+  "oneOf": [
+    {
+      "type": "null"
+    },
+    {
+      "type": "object",
+      "required": ["eid", "from", "to", "content", "created-at", "parent"],
+      "properties": {
+        "eid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "from": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content": {
+          "type": "string"
+        },
+        "created-at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "parent": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "format-message",
+    "path": "format-message.json",
+    "tags": [
+      "string",
+      "format",
+      "template",
+      "message",
+      "interpolation"
+    ],
+    "description": "Format message object as string using template with {field} placeholders"
+  },
+  {
+    "name": "schema-validation",
+    "path": "schema-validation.json",
+    "tags": [
+      "validation",
+      "schema",
+      "type",
+      "required",
+      "check",
+      "verify"
+    ],
+    "description": "Comprehensive JSON schema validation with type checking and required field validation"
+  },
+  {
+    "name": "validate-message-schema",
+    "path": "validate-message-schema.json",
+    "tags": [
+      "validation",
+      "message",
+      "schema",
+      "check",
+      "chat"
+    ],
+    "description": "Validate that an object matches the standard message schema (role, content, timestamp)"
+  },
+  {
+    "name": "to-skogchat",
+    "path": "to-skogchat.json",
+    "tags": [
+      "convert",
+      "skogchat",
+      "claude",
+      "chat",
+      "message",
+      "format"
+    ],
+    "description": "Convert Claude Code message to skogchat unified message format"
+  }
+]
