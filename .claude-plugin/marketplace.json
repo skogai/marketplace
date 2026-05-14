@@ -36,6 +36,13 @@
       "description": "jq",
       "source": "./plugins/skogai-jq",
       "strict": false
+    },
+    {
+      "name": "skogai-learning",
+      "version": "0.1.0",
+      "description": "Continuous learning — extracts reusable patterns from sessions and saves them as skills",
+      "source": "./plugins/skogai-learning",
+      "strict": false
     }
   ]
 }
