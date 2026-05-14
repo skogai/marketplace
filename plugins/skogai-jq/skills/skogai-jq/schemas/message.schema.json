@@ -1,0 +1,21 @@
+{
+  "$id": "https://skog.ai/schemas/message.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Standard message schema",
+  "type": "object",
+  "required": ["role", "content"],
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": ["user", "assistant", "system"]
+    },
+    "content": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
