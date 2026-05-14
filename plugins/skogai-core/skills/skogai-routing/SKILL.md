@@ -45,9 +45,11 @@ ask a question only when two routes would produce meaningfully different files.
 | add helper scripts or checks     | `workflows/write-script.md`          |
 | create tests for a hook          | `workflows/write-hook-tests.md`      |
 | audit framework structure        | `workflows/audit-framework.md`       |
-| understand the core model        | `references/routing-framework.md`    |
-| choose xml tags                  | `references/xml-tags.md`             |
-| use naming and ownership rules   | `references/naming-and-ownership.md` |
+| understand the core model        | `references/routing-framework.md`       |
+| choose xml tags                  | `references/xml-tags.md`                |
+| use naming and ownership rules   | `references/naming-and-ownership.md`    |
+| understand @-linking mechanics   | `references/at-linking.md`              |
+| apply claude.md routing rules    | `references/claude-md-routing-rules.md` |
 
 </routing>
 
