@@ -8,10 +8,6 @@ setup() {
 }
 
 @test "test" {
-    run echo test
-    assert_output "test"
-}
 
-@test "fail" {
-    fail "lol"
+    assert_equal "$HOOK_SESSION_ID" "unknown"
 }
