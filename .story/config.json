@@ -1,0 +1,14 @@
+{
+  "features": {
+    "handovers": true,
+    "issues": true,
+    "reviews": true,
+    "roadmap": true,
+    "tickets": true
+  },
+  "language": "shell",
+  "project": "skogai marketplace",
+  "schemaVersion": 1,
+  "type": "plugin-marketplace",
+  "version": 2
+}
