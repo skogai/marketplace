@@ -120,3 +120,44 @@ NODE
     assert_success
     assert_output ""
 }
+
+@test "generated hook commands use the plural marketplace plugin layout" {
+    run node - "$PLUGIN_ROOT" <<'NODE'
+const fs = require('fs');
+const path = require('path');
+
+const pluginRoot = process.argv[2];
+const manifest = JSON.parse(fs.readFileSync(path.join(pluginRoot, 'hooks/hooks.json'), 'utf8'));
+const offenders = [];
+
+function visit(value, hookId = '<unknown>') {
+  if (Array.isArray(value)) {
+    value.forEach((item) => visit(item, hookId));
+    return;
+  }
+  if (!value || typeof value !== 'object') {
+    return;
+  }
+
+  const currentHookId = typeof value.id === 'string' ? value.id : hookId;
+  if (typeof value.command === 'string') {
+    if (value.command.includes("'plugins','marketplace'") || value.command.includes('\\"marketplace\\"')) {
+      offenders.push(currentHookId);
+    }
+  }
+
+  Object.values(value).forEach((item) => visit(item, currentHookId));
+}
+
+visit(manifest);
+
+for (const hookId of offenders.sort()) {
+  console.log(hookId);
+}
+
+process.exit(offenders.length === 0 ? 0 : 1);
+NODE
+
+    assert_success
+    assert_output ""
+}
