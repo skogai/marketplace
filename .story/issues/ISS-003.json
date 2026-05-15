@@ -1,0 +1,19 @@
+{
+  "components": [
+    "git",
+    "submodule"
+  ],
+  "discoveredDate": "2026-05-15",
+  "id": "ISS-003",
+  "impact": "git status reports a modified .skogai submodule before the Storybloq and codex-hooks changes. The change may be intentional, but it should be reviewed before committing or pushing marketplace work so unrelated submodule state is not accidentally included or hidden.",
+  "location": [
+    ".skogai"
+  ],
+  "phase": null,
+  "relatedTickets": [],
+  "resolution": null,
+  "resolvedDate": null,
+  "severity": "low",
+  "status": "open",
+  "title": "Investigate dirty .skogai submodule state"
+}

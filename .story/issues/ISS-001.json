@@ -1,0 +1,21 @@
+{
+  "components": [
+    "docs",
+    "codex-hooks"
+  ],
+  "discoveredDate": "2026-05-15",
+  "id": "ISS-001",
+  "impact": "The verified repo-local Codex baseline uses [features] hooks = true, but docs/codex/hooks.md still contains codex_hooks = true in the checked-in snapshot. That can mislead future hook setup work if someone follows the stale snapshot instead of docs/codex-marketplace.md and .codex/config.toml.",
+  "location": [
+    "docs/codex/hooks.md",
+    "docs/codex-marketplace.md",
+    ".codex/config.toml"
+  ],
+  "phase": null,
+  "relatedTickets": [],
+  "resolution": null,
+  "resolvedDate": null,
+  "severity": "low",
+  "status": "open",
+  "title": "Codex hook docs snapshot still references obsolete feature key"
+}

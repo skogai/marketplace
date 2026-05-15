@@ -1,0 +1,22 @@
+{
+  "components": [
+    "codex-hooks",
+    "plugins/codex-hooks",
+    "codex-plugin-cache"
+  ],
+  "discoveredDate": "2026-05-15",
+  "id": "ISS-002",
+  "impact": "The repo-local codex-hooks plugin now declares a basic hook manifest and log-only hook entrypoint, but the active Codex plugin cache may still contain the older plugin payload until the plugin is refreshed/reinstalled and the client is restarted. Without that activation step, Codex may expose the smoke skill while not running the new hook manifest.",
+  "location": [
+    "plugins/codex-hooks/.codex-plugin/plugin.json",
+    "plugins/codex-hooks/hooks.json",
+    "plugins/codex-hooks/hooks/log-event.sh"
+  ],
+  "phase": null,
+  "relatedTickets": [],
+  "resolution": null,
+  "resolvedDate": null,
+  "severity": "medium",
+  "status": "open",
+  "title": "Codex hook changes need plugin cache activation"
+}
