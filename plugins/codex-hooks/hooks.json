@@ -1,17 +1,76 @@
 {
   "hooks": {
-    "PreToolUse": [
+    "SessionStart": [
       {
-        "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
-            "command": ""
+            "command": "./hooks/log-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging Codex session start"
           }
-        ],
-        "description": "Consolidated Bash preflight dispatcher for quality, tmux, push, and GateGuard checks",
-        "id": "pre:bash:dispatcher"
+        ]
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./hooks/log-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging Codex prompt"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./hooks/log-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging Codex tool preflight"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./hooks/log-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging Codex permission request"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./hooks/log-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging Codex tool completion"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./hooks/log-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging Codex stop"
+          }
+        ]
+      }
+    ]
   }
-}
 }

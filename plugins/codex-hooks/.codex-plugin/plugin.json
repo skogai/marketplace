@@ -16,6 +16,7 @@
     "marketplace"
   ],
   "skills": "./skills/",
+  "hooks": "./hooks.json",
   "interface": {
     "displayName": "Codex Hooks",
     "shortDescription": "Smoke-test plugin for Codex hook marketplace support.",

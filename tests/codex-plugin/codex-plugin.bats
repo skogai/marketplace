@@ -33,6 +33,35 @@ teardown() {
     assert_success
 }
 
+@test "codex-hooks plugin declares a valid hooks manifest with existing commands" {
+    run bash -c "
+        hooks_path=\$(jq -r '.hooks' '$PLUGIN_DIR/.codex-plugin/plugin.json')
+        test \"\$hooks_path\" = './hooks.json'
+        jq -e . '$PLUGIN_DIR/hooks.json' >/dev/null
+        jq -r '.hooks[][]?.hooks[]?.command' '$PLUGIN_DIR/hooks.json' |
+          while read -r command; do
+            test -x '$PLUGIN_DIR/'\"\${command#./}\"
+          done
+    "
+    assert_success
+}
+
+@test "basic codex hook command logs fixture payloads without stdout" {
+    local log_file="$TEST_DIR/codex-hooks.jsonl"
+
+    run bash -c "
+        for fixture in '$PROJECT_ROOT/tests/fixtures/codex-hooks'/*.json; do
+          SKOGAI_CODEX_HOOK_LOG='$log_file' '$PLUGIN_DIR/hooks/log-event.sh' < \"\$fixture\"
+        done
+    "
+    assert_success
+    assert_output_equals ""
+
+    run bash -c "jq -s 'length' '$log_file'"
+    assert_success
+    assert_output_equals "8"
+}
+
 @test "Codex CLI can add this repo as a local marketplace" {
     skip_if_missing codex
     run env HOME="$CODEX_TEST_HOME" codex plugin marketplace add "$PROJECT_ROOT"

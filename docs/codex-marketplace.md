@@ -36,6 +36,11 @@ The Codex marketplace exposes a repo-local smoke-test plugin:
 ```
 
 The plugin payload lives at `plugins/codex-hooks` and includes `.codex-plugin/plugin.json`.
+It exposes:
+
+- `skills/` for the smoke-test skill
+- `hooks.json` for the basic Codex hook manifest
+- `hooks/log-event.sh` as the initial log-only hook command
 
 ## Repo-Local Codex Baseline
 
@@ -79,5 +84,10 @@ The repeatable Bats smoke test is:
 ```bash
 bats tests/codex-plugin/codex-plugin.bats
 ```
+
+That suite also validates the basic hook setup: the plugin manifest points at
+`hooks.json`, every hook command exists and is executable, and the log-only hook
+entrypoint can process the checked-in Codex hook fixtures without writing
+stdout.
 
 The current Codex CLI exposes marketplace add/upgrade/remove commands, but not a standalone plugin install command in `codex plugin --help`. The smoke test therefore verifies both layers separately: it adds this repo as a local marketplace, then places `plugins/codex-hooks` in the temporary Codex plugin cache and enables `codex-hooks@skogai` to confirm that Codex loads the plugin skill.
