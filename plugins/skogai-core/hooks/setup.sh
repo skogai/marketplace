@@ -41,12 +41,14 @@ report=""
 
 # --- init: first install ---
 if [[ "$HOOK_TRIGGER" == "init" ]]; then
-    report="skogai-core initialised."
+    report="downloading latest official anthropic claude code documentation to: $CLAUDE_PLUGIN_ROOT/docs/claude-code."
+    "./scripts/fetch-claude-code-docs.sh"
 fi
 
 # --- maintenance: scheduled cleanup / update ---
 if [[ "$HOOK_TRIGGER" == "maintenance" ]]; then
-    report="skogai-core maintenance run."
+    report="updating $CLAUDE_PLUGIN_ROOT/docs/claude-code documentation."
+    "./scripts/fetch-claude-code-docs.sh"
 fi
 
 # --- Output context if we have anything to say ---
