@@ -1,10 +1,10 @@
-# agents.md - skogai-routing
+# AGENTS.md - skogai-routing
 
-## purpose
+## Purpose
 
-this repo defines a small routing framework for agent-facing guidance. treat `skill.md` as the canonical entrypoint.
+This repo defines a small routing framework for agent-facing guidance. Treat `SKILL.md` as the canonical entrypoint.
 
-## structure
+## Structure
 
 ```
 skogai-routing/
@@ -13,14 +13,15 @@ skogai-routing/
 ├── references/
 ├── templates/
 ├── scripts/
+└── old-skill/
 ```
 
-## rules
+## Rules
 
-- keep `SKILL.md` compact and route outward.
-- treat `SKILL.md`, `AGENTS.md`, `CLAUDE.md`, and simple-skill templates as routing-file variants.
-- put procedures in `workflows/`.
-- put durable concepts in `references/`.
-- put output shapes in `templates/`.
-- put small repeatable checks in `scripts/`.
-- preserve `old-skill/` as source material unless explicitly asked to delete it.
+- Keep `SKILL.md` compact and route outward.
+- Treat `SKILL.md`, `AGENTS.md`, `CLAUDE.md`, and simple-skill templates as routing-file variants.
+- Put procedures in `workflows/`.
+- Put durable concepts in `references/`.
+- Put output shapes in `templates/`.
+- Put small repeatable checks in `scripts/`.
+- Preserve `old-skill/` as source material unless explicitly asked to delete it.

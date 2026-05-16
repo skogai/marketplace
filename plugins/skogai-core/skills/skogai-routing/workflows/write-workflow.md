@@ -1,17 +1,17 @@
 <workflow>
 
 <objective>
-create a workflow endpoint for ordered work.
+Create a workflow endpoint for ordered work.
 </objective>
 
 <steps>
 
-1. name the workflow with a verb-noun filename.
-2. state the workflow objective.
-3. write the smallest reliable sequence of steps.
-4. link references only when the workflow needs them.
-5. add validation checks that prove the sequence worked.
-6. keep examples short or move large examples to templates.
+1. Name the workflow with a verb-noun filename.
+2. State the workflow objective.
+3. Write the smallest reliable sequence of steps.
+4. Link references only when the workflow needs them.
+5. Add validation checks that prove the sequence worked.
+6. Keep examples short or move large examples to templates.
 
 </steps>
 
@@ -26,9 +26,9 @@ create a workflow endpoint for ordered work.
 
 <validation>
 
-- the workflow tells the agent what to do in order.
-- the workflow does not become a broad reference document.
-- the route into the workflow is clear from a router.
+- The workflow tells the agent what to do in order.
+- The workflow does not become a broad reference document.
+- The route into the workflow is clear from a router.
 
 </validation>
 
