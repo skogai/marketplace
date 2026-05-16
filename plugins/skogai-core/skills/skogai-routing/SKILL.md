@@ -43,6 +43,9 @@ ask a question only when two routes would produce meaningfully different files.
 | create a reference endpoint      | `workflows/write-reference.md`       |
 | create or revise templates       | `workflows/write-template.md`        |
 | add helper scripts or checks     | `workflows/write-script.md`          |
+| list all caps router files       | `scripts/list-caps-files.sh`         |
+| list @-links in routing files    | `scripts/list-at-links.sh`           |
+| list dotdirs needing @-links     | `scripts/list-dotdirs.sh`            |
 | create tests for a hook          | `workflows/write-hook-tests.md`      |
 | audit framework structure        | `workflows/audit-framework.md`       |
 | understand the core model        | `references/routing-framework.md`       |
