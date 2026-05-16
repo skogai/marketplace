@@ -1,0 +1,26 @@
+Codemap update report — 2026-05-16
+===================================
+
+Scan summary
+- Project type: Claude Code/Codex plugin marketplace monorepo.
+- Files scanned: 2806 tracked files (excluding ignored docs snapshots under docs/claude-code/ and docs/codex/).
+- Generated codemaps: docs/CODEMAPS/architecture.md, backend.md, frontend.md, data.md, dependencies.md.
+
+Diff detection
+- Previous codemaps: none found in docs/CODEMAPS/ or .reports/codemaps/.
+- Diff percentage: N/A (initial baseline). No overwrite approval required.
+
+Files added/removed/modified since last scan
+- Initial baseline only; no prior codemap scan metadata exists for comparison.
+- Added by this scan: 5 codemap files and this report.
+
+New dependencies detected
+- Initial baseline: Bash, Node.js, Python 3, jq, bats, Git, Claude Code CLI, Codex CLI.
+- No package-manager manifests or lockfiles detected.
+
+Architecture changes
+- Initial baseline documents catalog-driven plugin installation, event-driven hook dispatch, skogai-jq JSON helper flow, Codex smoke plugin, and file-backed learning/lesson prototypes.
+
+Staleness warnings
+- No tracked docs older than 90 days detected by filesystem mtime during this scan.
+- docs/claude-code/ and docs/codex/ are gitignored snapshots; refresh with scripts/fetch-hook-docs.sh when hook runtime docs are needed.
