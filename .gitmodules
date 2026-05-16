@@ -14,3 +14,7 @@
 	path = tests/test_helper/bats-support
 	url = https://github.com/ztombol/bats-support
     branch = master
+[submodule "plugins/skogai-core/skills/skogai-atomic"]
+	path = plugins/skogai-core/skills/skogai-atomic
+	url = git@github.com:skogai/skogai-atomic.git
+    branch = master
