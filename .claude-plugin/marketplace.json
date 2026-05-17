@@ -43,6 +43,13 @@
       "description": "Continuous learning — extracts reusable patterns from sessions and saves them as skills",
       "source": "./plugins/skogai-learning",
       "strict": false
+    },
+    {
+      "name": "skogai-codebase",
+      "version": "0.1.0",
+      "description": "show a codebase as  it should be displayed",
+      "source": "./plugins/skogai-codebase",
+      "strict": false
     }
   ]
 }
