@@ -35,21 +35,24 @@ Ask a question only when two routes would produce meaningfully different files.
 
 <routing>
 
-| intent                           | endpoint                                |
-| -------------------------------- | --------------------------------------- |
-| Decide where guidance belongs    | `workflows/route-information.md`        |
-| Create or rewrite a routing file | `workflows/write-routing-file.md`       |
-| Create a workflow endpoint       | `workflows/write-workflow.md`           |
-| Create a reference endpoint      | `workflows/write-reference.md`          |
-| Create or revise templates       | `workflows/write-template.md`           |
-| Add helper scripts or checks     | `workflows/write-script.md`             |
-| Audit framework structure        | `workflows/audit-framework.md`          |
-| Create tests for a hook          | `workflows/write-hook-tests.md`         |
-| Understand @-linking mechanics   | `references/at-linking.md`              |
-| Apply claude.md routing rules    | `references/claude-md-routing-rules.md` |
-| Understand the core model        | `references/routing-framework.md`       |
-| Choose XML tags                  | `references/xml-tags.md`                |
-| Use naming and ownership rules   | `references/naming-and-ownership.md`    |
+| intent                           | endpoint                             |
+| -------------------------------- | ------------------------------------ |
+| decide where guidance belongs    | `workflows/route-information.md`     |
+| create or rewrite a routing file | `workflows/write-routing-file.md`    |
+| create a workflow endpoint       | `workflows/write-workflow.md`        |
+| create a reference endpoint      | `workflows/write-reference.md`       |
+| create or revise templates       | `workflows/write-template.md`        |
+| add helper scripts or checks     | `workflows/write-script.md`          |
+| list all caps router files       | `scripts/list-caps-files.sh`         |
+| list @-links in routing files    | `scripts/list-at-links.sh`           |
+| list dotdirs needing @-links     | `scripts/list-dotdirs.sh`            |
+| create tests for a hook          | `workflows/write-hook-tests.md`      |
+| audit framework structure        | `workflows/audit-framework.md`       |
+| understand the core model        | `references/routing-framework.md`       |
+| choose xml tags                  | `references/xml-tags.md`                |
+| use naming and ownership rules   | `references/naming-and-ownership.md`    |
+| understand @-linking mechanics   | `references/at-linking.md`              |
+| apply claude.md routing rules    | `references/claude-md-routing-rules.md` |
 
 </routing>
 

@@ -54,6 +54,27 @@ permission rules:
 **never assume a subagent can "just look it up."** no @-link = no access, with no error to indicate why.
 </rules_for_agents>
 
+<directory_vs_file_links>
+@-linking a **directory** differs from @-linking a **file**:
+
+- directory @-link → shows the listing + grants permission to that path; does NOT load file contents transitively
+- file @-link → injects the full file contents into context
+
+the transitive bloat rule (a router @-linking a content-loader that @-links 10 files) applies to **file chains**, not to directory links.
+
+**always @-link dotfile directories.** dotfiles and dotfolders (`.skogai/`, `.claude/`, etc.) are hidden by default — agents cannot discover or access them unless @-linked. the @-link does two things: reveals "this exists" and grants permission to an otherwise-unreachable path.
+
+**always @-link related router files (CAPS.md files).** when a routing file has related sub-routers, @-link them directly — the router chain is the navigation mechanism:
+
+```
+@CLAUDE.md
+@.skogai/CLAUDE.md
+@plugins/skogai-core/CLAUDE.md
+```
+
+plain paths are for content files. router files and dotdirs get @-links.
+</directory_vs_file_links>
+
 <known_unknowns>
 - **recursive depth:** works six levels deep (last confirmed)
 - **memory files:** they only "pre-load" x amounts of rows, hopefully injects @-links if space exists. also the memory folder itself already have the permissions needed.
