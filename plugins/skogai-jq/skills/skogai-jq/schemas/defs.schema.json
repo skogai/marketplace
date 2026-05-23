@@ -5,7 +5,7 @@
   "$defs": {
     "type": {
       "type": "string",
-      "enum": ["router", "workflow", "reference", "template", "script", "lesson", "pattern", "decision"]
+      "enum": ["router", "workflow", "reference", "template", "script", "lesson", "pattern", "decision", "list"]
     },
     "variant": {
       "type": "string",
@@ -56,7 +56,7 @@
       "properties": {
         "kind": {
           "type": "string",
-          "enum": ["wiki", "path", "heading", "url", "asset", "anchor"]
+          "enum": ["wiki", "path", "heading", "url", "asset", "anchor", "origin"]
         },
         "target": {
           "type": "string",
@@ -64,6 +64,35 @@
         },
         "label": {
           "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "listEntry": {
+      "type": "object",
+      "required": ["type", "checked", "message"],
+      "properties": {
+        "type": {
+          "const": "entry"
+        },
+        "checked": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "origin": {
+          "$ref": "#/$defs/link"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
         }
       },
       "additionalProperties": false
