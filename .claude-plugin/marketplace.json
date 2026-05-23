@@ -17,6 +17,13 @@
       "strict": false
     },
     {
+      "name": "skogai-chat",
+      "version": "0.0.2",
+      "description": "chaaaat",
+      "source": "./plugins/skogai-chat",
+      "strict": false
+    },
+    {
       "name": "skogai-core",
       "version": "0.0.2",
       "description": "the absolute core/basics",
