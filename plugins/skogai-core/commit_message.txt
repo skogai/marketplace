@@ -1,1 +1,0 @@
-Add Codex hook support with basic hooks manifest and log-only hook command

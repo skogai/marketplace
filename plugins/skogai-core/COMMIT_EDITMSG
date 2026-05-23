@@ -1,5 +1,0 @@
-Refactor plugin catalog and routing
-
-Update AGENTS.md and remove redundant content
-Add new scripts for listing caps router files, @-links in routing files, and dotdirs needing @-links
-Update at-linking documentation for directories and files
