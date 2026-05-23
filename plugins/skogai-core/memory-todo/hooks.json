@@ -1,4 +1,4 @@
-{L
+{
   "description": "Reference lifecycle hook definitions for ECC memory persistence. The production hook graph is hooks/hooks.json.",
   "events": [
     {
