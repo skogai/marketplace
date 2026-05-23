@@ -68,22 +68,23 @@
       },
       "additionalProperties": false
     },
+    "entryStatus": {
+      "type": "string",
+      "enum": ["open", "done", "complete", "in-progress", "delegated", "cancelled"]
+    },
     "listEntry": {
       "type": "object",
-      "required": ["type", "checked", "message"],
+      "required": ["type", "status", "message"],
       "properties": {
         "type": {
           "const": "entry"
         },
-        "checked": {
-          "type": "boolean"
+        "status": {
+          "$ref": "#/$defs/entryStatus"
         },
         "message": {
           "type": "string",
           "minLength": 1
-        },
-        "path": {
-          "$ref": "#/$defs/path"
         },
         "origin": {
           "$ref": "#/$defs/link"
