@@ -25,28 +25,28 @@
     },
     {
       "name": "skogai-core",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "description": "the absolute core/basics",
       "source": "./plugins/skogai-core",
       "strict": false
     },
     {
       "name": "skogai-plugin",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "description": "skogai-plugin",
       "source": "./plugins/skogai-plugin",
       "strict": false
     },
     {
       "name": "skogai-jq",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "description": "jq",
       "source": "./plugins/skogai-jq",
       "strict": false
     },
     {
       "name": "skogai-learning",
-      "version": "0.1.0",
+      "version": "0.0.1",
       "description": "Continuous learning — extracts reusable patterns from sessions and saves them as skills",
       "source": "./plugins/skogai-learning",
       "strict": false
