@@ -5,7 +5,7 @@
   "$defs": {
     "type": {
       "type": "string",
-      "enum": ["router", "workflow", "reference", "template", "script", "lesson", "pattern", "decision", "list"]
+      "enum": ["router", "workflow", "reference", "template", "script", "lesson", "pattern", "principle", "decision", "list"]
     },
     "variant": {
       "type": "string",
@@ -71,6 +71,10 @@
     "entryStatus": {
       "type": "string",
       "enum": ["open", "done", "complete", "in-progress", "delegated", "cancelled"]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": ["accepted", "rejected", "superseded", "deprecated"]
     },
     "listEntry": {
       "type": "object",

@@ -1,8 +1,8 @@
 {
   "$id": "https://skog.ai/schemas/list.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Append-only checklist (.list)",
-  "description": "One item per row, append-only. Serializes to `- [ ] <message>` / `- [x] <message>`. Each item carries a source path, optional parent action, and optional links for traceability.",
+  "title": "Immutable directed sequence (.list)",
+  "description": "A linked list of immutable entries. Items are never mutated or removed — only appended. Array order is the direction: position carries meaning. Supports two uses: append-only log (tracking over time) and ordered ranking (position = rank). Serializes to `- [ ] <message>` / `- [x] <message>`. Each entry carries an optional origin link and traceability links.",
   "type": "array",
   "items": {
     "$ref": "defs.schema.json#/$defs/listEntry"

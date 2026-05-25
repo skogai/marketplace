@@ -1,0 +1,72 @@
+{
+  "$id": "https://skog.ai/schemas/decision.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Architectural decision record",
+  "description": "Records a specific choice made at a point in time: what was decided, who decided it, and why. Past tense, closed. A decision may cite a principle as its premise. Distinguished from a principle: a decision answers 'why did we do X in this context'; a principle answers 'what do we reason from in all contexts.'",
+  "allOf": [
+    { "$ref": "document.schema.json" },
+    {
+      "properties": {
+        "type": { "const": "decision" },
+        "frontmatter": {
+          "type": "object",
+          "required": ["decision", "date", "status", "deciders"],
+          "properties": {
+            "type": { "const": "decision" },
+            "decision": {
+              "type": "string",
+              "minLength": 1,
+              "description": "One-liner statement of what was decided — machine-extractable without reading the body."
+            },
+            "date": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+              "description": "Date the decision was made (YYYY-MM-DD)."
+            },
+            "status": {
+              "$ref": "defs.schema.json#/$defs/decisionStatus"
+            },
+            "deciders": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+              ],
+              "description": "Who made or ratified this decision."
+            },
+            "principle": {
+              "type": "string",
+              "description": "Optional permalink of the principle this decision applies or extends."
+            }
+          }
+        },
+        "sections": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": { "name": { "const": "context" } },
+                "required": ["name"]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": { "name": { "const": "decision" } },
+                "required": ["name"]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": { "name": { "const": "rationale" } },
+                "required": ["name"]
+              }
+            }
+          ]
+        }
+      },
+      "required": ["type", "frontmatter", "sections"]
+    }
+  ]
+}

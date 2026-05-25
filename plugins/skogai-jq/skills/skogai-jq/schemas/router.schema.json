@@ -1,6 +1,8 @@
 {
   "$id": "https://skog.ai/schemas/router.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structured choice point",
+  "description": "A decision hub: presents at least two named branches, each with a condition and a destination. Not a table of contents — every branch is a choice with consequences. The `objective` section states what is being decided. The `routing` section enumerates branches: condition → destination.",
   "allOf": [
     { "$ref": "document.schema.json" },
     {
