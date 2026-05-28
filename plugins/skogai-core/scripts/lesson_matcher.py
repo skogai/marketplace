@@ -28,7 +28,9 @@ try:
 
     def _parse_yaml(text):
         return _yaml.safe_load(text) or {}
+
 except ImportError:
+
     def _parse_yaml(text):
         return _fallback_parse_yaml(text)
 
@@ -57,7 +59,7 @@ def _fallback_parse_yaml(text):
             continue
 
         # Match key: value at current indent
-        m = re.match(r'^(\s*)([a-zA-Z_][a-zA-Z0-9_]*):\s*(.*)', line)
+        m = re.match(r"^(\s*)([a-zA-Z_][a-zA-Z0-9_]*):\s*(.*)", line)
         if not m:
             i += 1
             continue
@@ -89,7 +91,7 @@ def _fallback_parse_yaml(text):
                 # Block list
                 items = []
                 for cl in child_lines:
-                    lm = re.match(r'\s*-\s*(.*)', cl)
+                    lm = re.match(r"\s*-\s*(.*)", cl)
                     if lm:
                         items.append(_parse_value(lm.group(1).strip()))
                 result[key] = items
@@ -123,7 +125,9 @@ def _parse_value(s):
     if s.lower() == "false":
         return False
     # Quoted string
-    if (s.startswith('"') and s.endswith('"')) or (s.startswith("'") and s.endswith("'")):
+    if (s.startswith('"') and s.endswith('"')) or (
+        s.startswith("'") and s.endswith("'")
+    ):
         return s[1:-1]
     return s
 
@@ -149,7 +153,7 @@ def parse_lesson(content):
         return {}, content
 
     fm_text = content[3:end].strip()
-    body = content[end + 3:].strip()
+    body = content[end + 3 :].strip()
 
     try:
         meta = _parse_yaml(fm_text)
@@ -162,7 +166,7 @@ def parse_lesson(content):
 def extract_title(body):
     """Extract the first # heading from body."""
     for line in body.split("\n"):
-        m = re.match(r'^#\s+(.+)', line)
+        m = re.match(r"^#\s+(.+)", line)
         if m:
             return m.group(1).strip()
     return "Untitled"
@@ -171,6 +175,7 @@ def extract_title(body):
 # ---------------------------------------------------------------------------
 # Discovery
 # ---------------------------------------------------------------------------
+
 
 def discover_lessons(dirs):
     """Find all lesson .md files in given directories.
@@ -198,18 +203,22 @@ def discover_lessons(dirs):
                 continue
 
             meta, body = parse_lesson(content)
-            match_block = meta.get("match", {}) if isinstance(meta.get("match"), dict) else {}
+            match_block = (
+                meta.get("match", {}) if isinstance(meta.get("match"), dict) else {}
+            )
 
-            lessons.append({
-                "path": str(md_file),
-                "meta": meta,
-                "body": body,
-                "title": extract_title(body),
-                "keywords": match_block.get("keywords", []),
-                "tools": match_block.get("tools", []),
-                "always_apply": bool(meta.get("always_apply", False)),
-                "status": meta.get("status", "active"),
-            })
+            lessons.append(
+                {
+                    "path": str(md_file),
+                    "meta": meta,
+                    "body": body,
+                    "title": extract_title(body),
+                    "keywords": match_block.get("keywords", []),
+                    "tools": match_block.get("tools", []),
+                    "always_apply": bool(meta.get("always_apply", False)),
+                    "status": meta.get("status", "active"),
+                }
+            )
 
     return lessons
 
@@ -217,6 +226,7 @@ def discover_lessons(dirs):
 # ---------------------------------------------------------------------------
 # Scoring
 # ---------------------------------------------------------------------------
+
 
 def score_keywords(keywords, text):
     """Score keyword matches against text. +1.0 per keyword hit (case-insensitive)."""
@@ -246,6 +256,7 @@ def score_tools(lesson_tools, tool_name):
 # Matching
 # ---------------------------------------------------------------------------
 
+
 def match_lessons(lessons, text=None, tool=None, mode="prompt", max_results=None):
     """Match lessons based on mode.
 
@@ -268,36 +279,42 @@ def match_lessons(lessons, text=None, tool=None, mode="prompt", max_results=None
 
         if mode == "session-start":
             if lesson["always_apply"]:
-                results.append({
-                    "title": lesson["title"],
-                    "body": lesson["body"],
-                    "score": 1.0,
-                    "always_apply": True,
-                    "path": lesson["path"],
-                })
+                results.append(
+                    {
+                        "title": lesson["title"],
+                        "body": lesson["body"],
+                        "score": 1.0,
+                        "always_apply": True,
+                        "path": lesson["path"],
+                    }
+                )
         elif mode == "prompt":
             s = score_keywords(lesson["keywords"], text)
             if s > 0:
-                results.append({
-                    "title": lesson["title"],
-                    "body": lesson["body"],
-                    "score": s,
-                    "always_apply": lesson["always_apply"],
-                    "path": lesson["path"],
-                })
+                results.append(
+                    {
+                        "title": lesson["title"],
+                        "body": lesson["body"],
+                        "score": s,
+                        "always_apply": lesson["always_apply"],
+                        "path": lesson["path"],
+                    }
+                )
         elif mode == "tool":
             s = score_tools(lesson["tools"], tool)
             # Also add keyword score if text provided
             if text:
                 s += score_keywords(lesson["keywords"], text)
             if s > 0:
-                results.append({
-                    "title": lesson["title"],
-                    "body": lesson["body"],
-                    "score": s,
-                    "always_apply": lesson["always_apply"],
-                    "path": lesson["path"],
-                })
+                results.append(
+                    {
+                        "title": lesson["title"],
+                        "body": lesson["body"],
+                        "score": s,
+                        "always_apply": lesson["always_apply"],
+                        "path": lesson["path"],
+                    }
+                )
 
     results.sort(key=lambda r: r["score"], reverse=True)
     return results[:max_results]
@@ -306,6 +323,7 @@ def match_lessons(lessons, text=None, tool=None, mode="prompt", max_results=None
 # ---------------------------------------------------------------------------
 # Output formatting
 # ---------------------------------------------------------------------------
+
 
 def format_output(results):
     """Format matched lessons as markdown for injection."""
@@ -323,6 +341,7 @@ def format_output(results):
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def get_lesson_dirs():
     """Get lesson directories from env or defaults."""
     env_dirs = os.environ.get("LESSON_DIRS", "")
@@ -332,7 +351,7 @@ def get_lesson_dirs():
     home = Path.home()
     cwd = Path.cwd()
     return [
-        str(home / "skogai" / "dot" / "lessons"),
+        str(home / ".skogai" / "knowledge" / "lessons"),
         str(home / ".config" / "gptme" / "lessons"),
         str(cwd / "lessons"),
         str(cwd / ".claude" / "lessons"),
@@ -341,7 +360,9 @@ def get_lesson_dirs():
 
 def main():
     parser = argparse.ArgumentParser(description="Lesson matcher for Claude Code hooks")
-    parser.add_argument("--mode", required=True, choices=["session-start", "prompt", "tool"])
+    parser.add_argument(
+        "--mode", required=True, choices=["session-start", "prompt", "tool"]
+    )
     parser.add_argument("--text", default=None)
     parser.add_argument("--tool", default=None)
     args = parser.parse_args()

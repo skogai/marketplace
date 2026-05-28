@@ -17,6 +17,19 @@
       "strict": false
     },
     {
+      "name": "skog-hub",
+      "version": "0.0.2",
+      "description": "chaaaat",
+      "source": "./plugins/skog-hub",
+      "mcpServers": {
+        "skogai-hub": {
+          "url": "http://localhost:9999/mcp",
+          "type": "sse"
+        }
+      },
+      "strict": false
+    },
+    {
       "name": "skogai-chat",
       "version": "0.0.2",
       "description": "chaaaat",
