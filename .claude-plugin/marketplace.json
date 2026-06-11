@@ -70,6 +70,16 @@
       "description": "show a codebase as  it should be displayed",
       "source": "./plugins/skogai-codebase",
       "strict": false
+    },
+    {
+      "name": "harness-creator",
+      "version": "0.0.1",
+      "description": "skogai-harness install/setup tooling",
+      "source": {
+        "source": "github",
+        "repo": "skogai/skogai-harness"
+      },
+      "strict": false
     }
   ]
 }
