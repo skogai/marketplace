@@ -12,6 +12,6 @@
         "description": "Consolidated Bash preflight dispatcher for quality, tmux, push, and GateGuard checks",
         "id": "pre:bash:dispatcher"
       }
+    ]
   }
-}
 }
