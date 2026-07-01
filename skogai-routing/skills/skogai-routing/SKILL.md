@@ -98,7 +98,7 @@ today.
 Self-check, run live every time this skill loads (proof the validator and the
 bundled example still agree, not just a description of the command):
 
-- Bundled example: !`scripts/validate-router.sh ${CLAUDE_SKILL_DIR}/examples/SKOGAI.md.example`
+- Bundled example: !`scripts/validate-router.sh ./examples/SKOGAI.md.example`
 
 When the user asks to validate SKOGAI.md/CLAUDE.md routing files:
 
