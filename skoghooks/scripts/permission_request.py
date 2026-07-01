@@ -42,6 +42,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
+from runtime_dir import get_runtime_dir
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -258,8 +261,8 @@ def main():
             sys.exit(0)
 
         # Ensure log directory exists
-        log_dir = Path.cwd() / "logs"
-        log_dir.mkdir(parents=True, exist_ok=True)
+        session_id = input_data.get("session_id", "unknown")
+        log_dir = get_runtime_dir(session_id)
 
         # Log the permission request
         log_permission_request(input_data, log_dir)

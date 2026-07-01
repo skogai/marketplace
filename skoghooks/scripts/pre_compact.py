@@ -13,6 +13,9 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
+from runtime_dir import get_runtime_dir
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -22,9 +25,8 @@ except ImportError:
 
 def log_pre_compact(input_data):
     """Log pre-compact event to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
+    session_id = input_data.get('session_id', 'unknown')
+    log_dir = get_runtime_dir(session_id)
     log_file = log_dir / 'pre_compact.json'
     
     # Read existing log data or initialize empty list
@@ -45,14 +47,14 @@ def log_pre_compact(input_data):
         json.dump(log_data, f, indent=2)
 
 
-def backup_transcript(transcript_path, trigger):
+def backup_transcript(transcript_path, trigger, session_id):
     """Create a backup of the transcript before compaction."""
     try:
         if not os.path.exists(transcript_path):
             return
-        
+
         # Create backup directory
-        backup_dir = Path("logs") / "transcript_backups"
+        backup_dir = get_runtime_dir(session_id) / "transcript_backups"
         backup_dir.mkdir(parents=True, exist_ok=True)
         
         # Generate backup filename with timestamp and trigger type
@@ -95,7 +97,7 @@ def main():
         # Create backup if requested
         backup_path = None
         if args.backup and transcript_path:
-            backup_path = backup_transcript(transcript_path, trigger)
+            backup_path = backup_transcript(transcript_path, trigger, session_id)
         
         # Provide feedback based on trigger type
         if args.verbose:

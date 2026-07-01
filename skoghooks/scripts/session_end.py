@@ -12,6 +12,9 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
+from runtime_dir import get_runtime_dir
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -21,9 +24,8 @@ except ImportError:
 
 def log_session_end(input_data):
     """Log session end event to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
+    session_id = input_data.get('session_id', 'unknown')
+    log_dir = get_runtime_dir(session_id)
     log_file = log_dir / 'session_end.json'
 
     # Read existing log data or initialize empty list
@@ -47,12 +49,12 @@ def log_session_end(input_data):
         json.dump(log_data, f, indent=2)
 
 
-def perform_cleanup():
+def perform_cleanup(session_id):
     """Perform optional cleanup tasks at session end."""
     cleanup_actions = []
 
     # Example cleanup: Remove temporary files from logs directory
-    log_dir = Path("logs")
+    log_dir = get_runtime_dir(session_id)
     if log_dir.exists():
         # Clean up any .tmp files
         for tmp_file in log_dir.glob("*.tmp"):
@@ -96,7 +98,7 @@ def main():
 
         # Perform cleanup if requested
         if args.cleanup:
-            cleanup_actions = perform_cleanup()
+            cleanup_actions = perform_cleanup(session_id)
             if cleanup_actions:
                 # Log cleanup actions
                 cleanup_log = {
@@ -104,7 +106,7 @@ def main():
                     "cleanup_at": datetime.now().isoformat(),
                     "actions": cleanup_actions
                 }
-                log_dir = Path("logs")
+                log_dir = get_runtime_dir(session_id)
                 cleanup_file = log_dir / "cleanup.json"
 
                 # Read existing cleanup log

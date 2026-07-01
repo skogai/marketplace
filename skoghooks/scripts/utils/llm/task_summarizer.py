@@ -16,17 +16,19 @@ Designed for TTS announcements to provide personalized feedback.
 
 import os
 import sys
+from pathlib import Path
 from typing import Optional
 from datetime import datetime
 from dotenv import load_dotenv
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from runtime_dir import get_runtime_dir
 
-def debug_log(message: str) -> None:
-    """Write debug message to logs/subagent_debug.log"""
+
+def debug_log(message: str, session_id: str = "unknown") -> None:
+    """Write debug message to the session's subagent_debug.log"""
     try:
-        log_dir = os.path.join(os.getcwd(), "logs")
-        os.makedirs(log_dir, exist_ok=True)
-        debug_path = os.path.join(log_dir, "subagent_debug.log")
+        debug_path = get_runtime_dir(session_id) / "subagent_debug.log"
         timestamp = datetime.now().isoformat()
         with open(debug_path, 'a') as f:
             f.write(f"[{timestamp}] [SUMMARIZER] {message}\n")
@@ -34,26 +36,27 @@ def debug_log(message: str) -> None:
         pass
 
 
-def summarize_subagent_task(task_description: str, agent_name: Optional[str] = None) -> str:
+def summarize_subagent_task(task_description: str, agent_name: Optional[str] = None, session_id: str = "unknown") -> str:
     """
     Generate a natural language summary of a completed subagent task.
 
     Args:
         task_description: Description of the task that was completed
         agent_name: Optional name of the agent that completed the task
+        session_id: Session identifier used to scope debug log output
 
     Returns:
         str: A conversational summary suitable for TTS announcement
     """
     load_dotenv()
-    debug_log(f"summarize_subagent_task called with: {task_description[:50]}...")
+    debug_log(f"summarize_subagent_task called with: {task_description[:50]}...", session_id)
 
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        debug_log("ERROR: ANTHROPIC_API_KEY not found!")
+        debug_log("ERROR: ANTHROPIC_API_KEY not found!", session_id)
         return "Subagent task completed"
 
-    debug_log(f"API key found (length: {len(api_key)})")
+    debug_log(f"API key found (length: {len(api_key)})", session_id)
 
     # Build agent context for the prompt
     if agent_name:
@@ -88,36 +91,36 @@ Generate ONE summary:"""
 
     try:
         import anthropic
-        debug_log("Anthropic module imported successfully")
+        debug_log("Anthropic module imported successfully", session_id)
 
         client = anthropic.Anthropic(api_key=api_key)
-        debug_log("Anthropic client created")
+        debug_log("Anthropic client created", session_id)
 
-        debug_log("Calling Haiku API...")
+        debug_log("Calling Haiku API...", session_id)
         message = client.messages.create(
             model="claude-haiku-4-5-20251001",  # Haiku 4.5 - fast and cost-effective
             max_tokens=100,
             temperature=0.7,
             messages=[{"role": "user", "content": prompt}],
         )
-        debug_log("API call completed")
+        debug_log("API call completed", session_id)
 
         response = message.content[0].text.strip()
-        debug_log(f"Raw response: {response}")
+        debug_log(f"Raw response: {response}", session_id)
 
         # Clean up response - remove quotes and extra formatting
         if response:
             response = response.strip().strip('"').strip("'").strip()
             # Take first line if multiple lines
             response = response.split("\n")[0].strip()
-            debug_log(f"Cleaned response: {response}")
+            debug_log(f"Cleaned response: {response}", session_id)
             return response
 
-        debug_log("Response was empty, returning fallback")
+        debug_log("Response was empty, returning fallback", session_id)
         return "Subagent task completed"
 
     except Exception as e:
-        debug_log(f"EXCEPTION: {type(e).__name__}: {str(e)}")
+        debug_log(f"EXCEPTION: {type(e).__name__}: {str(e)}", session_id)
         return "Subagent task completed"
 
 
@@ -140,6 +143,12 @@ def main() -> None:
         default=None,
         help="Name of the agent that completed the task"
     )
+    parser.add_argument(
+        "--session-id",
+        type=str,
+        default="unknown",
+        help="Session identifier used to scope debug log output"
+    )
 
     args = parser.parse_args()
 
@@ -150,7 +159,7 @@ def main() -> None:
         print('  uv run task_summarizer.py "Built authentication system" --agent-name "builder"')
         sys.exit(1)
 
-    summary = summarize_subagent_task(args.task_description, args.agent_name)
+    summary = summarize_subagent_task(args.task_description, args.agent_name, args.session_id)
     print(summary)
 
 

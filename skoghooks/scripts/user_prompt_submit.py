@@ -13,6 +13,9 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
+from runtime_dir import get_runtime_dir
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -22,9 +25,7 @@ except ImportError:
 
 def log_user_prompt(session_id, input_data):
     """Log user prompt to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
+    log_dir = get_runtime_dir(session_id)
     log_file = log_dir / 'user_prompt_submit.json'
     
     # Read existing log data or initialize empty list

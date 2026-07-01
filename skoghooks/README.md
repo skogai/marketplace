@@ -79,7 +79,7 @@ import json, sys
 
 input_data = json.load(sys.stdin)
 # ... hook-specific logic ...
-# log to logs/{name}.json via append_log()
+# log to <runtime_dir>/{name}.json via append_log(), see get_runtime_dir()
 sys.exit(0)                          # never exit non-zero unless blocking
 ```
 
@@ -116,10 +116,24 @@ echo '{"session_id":"test","hook_event_name":"SessionStart"}' | uv run scripts/s
 - **pre_tool_use.py** blocks on `rm -rf` variants (regex) and `.env` file access (not `.env.sample`). Exit 2 = blocked.
 - **permission_request.py** with `--auto-allow`: outputs `{behavior: "allow"}` for Read/Glob/Grep and safe bash patterns. Not active in the distributed `hooks.json` — only `--log-only` is wired by default.
 - **session_start.py** with `--load-context`: outputs git branch, uncommitted count, and context files as `additionalContext`.
-- **stop.py** / **subagent_stop.py** with `--chat`: converts the session transcript JSONL into `logs/chat.json`.
+- **stop.py** / **subagent_stop.py** with `--chat`: converts the session transcript JSONL into `<runtime_dir>/chat.json`.
 - **setup.py** with `--install-deps`: auto-detects `package.json`/`requirements.txt`/`pyproject.toml` and runs the matching installer (`npm ci`, `pip install -r`, or `uv sync`).
 - **session_end.py** with `--cleanup`: removes stale temp/log files.
 - **user_prompt_submit.py** with `--name-agent`: calls `utils/llm/ollama.py --agent-name` (local Ollama, model via `OLLAMA_MODEL` env var, default `gpt-oss:20b`). If Ollama is unavailable, the agent name is simply not set.
+
+## Runtime Output Location
+
+All hook logs, transcript backups, and lock files are written under
+`$CLAUDE_CODE_TMPDIR/skoghooks/<session_id>/` if `CLAUDE_CODE_TMPDIR` is set,
+otherwise under the system temp directory (e.g. `/tmp/skoghooks/<session_id>/`).
+`session_id` comes from each hook's own JSON stdin payload. This keeps output
+scoped per-session regardless of the hook's working directory, and prevents
+concurrent sessions from clobbering each other's logs. See
+`scripts/utils/runtime_dir.py` for the implementation.
+
+`utils/tts/tts_queue.py` and `utils/llm/task_summarizer.py` are also
+session-scoped this way, but — like `--announce` above — remain unwired by
+default.
 
 ## Requirements
 

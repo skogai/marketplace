@@ -20,43 +20,41 @@ Functions:
 import fcntl
 import json
 import os
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-# Lock file location relative to this script
-_SCRIPT_DIR = Path(__file__).parent.resolve()
-_PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent.parent  # .claude/hooks/utils/tts -> project root
-_LOCK_DIR = _PROJECT_ROOT / ".claude" / "data" / "tts_queue"
-_LOCK_FILE = _LOCK_DIR / "tts.lock"
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from runtime_dir import get_runtime_dir
 
 # Global file handle for the lock (must persist while lock is held)
 _lock_file_handle: Optional[int] = None
 
 
-def _ensure_lock_dir() -> None:
-    """Ensure the lock directory exists."""
-    _LOCK_DIR.mkdir(parents=True, exist_ok=True)
+def _get_lock_file(session_id: str) -> Path:
+    """Return the session-scoped TTS lock file path."""
+    return get_runtime_dir(session_id) / "tts.lock"
 
 
-def _write_lock_info(agent_id: str) -> None:
+def _write_lock_info(lock_file: Path, agent_id: str) -> None:
     """Write lock metadata to the lock file."""
     lock_info = {
         "agent_id": agent_id,
         "timestamp": datetime.now().isoformat(),
         "pid": os.getpid()
     }
-    with open(_LOCK_FILE, "w") as f:
+    with open(lock_file, "w") as f:
         json.dump(lock_info, f)
 
 
-def _read_lock_info() -> Optional[dict]:
+def _read_lock_info(lock_file: Path) -> Optional[dict]:
     """Read lock metadata from the lock file."""
-    if not _LOCK_FILE.exists():
+    if not lock_file.exists():
         return None
     try:
-        with open(_LOCK_FILE, "r") as f:
+        with open(lock_file, "r") as f:
             content = f.read().strip()
             if not content:
                 return None
@@ -65,11 +63,12 @@ def _read_lock_info() -> Optional[dict]:
         return None
 
 
-def acquire_tts_lock(agent_id: str, timeout: int = 30) -> bool:
+def acquire_tts_lock(session_id: str, agent_id: str, timeout: int = 30) -> bool:
     """
     Acquire exclusive TTS lock using fcntl file locking.
 
     Args:
+        session_id: Identifier for the session owning the lock file
         agent_id: Identifier for the agent acquiring the lock
         timeout: Maximum seconds to wait for lock (default 30)
 
@@ -78,7 +77,7 @@ def acquire_tts_lock(agent_id: str, timeout: int = 30) -> bool:
     """
     global _lock_file_handle
 
-    _ensure_lock_dir()
+    lock_file = _get_lock_file(session_id)
 
     start_time = time.time()
     retry_interval = 0.1  # Start with 100ms
@@ -91,7 +90,7 @@ def acquire_tts_lock(agent_id: str, timeout: int = 30) -> bool:
 
         try:
             # Open file for writing (create if needed)
-            fd = os.open(str(_LOCK_FILE), os.O_RDWR | os.O_CREAT, 0o644)
+            fd = os.open(str(lock_file), os.O_RDWR | os.O_CREAT, 0o644)
 
             try:
                 # Try to acquire exclusive lock (non-blocking)
@@ -101,7 +100,7 @@ def acquire_tts_lock(agent_id: str, timeout: int = 30) -> bool:
                 _lock_file_handle = fd
 
                 # Write lock info
-                _write_lock_info(agent_id)
+                _write_lock_info(lock_file, agent_id)
 
                 return True
 
@@ -118,11 +117,12 @@ def acquire_tts_lock(agent_id: str, timeout: int = 30) -> bool:
         retry_interval = min(retry_interval * 1.5, max_retry_interval)
 
 
-def release_tts_lock(agent_id: str) -> None:
+def release_tts_lock(session_id: str, agent_id: str) -> None:
     """
     Release the TTS lock.
 
     Args:
+        session_id: Identifier for the session owning the lock file
         agent_id: Identifier for the agent releasing the lock (for verification)
     """
     global _lock_file_handle
@@ -140,28 +140,32 @@ def release_tts_lock(agent_id: str) -> None:
         _lock_file_handle = None
 
     # Clear lock file contents
+    lock_file = _get_lock_file(session_id)
     try:
-        if _LOCK_FILE.exists():
-            with open(_LOCK_FILE, "w") as f:
+        if lock_file.exists():
+            with open(lock_file, "w") as f:
                 f.write("")
     except OSError:
         pass
 
 
-def is_tts_locked() -> bool:
+def is_tts_locked(session_id: str) -> bool:
     """
     Check if TTS is currently locked by another process.
+
+    Args:
+        session_id: Identifier for the session owning the lock file
 
     Returns:
         True if locked, False if available
     """
-    _ensure_lock_dir()
+    lock_file = _get_lock_file(session_id)
 
-    if not _LOCK_FILE.exists():
+    if not lock_file.exists():
         return False
 
     try:
-        fd = os.open(str(_LOCK_FILE), os.O_RDWR | os.O_CREAT, 0o644)
+        fd = os.open(str(lock_file), os.O_RDWR | os.O_CREAT, 0o644)
         try:
             # Try non-blocking lock
             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -177,7 +181,7 @@ def is_tts_locked() -> bool:
         return False
 
 
-def cleanup_stale_locks(max_age_seconds: int = 60) -> None:
+def cleanup_stale_locks(session_id: str, max_age_seconds: int = 60) -> None:
     """
     Remove locks older than max age.
 
@@ -186,13 +190,16 @@ def cleanup_stale_locks(max_age_seconds: int = 60) -> None:
     when lock info cannot be read.
 
     Args:
+        session_id: Identifier for the session owning the lock file
         max_age_seconds: Maximum age in seconds before lock is considered stale
     """
-    if not _LOCK_FILE.exists():
+    lock_file = _get_lock_file(session_id)
+
+    if not lock_file.exists():
         return
 
     try:
-        lock_info = _read_lock_info()
+        lock_info = _read_lock_info(lock_file)
 
         if lock_info and "timestamp" in lock_info:
             # Check timestamp from lock info
@@ -201,10 +208,10 @@ def cleanup_stale_locks(max_age_seconds: int = 60) -> None:
                 age = (datetime.now() - lock_time).total_seconds()
             except (ValueError, TypeError):
                 # Invalid timestamp, use file mtime
-                age = time.time() - _LOCK_FILE.stat().st_mtime
+                age = time.time() - lock_file.stat().st_mtime
         else:
             # No valid lock info, use file modification time
-            age = time.time() - _LOCK_FILE.stat().st_mtime
+            age = time.time() - lock_file.stat().st_mtime
 
         if age > max_age_seconds:
             # Check if the PID is still running
@@ -221,7 +228,7 @@ def cleanup_stale_locks(max_age_seconds: int = 60) -> None:
 
             # Remove stale lock file
             try:
-                _LOCK_FILE.unlink()
+                lock_file.unlink()
             except OSError:
                 pass
 
@@ -229,27 +236,29 @@ def cleanup_stale_locks(max_age_seconds: int = 60) -> None:
         pass
 
 
-def get_lock_info() -> Optional[dict]:
+def get_lock_info(session_id: str) -> Optional[dict]:
     """
     Get information about the current lock holder.
+
+    Args:
+        session_id: Identifier for the session owning the lock file
 
     Returns:
         Dict with agent_id, timestamp, pid or None if not locked
     """
-    return _read_lock_info()
+    return _read_lock_info(_get_lock_file(session_id))
 
 
 if __name__ == "__main__":
-    import sys
 
     def print_usage():
         print("TTS Queue Manager")
         print("=" * 40)
         print("\nUsage:")
-        print("  tts_queue.py status        - Check lock status")
-        print("  tts_queue.py acquire <id>  - Acquire lock for agent")
-        print("  tts_queue.py release <id>  - Release lock for agent")
-        print("  tts_queue.py cleanup       - Cleanup stale locks")
+        print("  tts_queue.py status <session_id>        - Check lock status")
+        print("  tts_queue.py acquire <session_id> <id>  - Acquire lock for agent")
+        print("  tts_queue.py release <session_id> <id>  - Release lock for agent")
+        print("  tts_queue.py cleanup <session_id>       - Cleanup stale locks")
 
     if len(sys.argv) < 2:
         print_usage()
@@ -258,8 +267,12 @@ if __name__ == "__main__":
     command = sys.argv[1].lower()
 
     if command == "status":
-        if is_tts_locked():
-            info = get_lock_info()
+        if len(sys.argv) < 3:
+            print("Error: session_id required")
+            sys.exit(1)
+        session_id_arg = sys.argv[2]
+        if is_tts_locked(session_id_arg):
+            info = get_lock_info(session_id_arg)
             if info:
                 print(f"Locked by: {info.get('agent_id', 'unknown')}")
                 print(f"Since: {info.get('timestamp', 'unknown')}")
@@ -270,28 +283,34 @@ if __name__ == "__main__":
             print("Available")
 
     elif command == "acquire":
-        if len(sys.argv) < 3:
-            print("Error: agent_id required")
+        if len(sys.argv) < 4:
+            print("Error: session_id and agent_id required")
             sys.exit(1)
-        agent_id = sys.argv[2]
-        timeout = int(sys.argv[3]) if len(sys.argv) > 3 else 30
-        if acquire_tts_lock(agent_id, timeout):
+        session_id_arg = sys.argv[2]
+        agent_id = sys.argv[3]
+        timeout = int(sys.argv[4]) if len(sys.argv) > 4 else 30
+        if acquire_tts_lock(session_id_arg, agent_id, timeout):
             print(f"Lock acquired for {agent_id}")
         else:
             print(f"Failed to acquire lock within {timeout}s")
             sys.exit(1)
 
     elif command == "release":
-        if len(sys.argv) < 3:
-            print("Error: agent_id required")
+        if len(sys.argv) < 4:
+            print("Error: session_id and agent_id required")
             sys.exit(1)
-        agent_id = sys.argv[2]
-        release_tts_lock(agent_id)
+        session_id_arg = sys.argv[2]
+        agent_id = sys.argv[3]
+        release_tts_lock(session_id_arg, agent_id)
         print(f"Lock released for {agent_id}")
 
     elif command == "cleanup":
-        max_age = int(sys.argv[2]) if len(sys.argv) > 2 else 60
-        cleanup_stale_locks(max_age)
+        if len(sys.argv) < 3:
+            print("Error: session_id required")
+            sys.exit(1)
+        session_id_arg = sys.argv[2]
+        max_age = int(sys.argv[3]) if len(sys.argv) > 3 else 60
+        cleanup_stale_locks(session_id_arg, max_age)
         print(f"Cleaned up locks older than {max_age}s")
 
     else:

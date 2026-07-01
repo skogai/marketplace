@@ -8,6 +8,9 @@ import sys
 import re
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
+from runtime_dir import get_runtime_dir
+
 def is_dangerous_rm_command(command):
     """
     Comprehensive detection of dangerous rm commands.
@@ -105,8 +108,8 @@ def main():
                 sys.exit(2)  # Exit code 2 blocks tool call and shows error to Claude
         
         # Ensure log directory exists
-        log_dir = Path.cwd() / 'logs'
-        log_dir.mkdir(parents=True, exist_ok=True)
+        session_id = input_data.get('session_id', 'unknown')
+        log_dir = get_runtime_dir(session_id)
         log_path = log_dir / 'pre_tool_use.json'
         
         # Read existing log data or initialize empty list

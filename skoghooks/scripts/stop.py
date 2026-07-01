@@ -7,6 +7,9 @@
 import argparse, json, sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
+from runtime_dir import get_runtime_dir
+
 
 def append_log(path: Path, entry: dict) -> None:
     try:
@@ -27,8 +30,8 @@ def main():
 
         input_data = json.load(sys.stdin)
 
-        log_dir = Path("logs")
-        log_dir.mkdir(parents=True, exist_ok=True)
+        session_id = input_data.get("session_id", "unknown")
+        log_dir = get_runtime_dir(session_id)
         append_log(log_dir / "stop.json", input_data)
 
         if args.chat and "transcript_path" in input_data:
