@@ -1,6 +1,13 @@
-# CLAUDE.md
+---
+permalink: marketplace/claude
+type: router
+---
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+<routes>
+
+- @SKOGAI.md
+
+</routes>
 
 ## Repository Purpose
 
