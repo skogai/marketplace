@@ -1,6 +1,6 @@
 {
   "name": "skoghooks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Lifecycle hooks for logging, context loading, and validation across Claude Code sessions",
   "author": {
     "name": "Skogix",
