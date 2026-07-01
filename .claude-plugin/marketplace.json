@@ -1,64 +1,12 @@
 {
   "name": "skogai-market",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
     "url": "https://github.com/skogai"
   },
   "plugins": [
-    {
-      "name": "claude-docs",
-      "source": "./claude-docs",
-      "description": "download the latest claude code documentation and provide search functionality for it",
-      "author": {
-        "name": "Skogix",
-        "email": "emil@skogsund.se",
-        "url": "https://github.com/skogix"
-      },
-      "keywords": [
-        "docs",
-        "search",
-        "claude-code"
-      ],
-      "commands": [
-        "./commands/search.md"
-      ],
-      "agents": [
-        "./agents/docs-researcher.md"
-      ]
-    },
-    {
-      "name": "plugin-builder",
-      "source": "./plugin-builder",
-      "description": "plugin-builder",
-      "author": {
-        "name": "skogix",
-        "email": "emil@skogsund.se",
-        "url": "https://github.com/skogai"
-      },
-      "keywords": [
-        "plugin",
-        "builder",
-        "development",
-        "scaffolding",
-        "example"
-      ],
-      "commands": [
-        "./commands/init.md",
-        "./commands/add.md",
-        "./commands/edit.md",
-        "./commands/validate.md",
-        "./commands/publish.md"
-      ],
-      "skills": [
-        "./skills/cc-skill-builder",
-        "./skills/cc-command-builder",
-        "./skills/cc-agent-builder",
-        "./skills/cc-hook-builder",
-        "./skills/cc-mcp-builder"
-      ]
-    },
     {
       "name": "plugin-dev",
       "source": "./plugin-dev",
