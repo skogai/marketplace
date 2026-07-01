@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DIR="${CLAUDE_PLUGIN_ROOT}/tmp/docs"
+DIR="${CLAUDE_PLUGIN_ROOT}/references/"
 BASE="https://code.claude.com/docs/en"
 
 if [ -d "$DIR" ] && [ -n "$(ls -A "$DIR" 2>/dev/null)" ]; then
