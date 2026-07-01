@@ -23,7 +23,7 @@ Or from the SkogAI Market marketplace:
 
 ### Hook: SessionStart doc download
 
-On session start, `hooks/hooks.json` runs `scripts/download-docs.sh`, which downloads the Claude Code docs (as markdown) into `${CLAUDE_PLUGIN_ROOT}/tmp/docs/`. If the docs are already present, the download is skipped to keep session start fast — run the script manually to force a refresh:
+On session start, `hooks/hooks.json` runs `scripts/download-docs.sh`, which downloads the Claude Code docs (as markdown) into `${CLAUDE_PLUGIN_ROOT}/references/docs/`. If the docs are already present, the download is skipped to keep session start fast — run the script manually to force a refresh:
 
 ```bash
 bash "$CLAUDE_PLUGIN_ROOT/scripts/download-docs.sh"
