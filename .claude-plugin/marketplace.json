@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -62,6 +62,15 @@
         "./skills/cc-hook-builder",
         "./skills/cc-mcp-builder"
       ]
+    },
+    {
+      "name": "plugin-dev",
+      "source": "./plugin-dev",
+      "description": "Plugin development toolkit with skills for creating agents, commands, hooks, MCP integrations, and comprehensive plugin structure guidance",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
     }
   ]
 }
