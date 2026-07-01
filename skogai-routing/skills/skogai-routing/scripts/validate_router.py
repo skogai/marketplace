@@ -15,7 +15,6 @@ PASS/FAIL/WARN line per file (+ details on FAIL).
 """
 
 import sys
-import re
 import json
 import warnings
 from pathlib import Path
@@ -23,34 +22,15 @@ from pathlib import Path
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 try:
-    import yaml
     import jsonschema
 except ImportError:
     print("ERROR: missing deps — run via: uv run validate_router.py (or: pip install jsonschema pyyaml)")
     sys.exit(2)
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _lib import parse_frontmatter, extract_xml_sections  # noqa: E402
+
 SCHEMA_PATH = Path(__file__).resolve().parent.parent / "schemas" / "router.schema.json"
-
-
-def parse_frontmatter(text):
-    m = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.DOTALL)
-    if not m:
-        return None
-    return yaml.safe_load(m.group(1))
-
-
-def extract_xml_sections(text):
-    sections = []
-    seen = set()
-    for m in re.finditer(r"<([a-z][a-z0-9_]*)(?:\s[^>]*)?>", text):
-        name = m.group(1)
-        if name in seen:
-            continue
-        close = re.search(rf"</{re.escape(name)}>", text[m.end():])
-        content = text[m.end():m.end() + close.start()].strip() if close else ""
-        sections.append({"kind": "xml", "name": name, "content": content})
-        seen.add(name)
-    return sections
 
 
 def validate_file(path, schema):

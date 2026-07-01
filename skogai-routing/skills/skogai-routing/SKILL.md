@@ -142,6 +142,25 @@ When the user asks to list/find/inventory routing files across a project:
    `${CLAUDE_SKILL_DIR}/scripts/validate_router.py <files...>` on the
    discovered list if the user also wants validation, not just discovery.
 
+## Printing the XML tags in every router file
+
+Use `scripts/list_xml_tags.py [root_dir] [-o output_file]` — it does the same
+router discovery as `list_routers.py` (frontmatter `type: router`, `.git`/
+`node_modules` skipped) but prints, per file, the unique XML tag names found
+in it: `<relative-path>: <tag1> <tag2> ...` (or `(no xml tags)`). This is the
+automated form of "find the routers, then show me their tags" as a single
+command instead of two manual steps — run this directly rather than chaining
+`list_routers.py` output into something else by hand.
+
+When the user asks what tags exist in the routing files (or wants an
+overview of a project's `<routes>`-and-beyond structure):
+
+1. Run `${CLAUDE_SKILL_DIR}/scripts/list_xml_tags.py <root_dir>` (root_dir:
+   whatever the user pointed at, else cwd).
+2. Report the per-file tag lines back to the user as-is. Same `/tmp` default
+   as `list_routers.py` if they want the output saved but haven't named a
+   path — don't invent a project-relative location.
+
 ## Scaffolding a new routing file
 
 When the user asks to add/set up a routing file in a repo:
