@@ -13,10 +13,11 @@ frontmatter plus an XML block, starting with `<routes>`.
 - **skogai-routing** — describes the convention (frontmatter `type: router` +
   `<routes>` XML tag), and covers the actions around it: scaffolding a new
   `SKOGAI.md` in a target repo (and wiring `- read @SKOGAI.md` into its
-  `CLAUDE.md`), and validating routing files against
-  `schemas/router.schema.json` with a pass/fail/warn report. Auto-activates
-  when authoring, reasoning about, scaffolding, or validating routing files —
-  it's one convention, so it's one skill.
+  `CLAUDE.md`), validating routing files against
+  `schemas/router.schema.json` with a pass/fail/warn report, and scanning a
+  project tree for every router document it contains. Auto-activates
+  when authoring, reasoning about, scaffolding, validating, or listing
+  routing files — it's one convention, so it's one skill.
 
 ## v1 scope
 
@@ -29,6 +30,7 @@ possible future direction but are intentionally not built until requested.
 
 ## Requirements
 
-`scripts/validate-router.sh` needs `uv` (for the Python schema-validation
-helper, via `jsonschema` + `pyyaml`).
+`scripts/validate_router.py` and `scripts/list_routers.py` are self-contained
+`uv run --script` executables — they need `uv` (which resolves their
+`jsonschema`/`pyyaml` dependencies automatically), no separate install step.
 ...

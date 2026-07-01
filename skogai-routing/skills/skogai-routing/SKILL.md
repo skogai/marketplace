@@ -1,7 +1,7 @@
 ---
 name: skogai-routing
 description: This skill should be used when the user is authoring, reading, scaffolding, or validating SKOGAI.md files, CLAUDE.md `<routes>` blocks, or any file that mixes YAML frontmatter with an XML root tag as part of the skogai routing convention. Trigger on "SKOGAI.md", "routing file", "<routes> tag", "type is router", "at-linking convention", "add a routing file", "set up SKOGAI.md", "validate SKOGAI.md", or "lint the routes tag".
-allowed-tools: Bash(*validate-router.sh*)
+allowed-tools: Bash(*validate_router.py*), Bash(*list_routers.py*)
 ---
 
 # SkogAI Routing Convention
@@ -88,17 +88,18 @@ when a concrete second type is requested.
 
 ## Validating a routing file
 
-Use `scripts/validate-router.sh <file>` to check a single file against
+Use `scripts/validate_router.py <file...>` to check one or more files against
 `schemas/router.schema.json`: frontmatter parses as YAML, `type` equals
-`router`, and the body contains a `<routes>` XML section. This mirrors the
-older ad-hoc implementation the convention grew out of (tag listing +
-per-type JSON Schema validation) but scoped down to the one type that exists
-today.
+`router`, and the body contains a `<routes>` XML section. It's a single
+`uv run --script` executable (schema path resolved relative to its own
+location via `Path(__file__)`) — there's no separate shell wrapper, since a
+wrapper would only exist to loop over args and resolve paths, both of which
+Python already does natively.
 
 Self-check, run live every time this skill loads (proof the validator and the
 bundled example still agree, not just a description of the command):
 
-- Bundled example: !`bash ${CLAUDE_SKILL_DIR}/scripts/validate-router.sh ${CLAUDE_SKILL_DIR}/examples/SKOGAI.md.example`
+- Bundled example: !`${CLAUDE_SKILL_DIR}/scripts/validate_router.py ${CLAUDE_SKILL_DIR}/examples/SKOGAI.md.example`
 
 When the user asks to validate SKOGAI.md/CLAUDE.md routing files:
 
@@ -107,11 +108,35 @@ When the user asks to validate SKOGAI.md/CLAUDE.md routing files:
    under that directory (default: cwd).
 2. Skip files whose frontmatter `type` isn't `router` — this validator only
    covers that one document type in v1.
-3. Run `bash ${CLAUDE_SKILL_DIR}/scripts/validate-router.sh <file...>`.
+3. Run `${CLAUDE_SKILL_DIR}/scripts/validate_router.py <file...>`.
 4. Report PASS/FAIL/WARN per file. For any FAIL, quote the specific schema
    error so the user knows exactly what to fix (e.g. missing `<routes>`
    section, `type` not `router`, missing frontmatter). Don't auto-fix
    failures — report them and let the user or a follow-up edit fix the file.
+
+## Finding all router files in a project
+
+Use `scripts/list_routers.py [root_dir] [-o output_file]` to recursively scan
+a project for router documents: it walks every `*.md` file under `root_dir`
+(default: cwd; skips `.git`/`node_modules`), parses frontmatter, and prints
+the relative path of each file where `type: router`. This is a cheap
+frontmatter-only scan (no schema validation) — its job is discovery ("what
+router files exist here"), not correctness ("are they valid"); pipe the
+result into `validate_router.py` for that.
+
+When the user asks to list/find/inventory routing files across a project:
+
+1. Resolve `root_dir` from the user's request, else the current working
+   directory (or `${CLAUDE_PROJECT_DIR}` if the user means "this whole
+   project" specifically, since that's the substitution that resolves to the
+   project root regardless of current subdirectory — requires Claude Code
+   v2.1.196+).
+2. Run `${CLAUDE_SKILL_DIR}/scripts/list_routers.py <root_dir>`. If the user
+   wants the list saved somewhere, pass `-o <path>`; otherwise just report the
+   list back to them (don't invent a save location they didn't ask for).
+3. Optionally follow up with
+   `${CLAUDE_SKILL_DIR}/scripts/validate_router.py <files...>` on the
+   discovered list if the user also wants validation, not just discovery.
 
 ## Scaffolding a new routing file
 
@@ -141,4 +166,4 @@ When the user asks to add/set up a routing file in a repo:
      an existing CLAUDE.md into router form — don't silently convert it.
      `examples/CLAUDE.md.example` shows the target shape for a fresh file.
 5. Report exactly what was created/edited. Don't run
-   `scripts/validate-router.sh` automatically — mention it as a next step.
+   `scripts/validate_router.py` automatically — mention it as a next step.
