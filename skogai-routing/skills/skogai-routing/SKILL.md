@@ -95,6 +95,11 @@ older ad-hoc implementation the convention grew out of (tag listing +
 per-type JSON Schema validation) but scoped down to the one type that exists
 today.
 
+Self-check, run live every time this skill loads (proof the validator and the
+bundled example still agree, not just a description of the command):
+
+- Bundled example: !`bash ${CLAUDE_SKILL_DIR}/scripts/validate-router.sh ${CLAUDE_SKILL_DIR}/examples/SKOGAI.md.example`
+
 When the user asks to validate SKOGAI.md/CLAUDE.md routing files:
 
 1. Resolve targets from the user's request: a given file path, or if a
