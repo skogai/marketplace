@@ -3,7 +3,6 @@ name: cc-hook-builder
 description: This skill should be used when users want to create a new Claude Code hook. Use this skill to help users design, structure, and implement highly effective hooks that automate workflows at specific lifecycle events.
 allowed-tools: Read,Write,Glob,Grep,AskUserQuestion,Bash
 model: inherit
-version: 0.0.1
 ---
 
 # Claude Code Hook Builder

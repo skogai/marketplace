@@ -3,7 +3,6 @@ name: cc-mcp-builder
 description: This skill should be used when users want to configure a new MCP (Model Context Protocol) server in Claude Code. Use this skill to help users configure MCP servers that connect Claude to external tools, APIs, and data sources.
 allowed-tools: Read,Write,Glob,Grep,AskUserQuestion,Bash
 model: inherit
-version: 0.0.1
 ---
 
 # Claude Code MCP Server Configuration Builder

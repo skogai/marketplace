@@ -3,7 +3,6 @@ name: cc-agent-builder
 description: This skill should be used when users want to create a new Claude Code subagent. Use this skill to help users design, structure, and implement highly effective subagents that follow best practices for specialized task handling, context isolation, and tool permissions.
 allowed-tools: Read,Write,Glob,Grep,AskUserQuestion,Bash
 model: inherit
-version: 0.0.1
 ---
 
 # Claude Code Subagent Builder

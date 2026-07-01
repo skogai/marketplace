@@ -3,7 +3,6 @@ name: cc-command-builder
 description: This skill should be used when users want to create a new Claude Code slash command. Use this skill to help users design, structure, and implement highly effective slash commands that follow best practices for prompt engineering and argument handling.
 allowed-tools: Read,Write,Glob,Grep,AskUserQuestion,Bash
 model: inherit
-version: 0.0.1
 ---
 
 # Claude Code Slash Command Builder
