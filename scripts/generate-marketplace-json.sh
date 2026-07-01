@@ -22,7 +22,7 @@ ORIGINAL_SHA=$(shasum -a 256 "$MARKETPLACE_JSON" | awk '{print $1}')
 MARKETPLACE_HEADER=$(jq 'del(.plugins)' "$MARKETPLACE_JSON")
 
 # Find all plugin.json files (excluding the marketplace's own .claude-plugin)
-PLUGIN_FILES=$(find "$REPO_ROOT" -name "plugin.json" -path "*/.claude-plugin/plugin.json" | \
+PLUGIN_FILES=$(find "$REPO_ROOT" -name "plugin.json" -path "*/.claude-plugin/plugin.json" -not -path "$REPO_ROOT/.claude/worktrees/*" | \
     grep -v "^$REPO_ROOT/.claude-plugin/marketplace.json$" | \
     sort)
 
