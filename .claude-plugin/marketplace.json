@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -10,7 +10,6 @@
     {
       "name": "claude-docs",
       "source": "./claude-docs",
-      "version": "0.0.1",
       "description": "download the latest claude code documentation and provide search functionality for it",
       "author": {
         "name": "Skogix",
@@ -33,7 +32,6 @@
     {
       "name": "plugin-builder",
       "source": "./plugin-builder",
-      "version": "0.0.2",
       "description": "plugin-builder",
       "author": {
         "name": "skogix",
@@ -74,7 +72,6 @@
     {
       "name": "skoghooks",
       "source": "./skoghooks",
-      "version": "0.0.4",
       "description": "Lifecycle hooks for logging, context loading, and validation across Claude Code sessions",
       "author": {
         "name": "Skogix",
