@@ -17,7 +17,6 @@ Perform these validation checks:
 1. **Required files exist:**
 
    - `.claude-plugin/plugin.json` must exist
-   - `CODEOWNERS` must exist
    - At least one component directory should have content
 
 2. **Directory structure:**
@@ -27,12 +26,6 @@ Perform these validation checks:
    - `hooks/` for hooks (optional - only if hooks exist)
    - `skills/` for skills (optional - only if skills exist)
    - `mcp-servers/` for MCP servers (optional - only if MCP servers exist)
-
-3. **CODEOWNERS validation:**
-   - File exists at plugin root
-   - Contains @skogai-market
-   - Contains at least one GitHub username
-   - Format is valid (pattern: \* @org @user name)
 
 ### Plugin Manifest Validation
 
@@ -185,7 +178,6 @@ Validating plugin: awesome-plugin
   - JSON is valid
   - All listed commands have corresponding files
   - Directory structure is correct
-  - CODEOWNERS file exists and is valid
   - README.md exists
 
 ✗ Failed Checks:
@@ -197,7 +189,6 @@ Validating plugin: awesome-plugin
   - Command "init" frontmatter description is minimal (could be more detailed)
   - No keywords specified (helps with discoverability)
   - No author information provided (recommended for attribution)
-  - CODEOWNERS doesn't include @skogai-market (required for marketplace submissions)
 
 Recommendations:
   1. Add version field to plugin.json (suggest starting at "1.0.0")

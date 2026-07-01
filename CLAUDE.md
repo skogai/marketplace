@@ -84,7 +84,6 @@ marketplace/
 │   ├── .claude-plugin/
 │   │   └── plugin.json
 │   ├── commands/             # init, add, validate commands
-│   ├── CODEOWNERS            # Maintainers and reviewers
 │   └── README.md
 ├── {plugin-name}/            # Community plugins at top level
 │   ├── .claude-plugin/
@@ -94,7 +93,6 @@ marketplace/
 │   ├── hooks/                # optional
 │   ├── skills/               # optional
 │   ├── mcp-servers/          # optional
-│   ├── CODEOWNERS            # Required - maintainers and reviewers
 │   └── README.md
 ├── CLAUDE.md                 # This file
 ├── CONTRIBUTING.md           # Contribution guidelines
@@ -117,11 +115,10 @@ When adding a new plugin to the marketplace:
 
 1. Plugin must be at the top level: `./{plugin-name}/` directory
 2. Plugin must have valid `.claude-plugin/plugin.json` manifest
-3. Plugin must have CODEOWNERS file with @skogai-market and plugin author
-4. Plugin must have README.md
-5. Component directories (commands/, agents/, hooks/, skills/, mcp-servers/) are optional - only create if needed
-6. Add plugin entry to `.claude-plugin/marketplace.json` with source path `"./{plugin-name}"`
-7. Ensure plugin passes validation: `/plugin-builder:validate`
+3. Plugin must have README.md
+4. Component directories (commands/, agents/, hooks/, skills/, mcp-servers/) are optional - only create if needed
+5. Add plugin entry to `.claude-plugin/marketplace.json` with source path `"./{plugin-name}"`
+6. Ensure plugin passes validation: `/plugin-builder:validate`
 
 ## Plugin Directory Structure
 
@@ -142,7 +139,6 @@ Plugins follow this structure (all component directories are optional):
 │       └── SKILL.md
 ├── mcp-servers/             # Optional - only if MCP servers exist
 │   └── *.json
-├── CODEOWNERS               # Required - defines maintainers
 └── README.md                # Required
 ```
 

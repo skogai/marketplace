@@ -7,7 +7,7 @@ You are helping a user create a new Claude Code plugin. Follow this workflow ste
 ## Step 1: Get GitHub Username and Fetch Profile
 
 Use the AskUserQuestion tool to ask for:
-- **GitHub username** - Will be used in CODEOWNERS and to fetch author information
+- **GitHub username** - Will be used to fetch author information
 
 Once you have the GitHub username, use WebFetch to fetch their profile:
 - URL: `https://api.github.com/users/{username}`
@@ -213,23 +213,7 @@ All paths must be relative to plugin root and begin with `./`
 - Components must be explicitly listed in their respective arrays (e.g., commands, agents, skills)
 - Include only fields that have values; omit empty/null fields
 
-## Step 7: Create CODEOWNERS
-
-Create `./{plugin-name}/CODEOWNERS` file with the following format:
-
-```
-# Plugin maintainers and reviewers
-* @skogai-market @{github-username}
-```
-
-Replace:
-- `{github-username}` with the GitHub username from Step 1
-
-This ensures that:
-- The SkogAI Market organization is always notified
-- The plugin creator's GitHub account is tagged for review
-
-## Step 8: Create README
+## Step 7: Create README
 
 Create a README.md in the plugin directory that includes:
 
@@ -239,7 +223,7 @@ Create a README.md in the plugin directory that includes:
 - Requirements (if any)
 - License information
 
-## Step 9: Summary
+## Step 8: Summary
 
 Provide the user with:
 
@@ -274,8 +258,7 @@ Provide the user with:
 10. Collect agent requirements
 11. Generate agent file
 12. Create plugin.json with complete metadata (name from GitHub, optional email/url if provided)
-13. Create CODEOWNERS with @skogai-market @awesome-dev
-14. Create README.md
-15. Show summary and next steps
+13. Create README.md
+14. Show summary and next steps
 
 Begin by asking for the GitHub username!

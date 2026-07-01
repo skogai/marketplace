@@ -24,21 +24,7 @@ at repo root as `{plugin-name}/`.
 Per this repo's CLAUDE.md, every plugin directory must contain:
 
 - `.claude-plugin/plugin.json`
-- `CODEOWNERS`
 - `README.md`
-
-CODEOWNERS in this repo uses a single-line format, not per-path rules:
-
-```
-* @skogai-market @skogix
-```
-
-**Exception — vendored plugins**: `plugin-dev` (author: Anthropic) ships
-without a `CODEOWNERS` file. It is vendored upstream content, not a
-community contribution maintained in this repo, so the CODEOWNERS
-requirement does not apply to it. Treat any plugin with a non-skogai
-`author` as a candidate for this exception rather than flagging the missing
-file as an error.
 
 **LICENSE files are not required** for plugins in this marketplace. The
 sole exception is `plugin-dev`, which keeps its `LICENSE` file because it
@@ -102,10 +88,8 @@ components on disk.
 ## Practical Guidance When Adding a Plugin Here
 
 1. Create the plugin at top level: `./{plugin-name}/`.
-2. Add `.claude-plugin/plugin.json`, `CODEOWNERS`, `README.md`
-   (skip `CODEOWNERS` if the plugin is vendored upstream content, see
-   exception above). A `LICENSE` file is not needed unless the plugin is
-   itself vendoring licensed upstream code.
+2. Add `.claude-plugin/plugin.json`, `README.md`. A `LICENSE` file is not
+   needed unless the plugin is itself vendoring licensed upstream code.
 3. In `plugin.json`, explicitly declare `commands`/`agents`/`skills`/`hooks`/
    `mcpServers` arrays for every component the plugin ships (paths relative
    to the plugin root, e.g. `"./skills/foobar"`), even though Claude Code

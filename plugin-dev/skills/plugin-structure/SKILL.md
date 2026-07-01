@@ -519,10 +519,8 @@ top of the generic spec above:
 - Plugins live as top-level directories listed in a single
   `.claude-plugin/marketplace.json` at repo root, each with a relative
   `"source": "./{plugin-name}"`.
-- Community plugins require `CODEOWNERS` and `README.md` alongside
-  `plugin.json`. Vendored/upstream plugins (e.g. `plugin-dev`, authored by
-  Anthropic) are exempt from the `CODEOWNERS` requirement. A `LICENSE` file
-  is not required for any plugin except `plugin-dev`, which keeps its
+- Community plugins require `README.md` alongside `plugin.json`. A `LICENSE`
+  file is not required for any plugin except `plugin-dev`, which keeps its
   upstream Anthropic license.
 - `marketplace.json` is a generated file — it mirrors each plugin's own
   `plugin.json` fields and is produced by
