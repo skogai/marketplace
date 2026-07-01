@@ -1,3 +1,4 @@
 - [x] remove the concept and mentioning of CODEOWNERS except plugin-dev / anthropic base.
 - [x] remove all need for LICENCE (currently only keep the plugin-dev licence/anthropic base.
 - [x] update claude-docs to output to ./references/ as well as @-link the folder so the agent/skill user have access to it directly
+
