@@ -37,13 +37,13 @@ Initialize a new plugin with guided prompts.
 
 **Workflow:**
 
-1. Asks for your GitHub username (for CODEOWNERS)
+1. Asks for your GitHub username (to fetch author information)
 2. Collects plugin metadata (name, description, license)
 3. Creates top-level plugin directory (`./{plugin-name}/`)
 4. Asks what components you want to create (commands, agents, hooks, skills, MCP servers)
 5. For each component, asks detailed questions to understand requirements
 6. Generates all files with comprehensive, well-structured prompts
-7. Creates plugin manifest, CODEOWNERS, and README
+7. Creates plugin manifest and README
 8. Shows summary and installation instructions
 
 **Example usage:**
@@ -322,7 +322,6 @@ plugin-builder/
 │   ├── cc-agent-builder.md      # Subagent builder
 │   ├── cc-hook-builder.md       # Hook builder
 │   └── cc-mcp-builder.md        # MCP server builder
-├── CODEOWNERS                   # Maintainers
 └── README.md                    # This file
 ```
 
@@ -390,7 +389,6 @@ Once you've created and validated your plugin:
 1. Test it locally: `/plugin install ./{plugin-name}`
 2. Ensure validation passes: `/plugin-builder:validate`
 3. Submit to SkogAI Market by creating a PR that adds your plugin to `.claude-plugin/marketplace.json`
-4. The CODEOWNERS file ensures proper review by maintainers and plugin authors
 
 ## Learn More
 

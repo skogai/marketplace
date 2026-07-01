@@ -97,7 +97,6 @@ The easiest way to create a plugin for this marketplace:
    ├── hooks/              # optional - only if you have hooks
    ├── skills/             # optional - only if you have skills
    ├── mcp-servers/        # optional - only if you have MCP servers
-   ├── CODEOWNERS          # required - defines reviewers
    └── README.md
    ```
 
@@ -117,7 +116,7 @@ The easiest way to create a plugin for this marketplace:
    - Any special requirements or dependencies
 
 5. **Review process**:
-   - Maintainers will review for quality, documentation, and functionality
+   - The SkogAI Market maintainer will review for quality, documentation, and functionality
    - May request changes or improvements
    - Once approved, your plugin will be merged and available to all users
 
@@ -145,7 +144,6 @@ To maintain a high-quality marketplace, submissions should meet these criteria:
 Every plugin must have:
 
 - `.claude-plugin/plugin.json` - Plugin manifest
-- `CODEOWNERS` - Defines maintainers and reviewers
 - `README.md` - Documentation
 - At least one component (command, agent, hook, skill, or MCP server)
 

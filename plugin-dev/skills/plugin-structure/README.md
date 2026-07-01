@@ -49,7 +49,7 @@ Detailed documentation for deep dives:
 
 - **marketplace-repo-conventions.md**: SkogAI Market repo-specific conventions
   - marketplace.json layout and plugin source paths
-  - Required files per plugin and the CODEOWNERS exception for vendored plugins
+  - Required files per plugin
   - Why marketplace.json is generated, and why plugin.json should declare components explicitly
   - Practical steps for adding a plugin to this repo
 
