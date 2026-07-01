@@ -12,6 +12,7 @@
 pre-commit = "make && git add .claude-plugin/marketplace.json"
 # post-start = "npm run dev"
 # pre-merge = "npm test"
+post-merge = "claude plugin marketplace update"
 #
 # ## Dev server URL
 #
