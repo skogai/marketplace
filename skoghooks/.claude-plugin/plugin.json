@@ -1,5 +1,7 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "skoghooks",
+  "displayName": "Skoghooks",
   "version": "0.0.2",
   "description": "Lifecycle hooks for logging, context loading, and validation across Claude Code sessions",
   "author": {
