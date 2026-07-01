@@ -25,7 +25,7 @@ The Plugin Builder helps you create high-quality Claude Code plugins through an 
 Or if adding from the Claude Market marketplace:
 
 ```bash
-/plugin marketplace add claude-market/marketplace
+/plugin marketplace add skogai-market/marketplace
 /plugin install plugin-builder
 ```
 

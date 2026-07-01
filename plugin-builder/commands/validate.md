@@ -30,7 +30,7 @@ Perform these validation checks:
 
 3. **CODEOWNERS validation:**
    - File exists at plugin root
-   - Contains @claude-market
+   - Contains @skogai-market
    - Contains at least one GitHub username
    - Format is valid (pattern: \* @org @user name)
 
@@ -200,7 +200,7 @@ Validating plugin: awesome-plugin
   - Command "init" frontmatter description is minimal (could be more detailed)
   - No keywords specified (helps with discoverability)
   - No author information provided (recommended for attribution)
-  - CODEOWNERS doesn't include @claude-market (required for marketplace submissions)
+  - CODEOWNERS doesn't include @skogai-market (required for marketplace submissions)
 
 Recommendations:
   1. Add version field to plugin.json (suggest starting at "1.0.0")

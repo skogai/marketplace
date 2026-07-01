@@ -219,7 +219,7 @@ Create `./{plugin-name}/CODEOWNERS` file with the following format:
 
 ```
 # Plugin maintainers and reviewers
-* @claude-market @{github-username}
+* @skogai-market @{github-username}
 ```
 
 Replace:
@@ -274,7 +274,7 @@ Provide the user with:
 10. Collect agent requirements
 11. Generate agent file
 12. Create plugin.json with complete metadata (name from GitHub, optional email/url if provided)
-13. Create CODEOWNERS with @claude-market @awesome-dev
+13. Create CODEOWNERS with @skogai-market @awesome-dev
 14. Create README.md
 15. Show summary and next steps
 

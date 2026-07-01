@@ -171,7 +171,7 @@ Display a message to the user:
 ✓ Changes committed and pushed successfully!
 
 To create a pull request:
-1. Visit: https://github.com/claude-market/marketplace/compare/{branch-name}
+1. Visit: https://github.com/skogai-market/marketplace/compare/{branch-name}
 2. Fill in the PR template with the changes you made
 
 💡 Tip: Install the GitHub CLI for automated PR creation:
