@@ -8,6 +8,5 @@
     "url": "https://github.com/skogix"
   },
   "license": "MIT",
-  "keywords": ["hooks", "logging", "session", "validation"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["hooks", "logging", "session", "validation"]
 }
