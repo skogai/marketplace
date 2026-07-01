@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -67,7 +67,24 @@
       "author": {
         "name": "Anthropic",
         "email": "support@anthropic.com"
-      }
+      },
+      "commands": [
+        "./commands/create-plugin.md"
+      ],
+      "agents": [
+        "./agents/agent-creator.md",
+        "./agents/plugin-validator.md",
+        "./agents/skill-reviewer.md"
+      ],
+      "skills": [
+        "./skills/agent-development",
+        "./skills/command-development",
+        "./skills/hook-development",
+        "./skills/mcp-integration",
+        "./skills/plugin-settings",
+        "./skills/plugin-structure",
+        "./skills/skill-development"
+      ]
     },
     {
       "name": "skoghooks",

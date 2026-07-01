@@ -509,3 +509,28 @@ my-plugin/
 ---
 
 For detailed examples and advanced patterns, see files in `references/` and `examples/` directories.
+
+## SkogAI Market Repository Conventions
+
+When working inside the `skogai-market` marketplace repository itself
+(rather than an arbitrary plugin project), additional conventions apply on
+top of the generic spec above:
+
+- Plugins live as top-level directories listed in a single
+  `.claude-plugin/marketplace.json` at repo root, each with a relative
+  `"source": "./{plugin-name}"`.
+- Community plugins require `CODEOWNERS`, `README.md`, and `LICENSE`
+  alongside `plugin.json`. Vendored/upstream plugins (e.g. `plugin-dev`,
+  authored by Anthropic) are exempt from the `CODEOWNERS` requirement.
+- `marketplace.json` is a generated file — it mirrors each plugin's own
+  `plugin.json` fields and is produced by
+  `make generate-marketplace-json` (`scripts/generate-marketplace-json.sh`).
+  Never hand-edit it; edit `plugin.json` and regenerate instead.
+- Declare `commands`/`agents`/`skills`/`hooks` explicitly in each plugin's
+  `plugin.json`, even though Claude Code's own auto-discovery would find
+  them anyway — the generator only surfaces what `plugin.json` declares, so
+  explicit declarations are what make a plugin's contents visible at a
+  glance in `marketplace.json`.
+
+See `references/marketplace-repo-conventions.md` for the full detail and
+exceptions observed in this repo.
