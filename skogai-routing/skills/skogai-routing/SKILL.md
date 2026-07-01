@@ -1,7 +1,7 @@
 ---
 name: skogai-routing
 description: This skill should be used when the user is authoring, reading, scaffolding, or validating SKOGAI.md files, CLAUDE.md `<routes>` blocks, or any file that mixes YAML frontmatter with an XML root tag as part of the skogai routing convention. Trigger on "SKOGAI.md", "routing file", "<routes> tag", "type is router", "at-linking convention", "add a routing file", "set up SKOGAI.md", "validate SKOGAI.md", or "lint the routes tag".
-tools: Read, Write, Edit, Glob, Bash
+allowed-tools: Bash(*validate-router.sh*)
 ---
 
 # SkogAI Routing Convention
