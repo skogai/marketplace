@@ -1,6 +1,7 @@
 ---
 name: plugin-structure
 description: This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add commands/agents/skills/hooks", "configure auto-discovery", or needs guidance on plugin directory layout, manifest configuration, component organization, file naming conventions, or Claude Code plugin architecture best practices.
+version: 0.1.0
 ---
 
 # Plugin Structure for Claude Code
@@ -10,7 +11,6 @@ description: This skill should be used when the user asks to "create a plugin", 
 Claude Code plugins follow a standardized directory structure with automatic component discovery. Understanding this structure enables creating well-organized, maintainable plugins that integrate seamlessly with Claude Code.
 
 **Key concepts:**
-
 - Conventional directory layout for automatic discovery
 - Manifest-driven configuration in `.claude-plugin/plugin.json`
 - Component-based organization (commands, agents, skills, hooks)
@@ -56,7 +56,6 @@ The manifest defines plugin metadata and configuration. Located at `.claude-plug
 ```
 
 **Name requirements:**
-
 - Use kebab-case format (lowercase with hyphens)
 - Must be unique across installed plugins
 - No spaces or special characters
@@ -101,7 +100,6 @@ Specify custom paths for components (supplements default directories):
 **Important**: Custom paths supplement defaults—they don't replace them. Components in both default directories and custom paths will load.
 
 **Path rules:**
-
 - Must be relative to plugin root
 - Must start with `./`
 - Cannot use absolute paths
@@ -116,7 +114,6 @@ Specify custom paths for components (supplements default directories):
 **Auto-discovery**: All `.md` files in `commands/` load automatically
 
 **Example structure**:
-
 ```
 commands/
 ├── review.md        # /review command
@@ -125,7 +122,6 @@ commands/
 ```
 
 **File format**:
-
 ```markdown
 ---
 name: command-name
@@ -144,7 +140,6 @@ Command implementation instructions...
 **Auto-discovery**: All `.md` files in `agents/` load automatically
 
 **Example structure**:
-
 ```
 agents/
 ├── code-reviewer.md
@@ -153,7 +148,6 @@ agents/
 ```
 
 **File format**:
-
 ```markdown
 ---
 description: Agent role and expertise
@@ -174,7 +168,6 @@ Detailed agent instructions and knowledge...
 **Auto-discovery**: All `SKILL.md` files in skill subdirectories load automatically
 
 **Example structure**:
-
 ```
 skills/
 ├── api-testing/
@@ -190,7 +183,6 @@ skills/
 ```
 
 **SKILL.md format**:
-
 ```markdown
 ---
 name: Skill Name
@@ -212,7 +204,6 @@ Skill instructions and guidance...
 **Registration**: Hooks register automatically when plugin enables
 
 **Example structure**:
-
 ```
 hooks/
 ├── hooks.json           # Hook configuration
@@ -222,21 +213,16 @@ hooks/
 ```
 
 **Configuration format**:
-
 ```json
 {
-  "PreToolUse": [
-    {
-      "matcher": "Write|Edit",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/validate.sh",
-          "timeout": 30
-        }
-      ]
-    }
-  ]
+  "PreToolUse": [{
+    "matcher": "Write|Edit",
+    "hooks": [{
+      "type": "command",
+      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/validate.sh",
+      "timeout": 30
+    }]
+  }]
 }
 ```
 
@@ -251,7 +237,6 @@ hooks/
 **Auto-start**: Servers start automatically when plugin enables
 
 **Example format**:
-
 ```json
 {
   "mcpServers": {
@@ -281,20 +266,17 @@ Use `${CLAUDE_PLUGIN_ROOT}` environment variable for all intra-plugin path refer
 ```
 
 **Why it matters**: Plugins install in different locations depending on:
-
 - User installation method (marketplace, local, npm)
 - Operating system conventions
 - User preferences
 
 **Where to use it**:
-
 - Hook command paths
 - MCP server command arguments
 - Script execution references
 - Resource file paths
 
 **Never use**:
-
 - Hardcoded absolute paths (`/Users/name/plugins/...`)
 - Relative paths from working directory (`./scripts/...` in commands)
 - Home directory shortcuts (`~/plugins/...`)
@@ -302,19 +284,16 @@ Use `${CLAUDE_PLUGIN_ROOT}` environment variable for all intra-plugin path refer
 ### Path Resolution Rules
 
 **In manifest JSON fields** (hooks, MCP servers):
-
 ```json
 "command": "${CLAUDE_PLUGIN_ROOT}/scripts/tool.sh"
 ```
 
 **In component files** (commands, agents, skills):
-
 ```markdown
 Reference scripts at: ${CLAUDE_PLUGIN_ROOT}/scripts/helper.py
 ```
 
 **In executed scripts**:
-
 ```bash
 #!/bin/bash
 # ${CLAUDE_PLUGIN_ROOT} available as environment variable
@@ -326,19 +305,16 @@ source "${CLAUDE_PLUGIN_ROOT}/lib/common.sh"
 ### Component Files
 
 **Commands**: Use kebab-case `.md` files
-
 - `code-review.md` → `/code-review`
 - `run-tests.md` → `/run-tests`
 - `api-docs.md` → `/api-docs`
 
 **Agents**: Use kebab-case `.md` files describing role
-
 - `test-generator.md`
 - `code-reviewer.md`
 - `performance-analyzer.md`
 
 **Skills**: Use kebab-case directory names
-
 - `api-testing/`
 - `database-migrations/`
 - `error-handling/`
@@ -346,19 +322,16 @@ source "${CLAUDE_PLUGIN_ROOT}/lib/common.sh"
 ### Supporting Files
 
 **Scripts**: Use descriptive kebab-case names with appropriate extensions
-
 - `validate-input.sh`
 - `generate-report.py`
 - `process-data.js`
 
 **Documentation**: Use kebab-case markdown files
-
 - `api-reference.md`
 - `migration-guide.md`
 - `best-practices.md`
 
 **Configuration**: Use standard names
-
 - `hooks.json`
 - `.mcp.json`
 - `plugin.json`
@@ -375,7 +348,6 @@ Claude Code automatically discovers and loads components:
 6. **MCP servers**: Loads configuration from `.mcp.json` or manifest
 
 **Discovery timing**:
-
 - Plugin installation: Components register with Claude Code
 - Plugin enable: Components become available for use
 - No restart required: Changes take effect on next Claude Code session
@@ -434,7 +406,6 @@ Claude Code automatically discovers and loads components:
 ### Minimal Plugin
 
 Single command with no dependencies:
-
 ```
 my-plugin/
 ├── .claude-plugin/
@@ -446,7 +417,6 @@ my-plugin/
 ### Full-Featured Plugin
 
 Complete plugin with all component types:
-
 ```
 my-plugin/
 ├── .claude-plugin/
@@ -464,7 +434,6 @@ my-plugin/
 ### Skill-Focused Plugin
 
 Plugin providing only skills:
-
 ```
 my-plugin/
 ├── .claude-plugin/
@@ -479,28 +448,24 @@ my-plugin/
 ## Troubleshooting
 
 **Component not loading**:
-
 - Verify file is in correct directory with correct extension
 - Check YAML frontmatter syntax (commands, agents, skills)
 - Ensure skill has `SKILL.md` (not `README.md` or other name)
 - Confirm plugin is enabled in Claude Code settings
 
 **Path resolution errors**:
-
 - Replace all hardcoded paths with `${CLAUDE_PLUGIN_ROOT}`
 - Verify paths are relative and start with `./` in manifest
 - Check that referenced files exist at specified paths
 - Test with `echo $CLAUDE_PLUGIN_ROOT` in hook scripts
 
 **Auto-discovery not working**:
-
 - Confirm directories are at plugin root (not in `.claude-plugin/`)
 - Check file naming follows conventions (kebab-case, correct extensions)
 - Verify custom paths in manifest are correct
 - Restart Claude Code to reload plugin configuration
 
 **Conflicts between plugins**:
-
 - Use unique, descriptive component names
 - Namespace commands with plugin name if needed
 - Document potential conflicts in plugin README
@@ -509,28 +474,3 @@ my-plugin/
 ---
 
 For detailed examples and advanced patterns, see files in `references/` and `examples/` directories.
-
-## SkogAI Market Repository Conventions
-
-When working inside the `skogai-market` marketplace repository itself
-(rather than an arbitrary plugin project), additional conventions apply on
-top of the generic spec above:
-
-- Plugins live as top-level directories listed in a single
-  `.claude-plugin/marketplace.json` at repo root, each with a relative
-  `"source": "./{plugin-name}"`.
-- Community plugins require `README.md` alongside `plugin.json`. A `LICENSE`
-  file is not required for any plugin except `plugin-dev`, which keeps its
-  upstream Anthropic license.
-- `marketplace.json` is a generated file — it mirrors each plugin's own
-  `plugin.json` fields and is produced by
-  `make generate-marketplace-json` (`scripts/generate-marketplace-json.sh`).
-  Never hand-edit it; edit `plugin.json` and regenerate instead.
-- Declare `commands`/`agents`/`skills`/`hooks` explicitly in each plugin's
-  `plugin.json`, even though Claude Code's own auto-discovery would find
-  them anyway — the generator only surfaces what `plugin.json` declares, so
-  explicit declarations are what make a plugin's contents visible at a
-  glance in `marketplace.json`.
-
-See `references/marketplace-repo-conventions.md` for the full detail and
-exceptions observed in this repo.

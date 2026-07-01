@@ -10,10 +10,10 @@ if [ $# -eq 0 ]; then
   echo ""
   echo "Validates agent file for:"
   echo "  - YAML frontmatter structure"
-  echo "  - Required fields (name, description) and optional fields (model, color, tools)"
+  echo "  - Required fields (name, description, model, color)"
   echo "  - Field formats and constraints"
   echo "  - System prompt presence and length"
-  echo "  - Description is a self-contained paragraph, not example blocks"
+  echo "  - Example blocks in description"
   exit 1
 fi
 
@@ -56,7 +56,7 @@ error_count=0
 warning_count=0
 
 # Check name field
-NAME=$(echo "$FRONTMATTER" | grep '^name:' | sed 's/name: *//' | sed 's/^"\(.*\)"$/\1/' || true)
+NAME=$(echo "$FRONTMATTER" | grep '^name:' | sed 's/name: *//' | sed 's/^"\(.*\)"$/\1/')
 
 if [ -z "$NAME" ]; then
   echo "❌ Missing required field: name"
@@ -88,7 +88,7 @@ else
 fi
 
 # Check description field
-DESCRIPTION=$(echo "$FRONTMATTER" | grep '^description:' | sed 's/description: *//' || true)
+DESCRIPTION=$(echo "$FRONTMATTER" | grep '^description:' | sed 's/description: *//')
 
 if [ -z "$DESCRIPTION" ]; then
   echo "❌ Missing required field: description"
@@ -105,25 +105,25 @@ else
     ((warning_count++))
   fi
 
-  # Flag anti-patterns: XML example blocks or a body pointer instead of a
-  # self-contained description. Delegation is decided from this field alone,
-  # before the body is ever read, so both patterns undermine triggering.
-  if echo "$DESCRIPTION" | grep -q '<example>'; then
-    echo "⚠️  description contains <example> blocks — not documented; use one self-contained prose paragraph with concrete trigger scenarios instead"
+  # Check for example blocks
+  if ! echo "$DESCRIPTION" | grep -q '<example>'; then
+    echo "⚠️  description should include <example> blocks for triggering"
     ((warning_count++))
   fi
 
-  if echo "$DESCRIPTION" | grep -qi 'when to invoke\|see.*agent body\|see below'; then
-    echo "⚠️  description points to the agent body for triggering detail — the body isn't read until after the delegation decision, so put trigger scenarios directly in the description"
+  # Check for "Use this agent when" pattern
+  if ! echo "$DESCRIPTION" | grep -qi 'use this agent when'; then
+    echo "⚠️  description should start with 'Use this agent when...'"
     ((warning_count++))
   fi
 fi
 
-# Check model field (optional)
-MODEL=$(echo "$FRONTMATTER" | grep '^model:' | sed 's/model: *//' || true)
+# Check model field
+MODEL=$(echo "$FRONTMATTER" | grep '^model:' | sed 's/model: *//')
 
 if [ -z "$MODEL" ]; then
-  echo "💡 model: not specified (defaults to inheriting the parent's model)"
+  echo "❌ Missing required field: model"
+  ((error_count++))
 else
   echo "✅ model: $MODEL"
 
@@ -138,35 +138,31 @@ else
   esac
 fi
 
-# Check color field (optional)
-COLOR=$(echo "$FRONTMATTER" | grep '^color:' | sed 's/color: *//' || true)
+# Check color field
+COLOR=$(echo "$FRONTMATTER" | grep '^color:' | sed 's/color: *//')
 
 if [ -z "$COLOR" ]; then
-  echo "💡 color: not specified (optional)"
+  echo "❌ Missing required field: color"
+  ((error_count++))
 else
   echo "✅ color: $COLOR"
 
   case "$COLOR" in
-    red|blue|green|yellow|purple|orange|pink|cyan)
+    blue|cyan|green|yellow|magenta|red)
       # Valid color
       ;;
     *)
-      echo "⚠️  Unknown color: $COLOR (valid: red, blue, green, yellow, purple, orange, pink, cyan)"
+      echo "⚠️  Unknown color: $COLOR (valid: blue, cyan, green, yellow, magenta, red)"
       ((warning_count++))
       ;;
   esac
 fi
 
 # Check tools field (optional)
-TOOLS=$(echo "$FRONTMATTER" | grep '^tools:' | sed 's/tools: *//' || true)
+TOOLS=$(echo "$FRONTMATTER" | grep '^tools:' | sed 's/tools: *//')
 
 if [ -n "$TOOLS" ]; then
   echo "✅ tools: $TOOLS"
-
-  if [[ "$TOOLS" == \[*\] ]]; then
-    echo "⚠️  tools is a YAML array — file-frontmatter examples in the official docs use a comma-separated list (e.g. 'Read, Grep'), not '[\"Read\", \"Grep\"]'"
-    ((warning_count++))
-  fi
 else
   echo "💡 tools: not specified (agent has access to all tools)"
 fi

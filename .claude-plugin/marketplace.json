@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -8,30 +8,70 @@
   },
   "plugins": [
     {
+      "name": "claude-code-setup",
+      "source": "./claude-code-setup",
+      "version": "1.0.0",
+      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
+    },
+    {
+      "name": "claude-md-management",
+      "source": "./claude-md-management",
+      "version": "1.0.0",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
+    },
+    {
+      "name": "code-simplifier",
+      "source": "./code-simplifier",
+      "version": "1.0.0",
+      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
+    },
+    {
+      "name": "commit-commands",
+      "source": "./commit-commands",
+      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
+    },
+    {
+      "name": "feature-dev",
+      "source": "./feature-dev",
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
+    },
+    {
       "name": "plugin-dev",
       "source": "./plugin-dev",
       "description": "Plugin development toolkit with skills for creating agents, commands, hooks, MCP integrations, and comprehensive plugin structure guidance",
       "author": {
         "name": "Anthropic",
         "email": "support@anthropic.com"
-      },
-      "commands": [
-        "./commands/create-plugin.md"
-      ],
-      "agents": [
-        "./agents/agent-creator.md",
-        "./agents/plugin-validator.md",
-        "./agents/skill-reviewer.md"
-      ],
-      "skills": [
-        "./skills/agent-development",
-        "./skills/command-development",
-        "./skills/hook-development",
-        "./skills/mcp-integration",
-        "./skills/plugin-settings",
-        "./skills/plugin-structure",
-        "./skills/skill-development"
-      ]
+      }
+    },
+    {
+      "name": "skill-creator",
+      "source": "./skill-creator",
+      "description": "Create new skills, improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, or benchmark skill performance with variance analysis.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      }
     },
     {
       "name": "skoghooks",
