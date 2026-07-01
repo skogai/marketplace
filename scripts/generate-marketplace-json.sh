@@ -66,7 +66,14 @@ while IFS= read -r plugin_file; do
     KEYWORDS=$(echo "$PLUGIN_DATA" | jq -c '.keywords // []')
     COMMANDS=$(echo "$PLUGIN_DATA" | jq -c '.commands // []')
     AGENTS=$(echo "$PLUGIN_DATA" | jq -c '.agents // []')
-    HOOKS=$(echo "$PLUGIN_DATA" | jq -c '.hooks // []')
+    RAW_HOOKS=$(echo "$PLUGIN_DATA" | jq -c '.hooks // []')
+    # hooks/hooks.json is loaded automatically by Claude Code and must not be
+    # declared in manifest.hooks (causes a "duplicate hooks file" error), so
+    # strip it defensively instead of letting it leak into marketplace.json.
+    HOOKS=$(echo "$RAW_HOOKS" | jq -c 'map(select(. != "./hooks/hooks.json" and . != "hooks/hooks.json"))')
+    if [ "$RAW_HOOKS" != "$HOOKS" ]; then
+        echo -e "${RED}  Warning: $plugin_file declares the default hooks/hooks.json in manifest.hooks; remove it there, it's loaded automatically${NC}"
+    fi
     MCP_SERVERS=$(echo "$PLUGIN_DATA" | jq -c '.mcpServers // []')
     SKILLS=$(echo "$PLUGIN_DATA" | jq -c '.skills // []')
 

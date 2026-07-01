@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -18,9 +18,17 @@
         "url": "https://github.com/skogix"
       },
       "license": "MIT",
-      "keywords": ["docs", "search", "claude-code"],
-      "commands": ["./commands/search.md"],
-      "agents": ["./agents/docs-researcher.md"]
+      "keywords": [
+        "docs",
+        "search",
+        "claude-code"
+      ],
+      "commands": [
+        "./commands/search.md"
+      ],
+      "agents": [
+        "./agents/docs-researcher.md"
+      ]
     },
     {
       "name": "plugin-builder",
@@ -66,7 +74,7 @@
     {
       "name": "skoghooks",
       "source": "./skoghooks",
-      "version": "0.0.3",
+      "version": "0.0.4",
       "description": "Lifecycle hooks for logging, context loading, and validation across Claude Code sessions",
       "author": {
         "name": "Skogix",
@@ -74,7 +82,12 @@
         "url": "https://github.com/skogix"
       },
       "license": "MIT",
-      "keywords": ["hooks", "logging", "session", "validation"]
+      "keywords": [
+        "hooks",
+        "logging",
+        "session",
+        "validation"
+      ]
     }
   ]
 }
