@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "arch-linux": {
-      "command": "uvx",
-      "args": ["arch-ops-server"]
-    }
-  }
-}

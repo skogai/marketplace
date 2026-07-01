@@ -1,7 +1,0 @@
-{
-  "data": [
-    { "key": "name", "value": "skogix" },
-    { "key": "age", "value": 30 },
-    { "key": "active", "value": true }
-  ]
-}

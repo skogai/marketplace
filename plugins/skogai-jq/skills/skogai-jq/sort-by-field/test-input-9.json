@@ -1,8 +1,0 @@
-{
-  "users": [
-    { "name": "alice" },
-    { "other": "x" },
-    { "name": "bob" },
-    { "name": null }
-  ]
-}

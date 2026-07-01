@@ -1,5 +1,0 @@
-{
-  "empty": [],
-  "single": ["only"],
-  "mixed": [1, "two", true, null, false, 0]
-}

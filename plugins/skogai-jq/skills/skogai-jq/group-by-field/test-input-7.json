@@ -1,8 +1,0 @@
-{
-  "items": [
-    { "name": "alice", "type": "user" },
-    { "name": "bob", "type": 123 },
-    { "name": "charlie", "type": true },
-    { "name": "dave", "type": "user" }
-  ]
-}

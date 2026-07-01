@@ -1,7 +1,0 @@
-{
-  "id": 42,
-  "title": "test",
-  "description": "test description",
-  "tags": ["a", "b", "c"],
-  "metadata": { "key": "value" }
-}

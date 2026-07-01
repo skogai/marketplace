@@ -1,1 +1,0 @@
-.skogai/Argcfile.sh

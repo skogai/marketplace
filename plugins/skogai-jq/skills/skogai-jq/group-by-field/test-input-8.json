@@ -1,8 +1,0 @@
-{
-  "items": [
-    { "name": "alice", "status": "active" },
-    { "name": "bob" },
-    { "name": "charlie", "status": "active" },
-    { "name": "dave" }
-  ]
-}

@@ -1,4 +1,0 @@
-interface:
-  display_name: "SkogAI Bats"
-  short_description: "Using bats for testing scripts."
-  default_prompt: "Use $skogai-bats-testing to help with testing scripts."

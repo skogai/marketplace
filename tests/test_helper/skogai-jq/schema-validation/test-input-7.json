@@ -1,8 +1,0 @@
-{
-  "str": "text",
-  "num": 42,
-  "bool": true,
-  "nil": null,
-  "arr": [1, 2, 3],
-  "obj": { "key": "value" }
-}

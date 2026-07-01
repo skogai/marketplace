@@ -1,3 +1,0 @@
-{
-  "all_non_numeric": ["hello", "world", true, false, null]
-}

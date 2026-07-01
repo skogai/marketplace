@@ -1,7 +1,0 @@
-{
-  "data": {
-    "nested": {
-      "items": [{ "value": "123" }, { "value": "abc" }, { "value": "456" }]
-    }
-  }
-}

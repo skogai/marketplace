@@ -1,4 +1,0 @@
-interface:
-  display_name: "SkogAI JQ"
-  short_description: "Using JQ for JSON processing"
-  default_prompt: "Use $skogai-jq to help with JQ JSON processing."

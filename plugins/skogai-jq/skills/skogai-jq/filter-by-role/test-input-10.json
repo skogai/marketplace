@@ -1,7 +1,0 @@
-{
-  "messages": [
-    { "role": "user", "content": "" },
-    { "role": "assistant", "content": "Response" },
-    { "role": "user", "content": "More" }
-  ]
-}

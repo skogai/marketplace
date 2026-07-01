@@ -1,8 +1,0 @@
-sandbox_mode = "danger-full-access"
-[features]
-multi_agent = true
-hooks = true
-
-[mcp_servers.context7]
-command = "npx"
-args = ["-y", "@upstash/context7-mcp"]
