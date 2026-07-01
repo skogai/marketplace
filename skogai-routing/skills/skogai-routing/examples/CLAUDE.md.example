@@ -1,3 +1,9 @@
-## Routing
+---
+permalink: skogai-routing/claude
+type: router
+---
+<routes>
 
-- read @SKOGAI.md
+- @SKOGAI.md
+
+</routes>

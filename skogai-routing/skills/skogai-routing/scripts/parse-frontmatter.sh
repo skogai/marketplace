@@ -25,7 +25,7 @@ if [ ! -f "$FILE" ]; then
   exit 1
 fi
 
-FRONTMATTER=$(sed -n '/^---$/,/^---$/{ /^---$/d; p; }' "$FILE")
+FRONTMATTER=$(awk '/^---$/{n++; next} n==1' "$FILE")
 
 if [ -z "$FRONTMATTER" ]; then
   echo "Error: No frontmatter found in $FILE" >&2

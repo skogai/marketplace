@@ -10,14 +10,13 @@ frontmatter plus an XML block, starting with `<routes>`.
 
 ## Skills
 
-- **skogai-routing** — knowledge skill describing the convention (frontmatter
-  `type: router` + `<routes>` XML tag), with scripts to read frontmatter and
-  validate a routing file against `schemas/router.schema.json`. Auto-activates
-  when authoring or reasoning about routing files.
-- **init-routing** — scaffolds a new `SKOGAI.md` in a target repo and adds the
-  `- read @SKOGAI.md` line to that repo's `CLAUDE.md`.
-- **validate-routing** — validates `SKOGAI.md`/`CLAUDE.md` routing files
-  against the router schema and reports pass/fail with specific errors.
+- **skogai-routing** — describes the convention (frontmatter `type: router` +
+  `<routes>` XML tag), and covers the actions around it: scaffolding a new
+  `SKOGAI.md` in a target repo (and wiring `- read @SKOGAI.md` into its
+  `CLAUDE.md`), and validating routing files against
+  `schemas/router.schema.json` with a pass/fail/warn report. Auto-activates
+  when authoring, reasoning about, scaffolding, or validating routing files —
+  it's one convention, so it's one skill.
 
 ## v1 scope
 
