@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -72,6 +72,23 @@
         "name": "Anthropic",
         "email": "support@anthropic.com"
       }
+    },
+    {
+      "name": "skogai-routing",
+      "source": "./skogai-routing",
+      "version": "0.1.0",
+      "description": "Author and validate SKOGAI.md routing files: YAML frontmatter plus XML tags (starting with <routes>), loaded into CLAUDE.md via native @-linking.",
+      "author": {
+        "name": "Emil Skogsund",
+        "email": "emil@skogsund.se"
+      },
+      "keywords": [
+        "skogai",
+        "routing",
+        "frontmatter",
+        "xml",
+        "at-linking"
+      ]
     },
     {
       "name": "skoghooks",
