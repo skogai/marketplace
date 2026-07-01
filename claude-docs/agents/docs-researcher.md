@@ -19,7 +19,8 @@ The documentation cache is at `${CLAUDE_PLUGIN_ROOT}/references/docs/`, one mark
 
 It is also @-linked directly below so the full cache is available in context without a manual search step:
 
-@${CLAUDE_PLUGIN_ROOT}/references/docs/
+- @${CLAUDE_PLUGIN_ROOT}/references/docs/
+- @references/docs/
 
 ## Workflow
 
