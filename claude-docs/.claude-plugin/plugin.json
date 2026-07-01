@@ -1,0 +1,19 @@
+{
+  "name": "claude-docs",
+  "version": "0.0.1",
+  "description": "download the latest claude code documentation and provide search functionality for it",
+  "author": {
+    "name": "Skogix",
+    "email": "emil@skogsund.se",
+    "url": "https://github.com/skogix"
+  },
+  "license": "MIT",
+  "keywords": ["docs", "search", "claude-code"],
+  "commands": [
+    "./commands/search.md"
+  ],
+  "agents": [
+    "./agents/docs-researcher.md"
+  ],
+  "hooks": "./hooks/hooks.json"
+}

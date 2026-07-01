@@ -1,0 +1,17 @@
+{
+  "description": "Downloads the latest Claude Code documentation on session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/download-docs.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
