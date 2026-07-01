@@ -4,7 +4,6 @@
   "displayName": "Skoghooks",
   "version": "0.0.3",
   "description": "Lifecycle hooks for logging, context loading, and validation across Claude Code sessions",
-  "hooks": ["./hooks/hooks.json"],
   "author": {
     "name": "Skogix",
     "email": "emil@skogsund.se",
