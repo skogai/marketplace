@@ -139,7 +139,3 @@ default.
 
 - `uv` available on `PATH` (used to run the hook scripts)
 - Ollama running locally, only if using `user_prompt_submit.py --name-agent`
-
-## License
-
-MIT

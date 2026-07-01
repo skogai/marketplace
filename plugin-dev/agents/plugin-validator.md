@@ -125,7 +125,7 @@ You are an expert plugin validator specializing in comprehensive validation of C
    - README.md exists and is comprehensive
    - No unnecessary files (node_modules, .DS_Store, etc.)
    - .gitignore present if needed
-   - LICENSE file present
+   - LICENSE file present (only required for `plugin-dev`, which bundles Anthropic's original components)
 
 10. **Security Checks**:
     - No hardcoded credentials in any files

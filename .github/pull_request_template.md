@@ -9,7 +9,6 @@ Brief description of what this plugin does.
 - **Plugin name**:
 - **Author**:
 - **Version**:
-- **License**:
 - **Keywords**:
 
 ## Components Included
@@ -48,7 +47,6 @@ Show examples of the main components:
 - [ ] All agents work as documented
 - [ ] All hooks trigger appropriately
 - [ ] README includes comprehensive documentation
-- [ ] LICENSE file is included
 - [ ] plugin.json is valid
 - [ ] marketplace.json has been updated
 
@@ -82,6 +80,5 @@ If applicable, add screenshots or additional examples showing the plugin in acti
 By submitting this pull request, I confirm that:
 
 - This is my original work or I have permission to submit it
-- The plugin is licensed under the license specified in the LICENSE file
 - I have tested all components thoroughly
 - The plugin follows Claude Market contribution guidelines

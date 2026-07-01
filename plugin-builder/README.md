@@ -323,7 +323,6 @@ plugin-builder/
 │   ├── cc-hook-builder.md       # Hook builder
 │   └── cc-mcp-builder.md        # MCP server builder
 ├── CODEOWNERS                   # Maintainers
-├── LICENSE                      # MIT License
 └── README.md                    # This file
 ```
 
@@ -392,10 +391,6 @@ Once you've created and validated your plugin:
 2. Ensure validation passes: `/plugin-builder:validate`
 3. Submit to SkogAI Market by creating a PR that adds your plugin to `.claude-plugin/marketplace.json`
 4. The CODEOWNERS file ensures proper review by maintainers and plugin authors
-
-## License
-
-MIT
 
 ## Learn More
 

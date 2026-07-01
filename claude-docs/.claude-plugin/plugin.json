@@ -6,7 +6,6 @@
     "email": "emil@skogsund.se",
     "url": "https://github.com/skogix"
   },
-  "license": "MIT",
   "keywords": ["docs", "search", "claude-code"],
   "commands": ["./commands/search.md"],
   "agents": ["./agents/docs-researcher.md"]

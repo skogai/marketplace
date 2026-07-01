@@ -44,7 +44,3 @@ A subagent that searches and reads the documentation cache to answer questions a
 ## Requirements
 
 - `curl` available on `PATH` (used by the download script)
-
-## License
-
-MIT

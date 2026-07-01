@@ -51,7 +51,6 @@ We welcome high-quality plugin contributions! Here's how to submit yours:
 1. Your plugin should be well-tested and functional
 2. Include comprehensive documentation (README.md)
 3. Follow plugin structure best practices
-4. Have appropriate open source license
 
 ### Quick Start: Use Plugin Builder
 
@@ -99,8 +98,7 @@ The easiest way to create a plugin for this marketplace:
    ├── skills/             # optional - only if you have skills
    ├── mcp-servers/        # optional - only if you have MCP servers
    ├── CODEOWNERS          # required - defines reviewers
-   ├── README.md
-   └── LICENSE
+   └── README.md
    ```
 
 3. **Generate marketplace.json entry**:
@@ -132,7 +130,6 @@ To maintain a high-quality marketplace, submissions should meet these criteria:
 - Clear, comprehensive README with usage examples
 - Valid plugin.json with complete metadata
 - All components work as documented
-- Open source license (MIT, Apache 2.0, GPL, etc.)
 - No malicious code or security vulnerabilities
 
 ### Recommended
@@ -150,7 +147,6 @@ Every plugin must have:
 - `.claude-plugin/plugin.json` - Plugin manifest
 - `CODEOWNERS` - Defines maintainers and reviewers
 - `README.md` - Documentation
-- `LICENSE` - Open source license
 - At least one component (command, agent, hook, skill, or MCP server)
 
 Component files go in (directories are optional - only create if you have that component type):
@@ -216,6 +212,6 @@ Looking for inspiration? Here are plugin ideas the community would love:
 
 ## License
 
-Individual plugins have their own licenses (see each plugin's LICENSE file).
+Plugins in this marketplace generally do not require their own LICENSE file. The exception is `plugin-dev`, which bundles Anthropic's original plugin-development components and keeps their upstream license.
 
 The marketplace repository itself is licensed under MIT.

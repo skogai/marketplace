@@ -8,6 +8,5 @@
     "email": "emil@skogsund.se",
     "url": "https://github.com/skogix"
   },
-  "license": "MIT",
   "keywords": ["hooks", "logging", "session", "validation"]
 }

@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -16,7 +16,6 @@
         "email": "emil@skogsund.se",
         "url": "https://github.com/skogix"
       },
-      "license": "MIT",
       "keywords": [
         "docs",
         "search",
@@ -95,7 +94,6 @@
         "email": "emil@skogsund.se",
         "url": "https://github.com/skogix"
       },
-      "license": "MIT",
       "keywords": [
         "hooks",
         "logging",

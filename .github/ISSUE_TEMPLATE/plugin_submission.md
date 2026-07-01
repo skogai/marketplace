@@ -11,7 +11,6 @@ assignees: ""
 - **Plugin name**:
 - **Author**:
 - **Version**:
-- **License**:
 
 ## Description
 
@@ -34,7 +33,6 @@ Before submitting, ensure:
 - [ ] Plugin follows the required directory structure
 - [ ] All components have been tested and work correctly
 - [ ] README.md includes installation instructions and usage examples
-- [ ] LICENSE file is included
 - [ ] plugin.json is valid and complete
 - [ ] `/plugin-builder:validate` passes without critical errors
 - [ ] Plugin has been tested locally with `/plugin install`

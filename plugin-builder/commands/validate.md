@@ -141,8 +141,6 @@ Check that all components listed in plugin.json exist and are valid:
    - Plugin name and description
    - Installation instructions
    - Usage examples for components
-   - License information
-3. **LICENSE file exists**
 
 ## Step 3: Report Results
 
@@ -189,7 +187,6 @@ Validating plugin: awesome-plugin
   - Directory structure is correct
   - CODEOWNERS file exists and is valid
   - README.md exists
-  - LICENSE file exists
 
 ✗ Failed Checks:
   - File commands/broken-cmd.md found but contains no content

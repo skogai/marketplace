@@ -59,8 +59,7 @@ Since this is a hand-curated marketplace:
 1. **Quality over quantity**: Only include well-tested, valuable plugins
 2. **Accurate metadata**: Ensure all plugin descriptions, keywords, and component lists are accurate
 3. **Working sources**: Verify all plugin sources are accessible and functional
-4. **License compliance**: Confirm all plugins have appropriate open source licenses
-5. **Documentation**: Plugins should have clear documentation on usage
+4. **Documentation**: Plugins should have clear documentation on usage
 
 ## Installation by Users
 
@@ -86,7 +85,6 @@ marketplace/
 │   │   └── plugin.json
 │   ├── commands/             # init, add, validate commands
 │   ├── CODEOWNERS            # Maintainers and reviewers
-│   ├── LICENSE
 │   └── README.md
 ├── {plugin-name}/            # Community plugins at top level
 │   ├── .claude-plugin/
@@ -97,8 +95,7 @@ marketplace/
 │   ├── skills/               # optional
 │   ├── mcp-servers/          # optional
 │   ├── CODEOWNERS            # Required - maintainers and reviewers
-│   ├── README.md
-│   └── LICENSE
+│   └── README.md
 ├── CLAUDE.md                 # This file
 ├── CONTRIBUTING.md           # Contribution guidelines
 └── README.md                 # Main documentation
@@ -121,7 +118,7 @@ When adding a new plugin to the marketplace:
 1. Plugin must be at the top level: `./{plugin-name}/` directory
 2. Plugin must have valid `.claude-plugin/plugin.json` manifest
 3. Plugin must have CODEOWNERS file with @skogai-market and plugin author
-4. Plugin must have README.md and LICENSE
+4. Plugin must have README.md
 5. Component directories (commands/, agents/, hooks/, skills/, mcp-servers/) are optional - only create if needed
 6. Add plugin entry to `.claude-plugin/marketplace.json` with source path `"./{plugin-name}"`
 7. Ensure plugin passes validation: `/plugin-builder:validate`
@@ -146,9 +143,10 @@ Plugins follow this structure (all component directories are optional):
 ├── mcp-servers/             # Optional - only if MCP servers exist
 │   └── *.json
 ├── CODEOWNERS               # Required - defines maintainers
-├── README.md                # Required
-└── LICENSE                  # Required
+└── README.md                # Required
 ```
+
+Note: `plugin-dev` is the exception — it bundles Anthropic's original plugin-development components and keeps a `LICENSE` file for that upstream code. No other plugin needs a `LICENSE`.
 
 ## Plugin Components
 
