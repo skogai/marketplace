@@ -17,7 +17,6 @@ The marketplace is defined by a JSON file at `.claude-plugin/marketplace.json` i
 - **plugins**: Array of plugin entries available in this marketplace
 - **description** (optional): Description of the marketplace's purpose
 - **version** (optional): Marketplace version
-- **pluginRoot** (optional): Default root directory for relative plugin paths
 
 ### Plugin Entry Schema
 
@@ -142,7 +141,8 @@ Plugins follow this structure (all component directories are optional):
 ├── hooks/                   # Optional - only if hooks exist
 │   └── *.json
 ├── skills/                  # Optional - only if skills exist
-│   └── *.md
+│   └── {skill-name}/
+│       └── SKILL.md
 ├── mcp-servers/             # Optional - only if MCP servers exist
 │   └── *.json
 ├── CODEOWNERS               # Required - defines maintainers
