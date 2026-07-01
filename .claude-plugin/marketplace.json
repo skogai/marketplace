@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -10,7 +10,7 @@
     {
       "name": "plugin-builder",
       "source": "./plugin-builder",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "description": "plugin-builder",
       "author": {
         "name": "skogix",
