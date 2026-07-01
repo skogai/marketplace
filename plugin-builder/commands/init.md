@@ -226,7 +226,7 @@ Replace:
 - `{github-username}` with the GitHub username from Step 1
 
 This ensures that:
-- The Claude Market organization is always notified
+- The SkogAI Market organization is always notified
 - The plugin creator's GitHub account is tagged for review
 
 ## Step 8: Create README

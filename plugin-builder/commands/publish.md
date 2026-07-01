@@ -1,6 +1,6 @@
 # Publish Command
 
-You are helping publish a Claude Code plugin to the Claude Market marketplace.
+You are helping publish a Claude Code plugin to the SkogAI Market marketplace.
 
 ## Overview
 

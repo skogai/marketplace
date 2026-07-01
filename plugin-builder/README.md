@@ -22,7 +22,7 @@ The Plugin Builder helps you create high-quality Claude Code plugins through an 
 /plugin install ./plugin-builder
 ```
 
-Or if adding from the Claude Market marketplace:
+Or if adding from the SkogAI Market marketplace:
 
 ```bash
 /plugin marketplace add skogai-market/marketplace
@@ -151,12 +151,12 @@ Validate plugin structure and configuration.
 
 ### `/plugin-builder:publish`
 
-Publish your plugin changes to the Claude Market marketplace with automated validation, manifest generation, and pull request creation.
+Publish your plugin changes to the SkogAI Market marketplace with automated validation, manifest generation, and pull request creation.
 
 **Use this when:**
 
 - You've made changes to a plugin and want to submit them to the marketplace
-- You want to add a new plugin to the Claude Market
+- You want to add a new plugin to the SkogAI Market
 - You need an automated workflow from validation to PR creation
 
 **Workflow:**
@@ -384,13 +384,13 @@ The plugin.json file structure:
 }
 ```
 
-## Contributing to Claude Market
+## Contributing to SkogAI Market
 
 Once you've created and validated your plugin:
 
 1. Test it locally: `/plugin install ./{plugin-name}`
 2. Ensure validation passes: `/plugin-builder:validate`
-3. Submit to Claude Market by creating a PR that adds your plugin to `.claude-plugin/marketplace.json`
+3. Submit to SkogAI Market by creating a PR that adds your plugin to `.claude-plugin/marketplace.json`
 4. The CODEOWNERS file ensures proper review by maintainers and plugin authors
 
 ## License
