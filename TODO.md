@@ -1,0 +1,2 @@
+- [ ] remove the concept and mentioning of CODEOWNERS except plugin-dev / anthropic base.
+- [ ] remove all need for LICENCE (currently only keep the plugin-dev licence/anthropic base.
