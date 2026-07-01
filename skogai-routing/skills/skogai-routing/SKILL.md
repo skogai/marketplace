@@ -132,8 +132,12 @@ When the user asks to list/find/inventory routing files across a project:
    project root regardless of current subdirectory — requires Claude Code
    v2.1.196+).
 2. Run `${CLAUDE_SKILL_DIR}/scripts/list_routers.py <root_dir>`. If the user
-   wants the list saved somewhere, pass `-o <path>`; otherwise just report the
-   list back to them (don't invent a save location they didn't ask for).
+   wants the list saved somewhere, pass `-o <path>`. If they want it saved but
+   haven't named a path, default to a file under `/tmp` (e.g.
+   `/tmp/routers-<root-dir-name>.txt`) rather than writing into the project —
+   this default is provisional until a real project-relative save location
+   (e.g. a `.claude/` or `.skogai/` convention) has actually been used and
+   confirmed, so don't upgrade it to a project path on your own judgment.
 3. Optionally follow up with
    `${CLAUDE_SKILL_DIR}/scripts/validate_router.py <files...>` on the
    discovered list if the user also wants validation, not just discovery.
