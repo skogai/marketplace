@@ -71,9 +71,9 @@ See `examples/SKOGAI.md.example` for a router with directory/subfolder routes an
 
 ## Reading frontmatter
 
-Use `scripts/parse-frontmatter.sh <file> [field]` to extract the YAML frontmatter
-block (or a single field from it) from a routing file — adapted from
-plugin-dev's `plugin-settings` frontmatter parser.
+Use `${CLAUDE_SKILL_DIR}/scripts/parse-frontmatter.sh <file> [field]` to extract
+the YAML frontmatter block (or a single field from it) from a routing file —
+adapted from plugin-dev's `plugin-settings` frontmatter parser.
 
 ## Beyond `<routes>`: where this is headed
 
@@ -107,8 +107,7 @@ When the user asks to validate SKOGAI.md/CLAUDE.md routing files:
    under that directory (default: cwd).
 2. Skip files whose frontmatter `type` isn't `router` — this validator only
    covers that one document type in v1.
-3. Run `bash scripts/validate-router.sh <file...>` (paths relative to this
-   skill's directory).
+3. Run `bash ${CLAUDE_SKILL_DIR}/scripts/validate-router.sh <file...>`.
 4. Report PASS/FAIL/WARN per file. For any FAIL, quote the specific schema
    error so the user knows exactly what to fix (e.g. missing `<routes>`
    section, `type` not `router`, missing frontmatter). Don't auto-fix
