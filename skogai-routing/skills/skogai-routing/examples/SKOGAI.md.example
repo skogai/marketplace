@@ -1,0 +1,11 @@
+---
+permalink: skogai-routing/claude
+type: router
+---
+
+<routes>
+
+- @SKOGAI.md
+- /home/skogix/skogai/CLAUDE.md - the repo `skogai/skogai`
+
+</routes>

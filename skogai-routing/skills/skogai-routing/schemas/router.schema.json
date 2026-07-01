@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "router.schema.json",
+  "title": "SkogAI router document",
+  "description": "A routing file (e.g. SKOGAI.md): frontmatter type: router plus a <routes> XML section.",
+  "type": "object",
+  "required": ["type", "frontmatter", "sections"],
+  "properties": {
+    "type": { "const": "router" },
+    "frontmatter": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "router" },
+        "permalink": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "required": ["kind", "name"],
+        "properties": {
+          "kind": { "const": "xml" },
+          "name": { "const": "routes" },
+          "content": { "type": "string" }
+        }
+      }
+    }
+  }
+}
