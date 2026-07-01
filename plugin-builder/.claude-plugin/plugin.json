@@ -1,0 +1,25 @@
+{
+  "name": "plugin-builder",
+  "version": "0.0.1",
+  "description": "plugin-builder",
+  "author": {
+    "name": "skogix",
+    "email": "emil@skogsund.se",
+    "url": "https://github.com/skogai"
+  },
+  "keywords": ["plugin", "builder", "development", "scaffolding", "example"],
+  "commands": [
+    "./commands/init.md",
+    "./commands/add.md",
+    "./commands/edit.md",
+    "./commands/validate.md",
+    "./commands/publish.md"
+  ],
+  "skills": [
+    "./skills/cc-skill-builder.md",
+    "./skills/cc-command-builder.md",
+    "./skills/cc-agent-builder.md",
+    "./skills/cc-hook-builder.md",
+    "./skills/cc-mcp-builder.md"
+  ]
+}
