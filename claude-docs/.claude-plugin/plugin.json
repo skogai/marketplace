@@ -9,11 +9,6 @@
   },
   "license": "MIT",
   "keywords": ["docs", "search", "claude-code"],
-  "commands": [
-    "./commands/search.md"
-  ],
-  "agents": [
-    "./agents/docs-researcher.md"
-  ],
-  "hooks": "./hooks/hooks.json"
+  "commands": ["./commands/search.md"],
+  "agents": ["./agents/docs-researcher.md"]
 }

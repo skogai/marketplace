@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -28,8 +28,7 @@
       ],
       "agents": [
         "./agents/docs-researcher.md"
-      ],
-      "hooks": "./hooks/hooks.json"
+      ]
     },
     {
       "name": "plugin-builder",
