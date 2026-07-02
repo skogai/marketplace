@@ -48,8 +48,8 @@ For scaffolding and validating structure, use the `plugin-dev` and `skill-creato
 
 ### Two conventions that are easy to get wrong
 
-- **No LICENSE files.** Plugins intentionally do not carry their own LICENSE. The sole exception is `plugin-dev`, which vendors Anthropic's original plugin-development components and keeps their upstream license. Don't add LICENSE files elsewhere.
-- **No CODEOWNERS** beyond the `plugin-dev` / Anthropic-base case.
+- **LICENSE follows authorship.** The Anthropic-vendored plugins (`claude-code-setup`, `claude-md-management`, `code-simplifier`, `commit-commands`, `feature-dev`, `skill-creator`, `plugin-dev`) each keep their upstream Anthropic LICENSE. The community/SkogAI-original plugins (`ponytail`, `skogai-routing`, `skoghooks`) carry no LICENSE. When adding a SkogAI-original plugin, don't add a LICENSE; when vendoring third-party code, preserve its license.
+- **No CODEOWNERS** beyond the Anthropic-vendored base.
 
 ## SkogAI routing (`<routes>` / SKOGAI.md)
 
