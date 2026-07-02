@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "scaffold-new-repo",
+  "prompt": "I'm splitting skogtasks out into its own repo at /tmp/claude-1000/-home-skogix--local-src-marketplace/cafdca9e-77c3-46a0-ab76-86734e3544bd/scratchpad/sandbox/skogtasks. Set it up the way we do it everywhere else so Claude actually picks up context automatically when I'm working in there.",
+  "assertions": [
+    "SKOGAI.md was created in the target repo",
+    "SKOGAI.md frontmatter has type: router",
+    "SKOGAI.md body contains a <routes> XML block",
+    "no unrequested route entries were invented beyond a minimal/empty block",
+    "agent either created a CLAUDE.md with an @SKOGAI.md route entry, or explicitly asked before creating one (since none existed)"
+  ]
+}

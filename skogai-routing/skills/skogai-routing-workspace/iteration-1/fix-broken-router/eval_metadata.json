@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "fix-broken-router",
+  "prompt": "Something's off with /tmp/claude-1000/-home-skogix--local-src-marketplace/cafdca9e-77c3-46a0-ab76-86734e3544bd/scratchpad/sandbox/core/CLAUDE.md — I don't think it's actually pulling in SKOGAI.md like it's supposed to. Can you check?",
+  "assertions": [
+    "response identifies CLAUDE.md has no frontmatter / type: router",
+    "response identifies CLAUDE.md has no <routes> block (it's a plain markdown link, not an @-link inside <routes>)",
+    "agent did not silently rewrite CLAUDE.md without asking or flagging the change first",
+    "final response gives a clear, specific diagnosis rather than a vague 'looks fine' or generic troubleshooting"
+  ]
+}

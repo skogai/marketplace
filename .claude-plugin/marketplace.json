@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -62,6 +62,16 @@
       "author": {
         "name": "Anthropic",
         "email": "support@anthropic.com"
+      }
+    },
+    {
+      "name": "ponytail",
+      "source": "./ponytail",
+      "version": "4.8.4",
+      "description": "Lazy senior dev mode. Forces the simplest, shortest solution that actually works: YAGNI, stdlib first, no unrequested abstractions.",
+      "author": {
+        "name": "Dietrich Gebert",
+        "url": "https://github.com/DietrichGebert"
       }
     },
     {

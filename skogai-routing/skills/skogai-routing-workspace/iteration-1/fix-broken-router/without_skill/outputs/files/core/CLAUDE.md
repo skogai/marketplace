@@ -1,0 +1,5 @@
+<routes>
+
+- @SKOGAI.md
+
+</routes>
