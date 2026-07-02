@@ -3,160 +3,70 @@ permalink: marketplace/claude
 type: router
 ---
 
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 <routes>
 
 - @SKOGAI.md
 
 </routes>
 
-## Repository Purpose
+## What this repository is
 
-This is the SkogAI Market marketplace repository - a hand-curated collection of open source Claude Code plugins (tools, agents, skills, and MCP servers). This marketplace enables centralized discovery and distribution of Claude Code extensions.
+SkogAI Market is a **hand-curated marketplace of Claude Code plugins** (commands, agents, skills, hooks, MCP servers). The whole repo is a single distribution unit: each top-level directory is one plugin, and `.claude-plugin/marketplace.json` is the generated manifest that lists them all. Users add it with `/plugin marketplace add skogai-market/marketplace` and install individual plugins from the `/plugin` menu.
 
-## Marketplace Structure
+## The one workflow that matters: regenerating the manifest
 
-### Core File: `.claude-plugin/marketplace.json`
+**Never hand-edit the `plugins` array in `.claude-plugin/marketplace.json`.** It is generated. After adding, removing, or changing any plugin's `.claude-plugin/plugin.json`, run:
 
-The marketplace is defined by a JSON file at `.claude-plugin/marketplace.json` in the repository root. This file contains:
-
-- **name**: Kebab-case identifier for the marketplace
-- **owner**: Maintainer information object with contact details
-- **plugins**: Array of plugin entries available in this marketplace
-- **description** (optional): Description of the marketplace's purpose
-- **version** (optional): Marketplace version
-
-### Plugin Entry Schema
-
-Each plugin in the `plugins` array must include:
-
-**Required fields:**
-
-- `name`: Kebab-case identifier for the plugin
-- `source`: Where to fetch the plugin (relative path, GitHub repo, or git URL)
-
-**Optional metadata:**
-
-- `description`: What the plugin does
-- `version`: Plugin version
-- `author`: Author name or organization
-- `homepage`: Plugin homepage URL
-- `repository`: Source repository URL
-- `license`: License type
-- `keywords`: Array of searchable keywords
-
-**Component configuration:**
-
-- `commands`: Slash commands included
-- `agents`: Subagents included
-- `hooks`: Hooks included
-- `mcpServers`: MCP servers included
-
-### Source Types
-
-Plugins can be sourced from:
-
-- **Relative paths**: `"./plugin-name"` (top-level directory in marketplace)
-- **GitHub repos**: `{"source": "github", "repo": "owner/repo"}`
-- **Git URLs**: `{"source": "url", "url": "https://example.com/plugin.git"}`
-
-## Curation Standards
-
-Since this is a hand-curated marketplace:
-
-1. **Quality over quantity**: Only include well-tested, valuable plugins
-2. **Accurate metadata**: Ensure all plugin descriptions, keywords, and component lists are accurate
-3. **Working sources**: Verify all plugin sources are accessible and functional
-4. **Documentation**: Plugins should have clear documentation on usage
-
-## Installation by Users
-
-Users install this marketplace with:
-
-```
-/plugin marketplace add skogai-market/marketplace
+```bash
+make generate-marketplace-json      # wraps scripts/generate-marketplace-json.sh
 ```
 
-Then browse and install individual plugins through the `/plugin` menu in Claude Code.
+`scripts/generate-marketplace-json.sh` is the source of truth for how the manifest is built, and its behavior is load-bearing:
 
-## Repository Structure
+- **Discovery**: finds every `*/.claude-plugin/plugin.json` in the repo (excluding `.claude/worktrees/`) and builds one entry per plugin. Adding a plugin dir with a valid `plugin.json` is all it takes to be included — there is no separate registration step.
+- **Source paths**: each entry's `source` is derived as `./<relative-dir>`. Plugins are expected to live at the top level.
+- **Alphabetical sort**: entries are sorted by `name`, so diffs stay stable regardless of discovery order.
+- **Auto version bump**: the marketplace's own `version` (currently tracked in the manifest header) is **patch-incremented automatically** whenever the generated content changes. Do not bump it by hand — let the script do it, and expect the version to move in your diff.
+- **Hook-file stripping**: `hooks/hooks.json` is loaded automatically by Claude Code and must NOT appear in a plugin's `manifest.hooks`. The script strips it defensively and warns; if you see that warning, remove `hooks/hooks.json` from that plugin's `plugin.json` `hooks` array.
+- Only non-empty fields from each `plugin.json` (`version`, `description`, `author`, `keywords`, `commands`, `agents`, `hooks`, `mcpServers`, `skills`, …) are copied into the entry.
 
-```
-marketplace/
-├── .claude-plugin/
-│   └── marketplace.json      # Marketplace manifest listing all plugins
-├── .github/
-│   ├── ISSUE_TEMPLATE/       # Issue templates for bug reports, feature requests
-│   └── pull_request_template.md
-├── plugin-builder/           # Official plugin builder tool (top-level)
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   ├── commands/             # init, add, validate commands
-│   └── README.md
-├── {plugin-name}/            # Community plugins at top level
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   ├── commands/             # optional
-│   ├── agents/               # optional
-│   ├── hooks/                # optional
-│   ├── skills/               # optional
-│   ├── mcp-servers/          # optional
-│   └── README.md
-├── CLAUDE.md                 # This file
-├── CONTRIBUTING.md           # Contribution guidelines
-└── README.md                 # Main documentation
-```
+Requires `jq` (and `shasum`); falls back to `python3` for relative-path computation.
 
-## Plugin Builder
+## Plugin anatomy
 
-The `plugin-builder` plugin is the official tool for creating new plugins for this marketplace. It provides:
+A plugin is a top-level directory with:
 
-- `/plugin-builder:init` - Interactive plugin creation with guided prompts
-- `/plugin-builder:add` - Add components to existing plugins
-- `/plugin-builder:validate` - Validate plugin structure and configuration
+- `.claude-plugin/plugin.json` — **required** manifest (name, version, description, author, and component arrays)
+- `README.md` — **required**
+- At least one component. Component dirs are all optional — create only the ones you use: `commands/*.md`, `agents/*.md`, `hooks/*.json`, `skills/<name>/SKILL.md`, `mcp-servers/*.json`
 
-When creating new plugins, always use the plugin-builder to ensure proper structure and quality.
+For scaffolding and validating structure, use the `plugin-dev` and `skill-creator` plugins bundled here. (Note: the README still references a `plugin-builder` plugin, but no such directory exists in the repo — that reference is stale.) When creating a plugin, model it on an existing one (e.g. `commit-commands` for a commands-only plugin), then run the manifest generator.
 
-## Adding New Plugins to Marketplace
+### Two conventions that are easy to get wrong
 
-When adding a new plugin to the marketplace:
+- **No LICENSE files.** Plugins intentionally do not carry their own LICENSE. The sole exception is `plugin-dev`, which vendors Anthropic's original plugin-development components and keeps their upstream license. Don't add LICENSE files elsewhere.
+- **No CODEOWNERS** beyond the `plugin-dev` / Anthropic-base case.
 
-1. Plugin must be at the top level: `./{plugin-name}/` directory
-2. Plugin must have valid `.claude-plugin/plugin.json` manifest
-3. Plugin must have README.md
-4. Component directories (commands/, agents/, hooks/, skills/, mcp-servers/) are optional - only create if needed
-5. Add plugin entry to `.claude-plugin/marketplace.json` with source path `"./{plugin-name}"`
-6. Ensure plugin passes validation: `/plugin-builder:validate`
+## SkogAI routing (`<routes>` / SKOGAI.md)
 
-## Plugin Directory Structure
+CLAUDE.md, `SKOGAI.md`, and several plugin docs carry YAML frontmatter (`permalink`, `type: router`) and a `<routes>` block of `@`-links. This is the SkogAI memory-routing convention — the `<routes>` block chains context files together (CLAUDE.md → SKOGAI.md → …). When editing these files, **preserve the frontmatter and the `<routes>` block**; add new `@`-links there rather than inventing a new mechanism.
 
-Plugins follow this structure (all component directories are optional):
+## Plugins with their own build/test
 
-```
-{plugin-name}/
-├── .claude-plugin/
-│   └── plugin.json          # Required
-├── commands/                # Optional - only if commands exist
-│   └── *.md
-├── agents/                  # Optional - only if agents exist
-│   └── *.md
-├── hooks/                   # Optional - only if hooks exist
-│   └── *.json
-├── skills/                  # Optional - only if skills exist
-│   └── {skill-name}/
-│       └── SKILL.md
-├── mcp-servers/             # Optional - only if MCP servers exist
-│   └── *.json
-└── README.md                # Required
+Most plugins are pure markdown/JSON and need no build. The exception is **`ponytail`**, a full Node project (its own `package.json`, `ponytail-mcp/` MCP server, `pi-extension/`, `benchmarks/`, `tests/`). Run its tests from that directory:
+
+```bash
+cd ponytail && npm test        # node --test tests/*.test.js && npm test --prefix pi-extension
 ```
 
-Note: `plugin-dev` is the exception — it bundles Anthropic's original plugin-development components and keeps a `LICENSE` file for that upstream code. No other plugin needs a `LICENSE`.
+## The `docs/` directory
 
-## Plugin Components
+`docs/` is a local mirror of the official Claude Code documentation, fetched by `scripts/download-docs.sh` from `https://code.claude.com/docs/en`. The script writes into `${CLAUDE_PLUGIN_DATA}/docs/` and **skips the download if docs already exist** (idempotent). Treat these as a read-only reference cache — don't hand-edit them; re-run the script to refresh.
 
-Plugins can bundle four types of extensions:
+## Curation bar
 
-- **Slash commands**: Custom shortcuts for frequently-used operations
-- **Subagents**: Specialized agents for specific development tasks
-- **MCP servers**: Tools and data sources via Model Context Protocol
-- **Hooks**: Behavior customizations at key workflow points
-- **Skills**: Domain-specific expertise invoked when needed
+This is hand-curated: prefer quality over quantity. A plugin must have working, accessible sources, accurate metadata (descriptions/keywords/component lists that match reality), and clear README documentation before it goes in the manifest.
