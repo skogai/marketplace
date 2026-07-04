@@ -1,22 +1,12 @@
 {
   "name": "skogai-market",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
     "url": "https://github.com/skogai"
   },
   "plugins": [
-    {
-      "name": "claude-code-setup",
-      "source": "./claude-code-setup",
-      "version": "1.0.0",
-      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      }
-    },
     {
       "name": "claude-md-management",
       "source": "./claude-md-management",
