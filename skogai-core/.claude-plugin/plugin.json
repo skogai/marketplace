@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "skogai-core",
+  "displayName": "skogai core",
+  "description": "skogai core",
+  "author": {
+    "name": "Skogix",
+    "email": "emil@skogsund.se",
+    "url": "https://github.com/skogix"
+  },
+  "repository": "https://github.com/skogai/nelson.git",
+  "keywords": ["hooks", "logging", "session", "validation"]
+}
