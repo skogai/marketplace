@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.22",
+  "version": "0.0.27",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -38,15 +38,6 @@
       }
     },
     {
-      "name": "commit-commands",
-      "source": "./commit-commands",
-      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      }
-    },
-    {
       "name": "feature-dev",
       "source": "./feature-dev",
       "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
@@ -54,6 +45,25 @@
         "name": "Anthropic",
         "email": "support@anthropic.com"
       }
+    },
+    {
+      "name": "nelson",
+      "source": {
+        "source": "url",
+        "url": "git@github.com:skogai/nelson.git"
+      },
+      "version": "2.4.0",
+      "description": "Royal Navy agent coordination framework — sailing orders, battle plans, action stations, and a captain's log",
+      "author": {
+        "name": "Harry Munro"
+      },
+      "license": "MIT",
+      "keywords": [
+        "agents",
+        "coordination",
+        "teams",
+        "workflow"
+      ]
     },
     {
       "name": "plugin-dev",
@@ -82,6 +92,23 @@
         "name": "Anthropic",
         "email": "support@anthropic.com"
       }
+    },
+    {
+      "name": "skogai-core",
+      "source": "./skogai-core",
+      "description": "skogai core",
+      "author": {
+        "name": "Skogix",
+        "email": "emil@skogsund.se",
+        "url": "https://github.com/skogix"
+      },
+      "repository": "https://github.com/skogai/nelson.git",
+      "keywords": [
+        "hooks",
+        "logging",
+        "session",
+        "validation"
+      ]
     },
     {
       "name": "skogai-routing",

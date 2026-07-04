@@ -22,7 +22,7 @@ ORIGINAL_SHA=$(shasum -a 256 "$MARKETPLACE_JSON" | awk '{print $1}')
 MARKETPLACE_HEADER=$(jq 'del(.plugins)' "$MARKETPLACE_JSON")
 
 # Find all plugin.json files (excluding the marketplace's own .claude-plugin)
-PLUGIN_FILES=$(find "$REPO_ROOT" -name "plugin.json" -path "*/.claude-plugin/plugin.json" -not -path "$REPO_ROOT/.claude/worktrees/*" | \
+PLUGIN_FILES=$(find "$REPO_ROOT" -name "plugin.json" -path "*/.claude-plugin/plugin.json" -not -path "$REPO_ROOT/.worktrees/*" -not -path "$REPO_ROOT/.claude/worktrees/*" | \
     grep -v "^$REPO_ROOT/.claude-plugin/marketplace.json$" | \
     sort)
 
@@ -33,8 +33,13 @@ fi
 
 echo -e "${GREEN}Found $(echo "$PLUGIN_FILES" | wc -l | tr -d ' ') plugin(s)${NC}"
 
-# Start building the plugins array
-PLUGINS_JSON="[]"
+# Start building the plugins array. Entries whose "source" is an object
+# (a remote git/github source) aren't locally discoverable, so preserve them
+# from the existing file instead of losing them on every regenerate.
+PLUGINS_JSON=$(jq -c '[.plugins[] | select(.source | type == "object")]' "$MARKETPLACE_JSON")
+echo "$PLUGINS_JSON" | jq -r '.[].name' | while read -r n; do
+    echo -e "${GREEN}  Kept (external): $n${NC}"
+done
 
 # Process each plugin.json file
 while IFS= read -r plugin_file; do

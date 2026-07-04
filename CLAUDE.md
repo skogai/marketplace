@@ -27,8 +27,9 @@ make generate-marketplace-json      # wraps scripts/generate-marketplace-json.sh
 
 `scripts/generate-marketplace-json.sh` is the source of truth for how the manifest is built, and its behavior is load-bearing:
 
-- **Discovery**: finds every `*/.claude-plugin/plugin.json` in the repo (excluding `.claude/worktrees/`) and builds one entry per plugin. Adding a plugin dir with a valid `plugin.json` is all it takes to be included — there is no separate registration step.
+- **Discovery**: finds every `*/.claude-plugin/plugin.json` in the repo (excluding `.worktrees/` and `.claude/worktrees/`) and builds one entry per plugin. Adding a plugin dir with a valid `plugin.json` is all it takes to be included — there is no separate registration step.
 - **Source paths**: each entry's `source` is derived as `./<relative-dir>`. Plugins are expected to live at the top level.
+- **External plugins**: an entry whose `source` is an object (e.g. `{"source": "url", "url": "..."}` or `{"source": "github", ...}`) points at a plugin that isn't vendored in this repo. These aren't locally discoverable, so the script preserves any existing object-sourced entries as-is instead of rebuilding them — hand-edit these directly in `marketplace.json`.
 - **Alphabetical sort**: entries are sorted by `name`, so diffs stay stable regardless of discovery order.
 - **Auto version bump**: the marketplace's own `version` (currently tracked in the manifest header) is **patch-incremented automatically** whenever the generated content changes. Do not bump it by hand — let the script do it, and expect the version to move in your diff.
 - **Hook-file stripping**: `hooks/hooks.json` is loaded automatically by Claude Code and must NOT appear in a plugin's `manifest.hooks`. The script strips it defensively and warns; if you see that warning, remove `hooks/hooks.json` from that plugin's `plugin.json` `hooks` array.
