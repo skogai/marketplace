@@ -1,1 +1,0 @@
-No files were created or edited during this task — the router (core/CLAUDE.md) was already valid and correctly routes to SKOGAI.md, so per skill guidance no auto-fix was performed.
