@@ -1,0 +1,18 @@
+[
+  {
+    "name": "nelson",
+    "source": "url",
+    "url": "git@github.com:skogai/nelson.git"
+  },
+  {
+    "name": "worktrunk",
+    "source": "github",
+    "repo": "skogai/worktrunk"
+  },
+  {
+    "name": "codex-plugin-cc",
+    "source": "github",
+    "repo": "openai/codex-plugin-cc",
+    "path": "plugins/codex"
+  }
+]

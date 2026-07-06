@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.29",
+  "version": "0.0.33",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -15,6 +15,19 @@
       "author": {
         "name": "Anthropic",
         "email": "support@anthropic.com"
+      }
+    },
+    {
+      "name": "codex",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/openai/codex-plugin-cc.git",
+        "path": "plugins/codex"
+      },
+      "version": "1.0.5",
+      "description": "Use Codex from Claude Code to review code or delegate tasks.",
+      "author": {
+        "name": "OpenAI"
       }
     },
     {
@@ -38,6 +51,7 @@
         "name": "Harry Munro"
       },
       "license": "MIT",
+      "repository": "https://github.com/harrymunro/nelson",
       "keywords": [
         "agents",
         "coordination",
@@ -123,6 +137,20 @@
         "logging",
         "session",
         "validation"
+      ]
+    },
+    {
+      "name": "worktrunk",
+      "source": {
+        "source": "github",
+        "repo": "skogai/worktrunk"
+      },
+      "description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows. This plugin provides configuration guidance (LLM commit messages, project hooks, worktree paths) and automatic activity tracking (🤖/💬 indicators in `wt list` showing active Claude sessions).",
+      "author": {
+        "name": "Worktrunk"
+      },
+      "skills": [
+        "./skills/worktrunk"
       ]
     }
   ]
