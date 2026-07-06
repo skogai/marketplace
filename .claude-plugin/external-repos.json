@@ -21,5 +21,10 @@
     "source": "github",
     "repo": "skogai/skoghooks",
     "path": "plugins/skoghooks"
+  },
+  {
+    "name": "skogai-routing",
+    "source": "github",
+    "repo": "skogai/skogai-routing"
   }
 ]

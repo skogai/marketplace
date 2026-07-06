@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -106,7 +106,10 @@
     },
     {
       "name": "skogai-routing",
-      "source": "./skogai-routing",
+      "source": {
+        "source": "github",
+        "repo": "skogai/skogai-routing"
+      },
       "description": "Author and validate SKOGAI.md routing files: YAML frontmatter plus XML tags (starting with <routes>), loaded into CLAUDE.md via native @-linking.",
       "author": {
         "name": "Emil Skogsund",
