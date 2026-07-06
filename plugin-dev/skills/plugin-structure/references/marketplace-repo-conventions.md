@@ -13,11 +13,14 @@ plugin. Each entry uses a relative path source pointing at a top-level
 directory:
 
 ```json
-{ "name": "skoghooks", "source": "./skoghooks", ... }
+{ "name": "plugin-dev", "source": "./plugin-dev", ... }
 ```
 
 Plugins are never nested under a subdirectory grouping — each lives directly
-at repo root as `{plugin-name}/`.
+at repo root as `{plugin-name}/`. Some entries instead point at an external
+repo (see `.claude-plugin/external-repos.json`) and use a `git-subdir`,
+`github`, or `url` source object rather than a relative path — `skoghooks`
+is one such example, vendored from `skogai/skoghooks`.
 
 ## Required Files Per Plugin (Community Plugins)
 
@@ -78,12 +81,12 @@ components on disk.
   `"commands": ["./commands/search.md"]`, `"skills": ["./skills/cc-skill-builder", ...]`.
   This gives anyone skimming `marketplace.json` an at-a-glance view of what
   each plugin provides, without opening the plugin directory.
-- **Gap to fix, not a neutral choice**: `plugin-dev` and `skoghooks`
-  currently ship a bare-minimum `plugin.json` (little more than `name` and
-  `description`), so their marketplace entries don't list their
-  commands/agents/skills even though the directories exist and are
-  auto-discovered at runtime. When touching these plugins' manifests, add
-  the explicit arrays rather than leaving them implicit.
+- **Gap to fix, not a neutral choice**: `plugin-dev` currently ships a
+  bare-minimum `plugin.json` (little more than `name` and `description`), so
+  its marketplace entry doesn't list its commands/agents/skills even though
+  the directories exist and are auto-discovered at runtime. When touching
+  this plugin's manifest, add the explicit arrays rather than leaving them
+  implicit.
 
 ## Practical Guidance When Adding a Plugin Here
 

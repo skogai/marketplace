@@ -7,12 +7,19 @@
   {
     "name": "worktrunk",
     "source": "github",
-    "repo": "skogai/worktrunk"
+    "repo": "skogai/worktrunk",
+    "path": "plugins/worktrunk"
   },
   {
     "name": "codex-plugin-cc",
     "source": "github",
     "repo": "openai/codex-plugin-cc",
     "path": "plugins/codex"
+  },
+  {
+    "name": "skoghooks",
+    "source": "github",
+    "repo": "skogai/skoghooks",
+    "path": "plugins/skoghooks"
   }
 ]

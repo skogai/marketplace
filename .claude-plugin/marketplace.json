@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.33",
+  "version": "0.0.38",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -125,7 +125,11 @@
     },
     {
       "name": "skoghooks",
-      "source": "./skoghooks",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/skogai/skoghooks.git",
+        "path": "plugins/skoghooks"
+      },
       "description": "Lifecycle hooks for logging, context loading, and validation across Claude Code sessions",
       "author": {
         "name": "Skogix",
@@ -142,15 +146,17 @@
     {
       "name": "worktrunk",
       "source": {
-        "source": "github",
-        "repo": "skogai/worktrunk"
+        "source": "git-subdir",
+        "url": "https://github.com/skogai/worktrunk.git",
+        "path": "plugins/worktrunk"
       },
       "description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows. This plugin provides configuration guidance (LLM commit messages, project hooks, worktree paths) and automatic activity tracking (🤖/💬 indicators in `wt list` showing active Claude sessions).",
       "author": {
         "name": "Worktrunk"
       },
       "skills": [
-        "./skills/worktrunk"
+        "./skills/worktrunk",
+        "./skills/wt-switch-create"
       ]
     }
   ]
