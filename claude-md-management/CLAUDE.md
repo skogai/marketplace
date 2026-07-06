@@ -1,5 +1,5 @@
 ---
-permalink: skogai-routing/claude
+permalink: claude-md-management/claude
 type: router
 ---
 

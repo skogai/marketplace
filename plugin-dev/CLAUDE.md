@@ -1,5 +1,5 @@
 ---
-permalink: skogai-routing/claude
+permalink: plugin-dev/claude
 type: router
 ---
 

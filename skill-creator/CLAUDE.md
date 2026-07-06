@@ -1,5 +1,5 @@
 ---
-permalink: skogai-routing/claude
+permalink: skill-creator/claude
 type: router
 ---
 

@@ -1,5 +1,5 @@
 ---
-permalink: skogai-routing/claude
+permalink: ponytail/claude
 type: router
 ---
 
