@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -121,6 +121,9 @@
         "frontmatter",
         "xml",
         "at-linking"
+      ],
+      "agents": [
+        "./agents/route-guide.md"
       ],
       "skills": [
         "./skills/skogai-routing"
