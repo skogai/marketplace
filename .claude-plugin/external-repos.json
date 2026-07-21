@@ -1,14 +1,19 @@
 [
   {
-    "name": "nelson",
+    "name": "skogai-nelson",
     "source": "url",
     "url": "git@github.com:skogai/nelson.git"
   },
   {
-    "name": "worktrunk",
+    "name": "skogai-worktrunk",
     "source": "github",
     "repo": "skogai/worktrunk",
     "path": "plugins/worktrunk"
+  },
+  {
+    "name": "skogai-routing",
+    "source": "url",
+    "url": "git@github.com:skogai/skogai-routing.git"
   },
   {
     "name": "codex-plugin-cc",
@@ -21,10 +26,5 @@
     "source": "github",
     "repo": "skogai/skoghooks",
     "path": "plugins/skoghooks"
-  },
-  {
-    "name": "skogai-routing",
-    "source": "github",
-    "repo": "skogai/skogai-routing"
   }
 ]

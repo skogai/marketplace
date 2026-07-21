@@ -3,3 +3,4 @@
 /.worktrees
 /.claude/worktrees
 /skogai-routing/.claude/data/sessions
+/.omo/run-continuation
