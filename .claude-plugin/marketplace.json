@@ -1,10 +1,16 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "skogai-market",
-  "version": "0.0.48",
+  "version": "0.0.49",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
     "url": "https://github.com/skogai"
+  },
+  "renames": {
+    "forge": null,
+    "verity": null,
+    "jetbrains-router": null
   },
   "plugins": [
     {
@@ -41,6 +47,27 @@
     },
     {
       "name": "foreman",
+      "source": "./tmp/foundry/foreman",
+      "description": "Prompt-engineering and project-roadmap plugin that crafts Anthropic-grade prompts and picks, surveys, and tracks your next tasks.",
+      "author": {
+        "name": "Victor Villegas",
+        "email": "victor.villegas@tuta.com"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/V-Songbird/foreman",
+      "repository": "https://github.com/V-Songbird/foreman",
+      "keywords": [
+        "prompting",
+        "prompt-engineering",
+        "roadmap",
+        "planning",
+        "task-selection",
+        "background-agent",
+        "automation"
+      ]
+    },
+    {
+      "name": "foreman",
       "source": {
         "source": "url",
         "url": "git@github.com:skogai/foreman.git"
@@ -61,6 +88,27 @@
         "task-selection",
         "background-agent",
         "automation"
+      ]
+    },
+    {
+      "name": "hush",
+      "source": "./tmp/foundry/hush",
+      "description": "Token-lean sessions at the harness level, measured on real multi-turn coding sessions — a terse output style, output-shrinking hooks, and log compression cut output tokens and narration.",
+      "author": {
+        "name": "Victor Villegas",
+        "email": "victor.villegas@tuta.com"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/V-Songbird/hush",
+      "repository": "https://github.com/V-Songbird/hush",
+      "keywords": [
+        "tokens",
+        "token-optimization",
+        "output-style",
+        "compression",
+        "hooks",
+        "terse",
+        "cost"
       ]
     },
     {
@@ -125,6 +173,28 @@
         "name": "Dietrich Gebert",
         "url": "https://github.com/DietrichGebert"
       }
+    },
+    {
+      "name": "razor",
+      "source": "./tmp/foundry/razor",
+      "description": "YAGNI enforcement at the harness level for real engineering work — nudges toward the simplest solution and gates against unnecessary dependencies, file sprawl, and unchecked build growth.",
+      "author": {
+        "name": "Victor Villegas",
+        "email": "victor.villegas@tuta.com"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/V-Songbird/razor",
+      "repository": "https://github.com/V-Songbird/razor",
+      "keywords": [
+        "yagni",
+        "token-optimization",
+        "minimalism",
+        "over-engineering",
+        "hooks",
+        "subagents",
+        "dependency-guard",
+        "lazy"
+      ]
     },
     {
       "name": "razor",
