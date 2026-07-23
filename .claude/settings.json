@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "^(Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/run-tests-on-edit.js\"",
+            "commandWindows": "node \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\run-tests-on-edit.js\"",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/nudge-manifest-curator.js\"",
+            "commandWindows": "node \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\nudge-manifest-curator.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
