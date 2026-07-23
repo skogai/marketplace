@@ -5,6 +5,16 @@
     "url": "git@github.com:skogai/nelson.git"
   },
   {
+    "name": "skogai-hush",
+    "source": "url",
+    "url": "git@github.com:skogai/hush-2.git"
+  },
+  {
+    "name": "skogai-razor",
+    "source": "url",
+    "url": "git@github.com:skogai/razor.git"
+  },
+  {
     "name": "skogai-foreman",
     "source": "url",
     "url": "git@github.com:skogai/foreman.git"
