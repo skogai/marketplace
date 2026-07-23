@@ -1,6 +1,6 @@
 {
   "name": "skogai-market",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -38,6 +38,30 @@
         "name": "Anthropic",
         "email": "support@anthropic.com"
       }
+    },
+    {
+      "name": "foreman",
+      "source": {
+        "source": "url",
+        "url": "git@github.com:skogai/foreman.git"
+      },
+      "description": "Prompt-engineering and project-roadmap plugin that crafts Anthropic-grade prompts and picks, surveys, and tracks your next tasks.",
+      "author": {
+        "name": "Victor Villegas",
+        "email": "victor.villegas@tuta.com"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/V-Songbird/foreman",
+      "repository": "https://github.com/V-Songbird/foreman",
+      "keywords": [
+        "prompting",
+        "prompt-engineering",
+        "roadmap",
+        "planning",
+        "task-selection",
+        "background-agent",
+        "automation"
+      ]
     },
     {
       "name": "nelson",

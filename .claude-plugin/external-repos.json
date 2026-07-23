@@ -5,6 +5,11 @@
     "url": "git@github.com:skogai/nelson.git"
   },
   {
+    "name": "skogai-foreman",
+    "source": "url",
+    "url": "git@github.com:skogai/foreman.git"
+  },
+  {
     "name": "skogai-worktrunk",
     "source": "github",
     "repo": "skogai/worktrunk",
