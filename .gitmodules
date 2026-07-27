@@ -1,0 +1,9 @@
+[submodule "foreman"]
+	path = foreman
+	url = git@github.com:skogai/foreman.git
+[submodule "hush"]
+	path = hush
+	url = git@github.com:skogai/hush.git
+[submodule "razor"]
+	path = razor
+	url = git@github.com:skogai/razor.git
