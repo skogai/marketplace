@@ -4,3 +4,5 @@
 /.claude/worktrees
 /skogai-routing/.claude/data/sessions
 /.omo/run-continuation
+# Added by code-review-graph
+.code-review-graph/
