@@ -26,12 +26,6 @@
     "path": "plugins/worktrunk"
   },
   {
-    "name": "skogai-human",
-    "source": "github",
-    "repo": "skogai/human",
-    "path": "./human"
-  },
-  {
     "name": "skogai-routing",
     "source": "url",
     "url": "git@github.com:skogai/skogai-routing.git"
