@@ -7,7 +7,7 @@
   {
     "name": "skogai-hush",
     "source": "url",
-    "url": "git@github.com:skogai/hush-2.git"
+    "url": "git@github.com:skogai/hush.git"
   },
   {
     "name": "skogai-razor",
@@ -24,6 +24,12 @@
     "source": "github",
     "repo": "skogai/worktrunk",
     "path": "plugins/worktrunk"
+  },
+  {
+    "name": "skogai-human",
+    "source": "github",
+    "repo": "skogai/human",
+    "path": "./human"
   },
   {
     "name": "skogai-routing",
