@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "skogai-market",
-  "version": "0.0.54",
+  "version": "0.0.55",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -47,10 +47,7 @@
     },
     {
       "name": "foreman",
-      "source": {
-        "source": "url",
-        "url": "git@github.com:skogai/foreman.git"
-      },
+      "source": "./foreman",
       "description": "Prompt-engineering and project-roadmap plugin that crafts Anthropic-grade prompts and picks, surveys, and tracks your next tasks.",
       "author": {
         "name": "Victor Villegas",
@@ -70,28 +67,8 @@
       ]
     },
     {
-      "name": "human-plugin",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/skogai/human.git",
-        "path": "./human"
-      },
-      "version": "0.1.0",
-      "description": "a human plugin",
-      "author": {
-        "name": "skogix",
-        "email": "emil@skogsund.se"
-      },
-      "skills": [
-        "./skills"
-      ]
-    },
-    {
       "name": "hush",
-      "source": {
-        "source": "url",
-        "url": "git@github.com:skogai/hush.git"
-      },
+      "source": "./hush",
       "description": "Token-lean sessions at the harness level, measured on real multi-turn coding sessions — a terse output style, output-shrinking hooks, and log compression cut output tokens and narration.",
       "author": {
         "name": "Victor Villegas",
@@ -151,10 +128,7 @@
     },
     {
       "name": "razor",
-      "source": {
-        "source": "url",
-        "url": "git@github.com:skogai/razor.git"
-      },
+      "source": "./razor",
       "description": "YAGNI enforcement at the harness level for real engineering work — nudges toward the simplest solution and gates against unnecessary dependencies, file sprawl, and unchecked build growth.",
       "author": {
         "name": "Victor Villegas",
