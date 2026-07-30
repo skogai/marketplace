@@ -1,0 +1,41 @@
+{
+  "name": "extract-tool-calls",
+  "description": "Extract tool_use blocks from content arrays, returning structured tool call info",
+  "version": "1.0.0",
+  "input": {
+    "type": "object",
+    "description": "Object containing a content array with potential tool_use items"
+  },
+  "args": {
+    "path": {
+      "type": "string",
+      "required": true,
+      "description": "Dot-separated path to the content array (e.g., 'message.content')"
+    }
+  },
+  "output": {
+    "type": "array",
+    "description": "Array of tool call objects with name, id, and input fields"
+  },
+  "examples": [
+    {
+      "description": "Extract single tool call",
+      "input": {"message": {"content": [{"type": "tool_use", "name": "Read", "id": "123", "input": {"path": "/file.txt"}}]}},
+      "args": {"path": "message.content"},
+      "output": [{"name": "Read", "id": "123", "input": {"path": "/file.txt"}}]
+    },
+    {
+      "description": "Extract multiple tool calls",
+      "input": {"content": [{"type": "text", "text": "hi"}, {"type": "tool_use", "name": "Bash", "id": "1", "input": {}}, {"type": "tool_use", "name": "Read", "id": "2", "input": {}}]},
+      "args": {"path": "content"},
+      "output": [{"name": "Bash", "id": "1", "input": {}}, {"name": "Read", "id": "2", "input": {}}]
+    },
+    {
+      "description": "No tool calls returns empty array",
+      "input": {"content": [{"type": "text", "text": "hello"}]},
+      "args": {"path": "content"},
+      "output": []
+    }
+  ],
+  "tags": ["extract", "tool", "tool_use", "claude", "chat", "message"]
+}

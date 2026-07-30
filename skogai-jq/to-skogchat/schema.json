@@ -1,0 +1,41 @@
+{
+  "name": "to-skogchat",
+  "description": "Convert Claude Code message to skogchat unified message format",
+  "version": "1.0.0",
+  "input": {
+    "type": "object",
+    "description": "Claude Code message object with type, uuid, timestamp, message fields"
+  },
+  "args": {
+    "agent": {
+      "type": "string",
+      "required": false,
+      "description": "The agent name (default: 'claude')"
+    }
+  },
+  "output": {
+    "type": ["object", "null"],
+    "description": "Skogchat message with eid, from, to, content, created-at, parent fields. Returns null for non-message types."
+  },
+  "examples": [
+    {
+      "description": "Convert user message",
+      "input": {"type": "user", "uuid": "abc", "timestamp": "2025-01-01T00:00:00Z", "parentUuid": null, "message": {"content": "hello"}},
+      "args": {"agent": "claude"},
+      "output": {"eid": "abc", "from": "user", "to": "claude", "content": "hello", "created-at": "2025-01-01T00:00:00Z", "parent": null}
+    },
+    {
+      "description": "Convert assistant message",
+      "input": {"type": "assistant", "uuid": "def", "timestamp": "2025-01-01T00:00:01Z", "parentUuid": "abc", "message": {"content": [{"type": "text", "text": "hi there"}]}},
+      "args": {"agent": "claude"},
+      "output": {"eid": "def", "from": "claude", "to": "user", "content": "hi there", "created-at": "2025-01-01T00:00:01Z", "parent": "abc"}
+    },
+    {
+      "description": "Skip system message",
+      "input": {"type": "system", "subtype": "turn_duration"},
+      "args": {},
+      "output": null
+    }
+  ],
+  "tags": ["convert", "skogchat", "claude", "chat", "message", "format"]
+}

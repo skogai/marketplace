@@ -1,0 +1,1 @@
+{"name": "Bash", "input": {"command": "npm test --coverage"}}

@@ -1,0 +1,1 @@
+{"type": "assistant", "uuid": "def456", "timestamp": "2025-01-01T00:00:01Z", "parentUuid": "abc123", "message": {"content": [{"type": "text", "text": "hi there"}]}}
