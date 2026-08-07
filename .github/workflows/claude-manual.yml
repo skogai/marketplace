@@ -1,0 +1,43 @@
+name: Claude Code - Manual Trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Prompt for Claude'
+        required: true
+        type: string
+      issue_number:
+        description: 'Issue/PR number (optional - for context)'
+        required: false
+        type: number
+
+jobs:
+  run-claude:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}
+            ${{ inputs.issue_number && format('ISSUE/PR: #{0}', inputs.issue_number) || '' }}
+
+            ${{ inputs.prompt }}
+
+          # Optional: Customize allowed tools
+          # claude_args: '--allowed-tools Bash(gh:*)'
