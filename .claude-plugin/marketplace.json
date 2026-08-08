@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "skogai-market",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -13,6 +13,27 @@
     "jetbrains-router": null
   },
   "plugins": [
+    {
+      "name": "agent-skills",
+      "source": {
+        "source": "url",
+        "url": "git@github.com:skogai/skogai-agent-skills.git"
+      },
+      "version": "0.6.6",
+      "description": "Production-grade engineering skills for AI coding agents — spec through ship — tuned for SkogAI's agent-first conventions and the .skogai/ artifact layout. Fork of addyosmani/agent-skills, customized for SkogAI.",
+      "author": {
+        "name": "SkogAI",
+        "url": "https://github.com/skogai"
+      },
+      "license": "MIT",
+      "homepage": "https://github.com/skogai/agent-skills",
+      "repository": "https://github.com/skogai/agent-skills",
+      "commands": [
+        "./.claude/commands",
+        "./commands"
+      ],
+      "skills": "./skills"
+    },
     {
       "name": "claude-md-management",
       "source": "./claude-md-management",

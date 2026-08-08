@@ -5,6 +5,11 @@
     "url": "git@github.com:skogai/nelson.git"
   },
   {
+    "name": "skogai-agent-skills",
+    "source": "url",
+    "url": "git@github.com:skogai/skogai-agent-skills.git"
+  },
+  {
     "name": "skogai-worktrunk",
     "source": "github",
     "repo": "skogai/worktrunk",
