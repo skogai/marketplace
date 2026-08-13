@@ -6,3 +6,4 @@
 /.omo/run-continuation
 # Added by code-review-graph
 .code-review-graph/
+/.skogai/config/script_metadata.json
