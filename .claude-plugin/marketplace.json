@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "skogai-market",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -85,6 +85,58 @@
         "hooks",
         "terse",
         "cost"
+      ]
+    },
+    {
+      "name": "mattpocock-skills",
+      "source": {
+        "source": "url",
+        "url": "git@github.com:skogai/mattpocock-skills.git"
+      },
+      "version": "1.2.3",
+      "description": "Matt Pocock's agent skills for real engineering — grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
+      "author": {
+        "name": "Matt Pocock",
+        "url": "https://www.aihero.dev"
+      },
+      "license": "MIT",
+      "homepage": "https://www.aihero.dev/s/skills-newsletter",
+      "repository": "https://github.com/mattpocock/skills",
+      "keywords": [
+        "engineering",
+        "skills",
+        "tdd",
+        "code-review",
+        "grilling",
+        "domain-modeling",
+        "productivity"
+      ],
+      "skills": [
+        "./skills/engineering/ask-matt",
+        "./skills/engineering/diagnosing-bugs",
+        "./skills/engineering/grill-with-docs",
+        "./skills/engineering/triage",
+        "./skills/engineering/improve-codebase-architecture",
+        "./skills/engineering/setup-matt-pocock-skills",
+        "./skills/engineering/tdd",
+        "./skills/engineering/to-spec",
+        "./skills/engineering/to-tickets",
+        "./skills/engineering/wayfinder",
+        "./skills/engineering/implement",
+        "./skills/engineering/prototype",
+        "./skills/engineering/research",
+        "./skills/engineering/domain-modeling",
+        "./skills/engineering/codebase-design",
+        "./skills/engineering/code-review",
+        "./skills/engineering/resolving-merge-conflicts",
+        "./skills/engineering/wizard",
+        "./skills/productivity/grill-me",
+        "./skills/productivity/grilling",
+        "./skills/productivity/handoff",
+        "./skills/productivity/teach",
+        "./skills/productivity/to-questionnaire",
+        "./skills/productivity/wait-what",
+        "./skills/productivity/writing-for-agents"
       ]
     },
     {
