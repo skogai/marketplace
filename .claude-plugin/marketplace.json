@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "skogai-market",
-  "version": "0.0.60",
+  "version": "0.0.61",
   "description": "skogai-market",
   "owner": {
     "name": "skogix",
@@ -22,6 +22,13 @@
         "name": "Anthropic",
         "email": "support@anthropic.com"
       }
+    },
+    {
+      "name": "claude-memory",
+      "source": "./claude-basic-memory",
+      "version": "0.22.1",
+      "description": "The bridge between Claude's working memory and Basic Memory's durable knowledge graph — session briefings, pre-compaction checkpoints, and capture reflexes",
+      "repository": "https://github.com/skogai/basic-memory/tree/main/plugins/claude-code"
     },
     {
       "name": "codex",

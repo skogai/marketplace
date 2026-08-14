@@ -1,0 +1,29 @@
+{
+  "description": "Basic Memory bridge hooks — brief Claude from the knowledge graph on session start, checkpoint the session before compaction.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --quiet --script \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\"",
+            "timeout": 20,
+            "statusMessage": "Briefing from Basic Memory"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --quiet --script \"${CLAUDE_PLUGIN_ROOT}/hooks/pre_compact.py\"",
+            "timeout": 120,
+            "statusMessage": "Checkpointing session to Basic Memory"
+          }
+        ]
+      }
+    ]
+  }
+}

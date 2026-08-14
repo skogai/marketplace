@@ -1,0 +1,6 @@
+{
+  "name": "claude-memory",
+  "description": "The bridge between Claude's working memory and Basic Memory's durable knowledge graph \u2014 session briefings, pre-compaction checkpoints, and capture reflexes",
+  "version": "0.22.1",
+  "repository": "https://github.com/skogai/basic-memory/tree/main/plugins/claude-code"
+}
